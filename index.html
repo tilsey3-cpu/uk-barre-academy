@@ -846,8 +846,15 @@
     @media (max-width: 620px) {
       .photo-strip { grid-template-columns: 1fr; height: auto; }
       .photo-strip__item { height: 220px; }
-      .cert-photos { gap: 10px; }
-      .cert-photo { height: 180px; }
+      .cert-photos { grid-template-columns: 1fr; gap: 12px; }
+      .cert-photo {
+        height: auto;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .cert-photos .cert-photo:nth-child(1) { aspect-ratio: 1590 / 989; }
+      .cert-photos .cert-photo:nth-child(2) { aspect-ratio: 1464 / 1074; }
     }
 
     /* ═══════════════════════════════════════════════════════════
