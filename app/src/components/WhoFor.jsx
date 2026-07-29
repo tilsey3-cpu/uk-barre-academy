@@ -20,9 +20,9 @@ export default function WhoFor() {
           <p className="text-muted">The programme is suitable for:</p>
         </div>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 max-w-3xl mx-auto">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
           {ITEMS.map((item) => (
-            <li key={item} className="flex items-start gap-3">
+            <li key={item} className="card flex items-start gap-3">
               <CheckCircle2 size={20} className="text-green-600 shrink-0 mt-0.5" />
               <span>{item}</span>
             </li>
