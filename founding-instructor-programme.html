@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="UK Barre Academy Founding Instructor Programme 2026 — join the inaugural cohort training with Maggie Paterson. Limited to 6–10 participants.">
+  <title>Founding Instructor Programme 2026 — UK Barre Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ─────────────────────────────────────────────────────────────
+       TOKENS (shared with index.html / training-manual.html)
+    ───────────────────────────────────────────────────────────── */
+    :root {
+      --ink:        #0A0A0A;
+      --bone:       #F7F7F5;
+      --bone-2:     #EFEFEC;
+      --bone-3:     #E5E4DF;
+      --grey-3:     #6E6E6E;
+      --grey-4:     #3A3A3A;
+      --sand:       #C8B79A;
+
+      --sans: 'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-std: cubic-bezier(0.22, 0.61, 0.36, 1);
+      --t-fast: 160ms;
+      --t-base: 280ms;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      background: var(--bone);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; margin: 0; padding: 0; }
+    h1, h2, h3, h4, p { margin: 0; }
+    button { font-family: var(--sans); cursor: pointer; border: none; padding: 0; background: none; }
+    img { display: block; max-width: 100%; }
+
+    .w { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      padding: 14px 22px;
+      transition: background var(--t-base) var(--ease-out),
+                  color var(--t-base) var(--ease-out),
+                  border-color var(--t-base) var(--ease-out);
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-lg { padding: 18px 28px; font-size: 15px; }
+    .btn-ink  { background: var(--ink);  color: var(--bone); }
+    .btn-ink:hover { background: var(--bone); color: var(--ink); border-color: var(--bone-3); }
+    .btn-bone { background: var(--bone); color: var(--ink); }
+    .btn-bone:hover { background: var(--bone); color: var(--ink); }
+
+    /* Eyebrow */
+    .eye {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--grey-3);
+    }
+    .eye::before {
+      content: '';
+      width: 1px;
+      height: 13px;
+      background: var(--sand);
+      flex-shrink: 0;
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      background: rgba(247,247,245,0.90);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--bone-3);
+    }
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 48px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--grey-4);
+      transition: color var(--t-fast);
+    }
+    .nav-back:hover { color: var(--ink); }
+    .nav-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--grey-3);
+      text-transform: uppercase;
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       PAGE HERO
+    ───────────────────────────────────────────────────────────── */
+    .page-hero {
+      position: relative;
+      background: var(--ink);
+      color: var(--bone);
+      overflow: hidden;
+      padding: 96px 48px 88px;
+    }
+    .page-hero-photo {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/founding-1.png');
+      background-size: cover;
+      background-position: center 32%;
+      filter: brightness(0.36) saturate(0.85);
+    }
+    .page-hero-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 45%, rgba(10,10,10,0.88) 100%);
+    }
+    .page-hero-body {
+      position: relative;
+      max-width: 1084px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .page-hero .eye { color: rgba(247,247,245,0.55); }
+    .page-hero-h1 {
+      font-weight: 200;
+      font-size: clamp(32px, 5.4vw, 68px);
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+      color: var(--bone);
+      max-width: 18ch;
+    }
+    .page-hero-lede {
+      font-size: 18px;
+      line-height: 1.6;
+      color: rgba(247,247,245,0.76);
+      max-width: 58ch;
+    }
+    .page-hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+
+    /* ─────────────────────────────────────────────────────────────
+       QUICK FACTS
+    ───────────────────────────────────────────────────────────── */
+    .quickfacts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--bone-3);
+      border-top: 1px solid var(--bone-3);
+      border-bottom: 1px solid var(--bone-3);
+    }
+    .quickfact {
+      background: var(--bone);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .quickfact-n {
+      font-family: var(--mono);
+      font-size: 26px;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .quickfact-l {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--grey-3);
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       SECTIONS
+    ───────────────────────────────────────────────────────────── */
+    .sec { padding: 88px 0; }
+    .sec-dark { background: var(--ink); color: var(--bone); }
+    .sec-quiet { background: var(--bone-2); }
+    .sec-dark .eye { color: rgba(247,247,245,0.55); }
+
+    .sec-head { display: flex; flex-direction: column; gap: 16px; max-width: 720px; margin-bottom: 44px; }
+    .sec-h2 {
+      font-weight: 300;
+      font-size: clamp(28px, 3.6vw, 42px);
+      letter-spacing: -0.02em;
+      line-height: 1.12;
+    }
+    .sec-lede { font-size: 16px; line-height: 1.65; color: var(--grey-4); max-width: 62ch; }
+    .sec-dark .sec-lede { color: rgba(247,247,245,0.7); }
+
+    .sec-body { max-width: 720px; display: flex; flex-direction: column; gap: 18px; }
+    .sec-body p { font-size: 16px; line-height: 1.7; color: var(--grey-4); }
+
+    .badge {
+      display: inline-flex;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--grey-3);
+      margin-bottom: 8px;
+    }
+    .sec-dark .badge { color: rgba(247,247,245,0.55); }
+    .badge strong { color: var(--sand); font-weight: 500; margin-left: 6px; }
+
+    /* Tag pills (reused across "combines", "who's it for") */
+    .tag-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag {
+      font-size: 13px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--bone-3);
+      color: var(--grey-4);
+      background: var(--bone);
+    }
+    .sec-quiet .tag { background: var(--bone-2); }
+    .sec-dark .tag { border-color: rgba(247,247,245,0.22); color: rgba(247,247,245,0.72); background: rgba(247,247,245,0.06); }
+
+    /* Numbered module list */
+    .num-list { display: flex; flex-direction: column; margin-top: 12px; max-width: 760px; }
+    .num-item {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 20px;
+      align-items: center;
+      padding: 20px 0;
+      border-top: 1px solid rgba(247,247,245,0.14);
+      font-size: 17px;
+      font-weight: 300;
+    }
+    .num-item:last-child { border-bottom: 1px solid rgba(247,247,245,0.14); }
+    .num-n { font-family: var(--mono); font-size: 12px; color: var(--sand); }
+
+    /* Checklist (What will I receive) */
+    .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; max-width: 900px; }
+    .check-list { display: flex; flex-direction: column; }
+    .check-list li {
+      font-size: 15px;
+      line-height: 1.5;
+      padding: 14px 0;
+      border-top: 1px solid var(--bone-3);
+      color: var(--ink);
+    }
+    .check-list li:last-child { border-bottom: 1px solid var(--bone-3); }
+
+    /* Photo break */
+    .photo-break { height: 420px; background-size: cover; background-position: center; }
+
+    /* Fee block */
+    .fee-block { display: flex; flex-wrap: wrap; align-items: baseline; gap: 24px; margin: 8px 0 28px; }
+    .fee-now { font-family: var(--mono); font-size: clamp(56px, 8vw, 96px); font-weight: 300; color: var(--sand); line-height: 1; }
+    .fee-was { display: flex; flex-direction: column; gap: 4px; }
+    .fee-was-n { font-family: var(--mono); font-size: 20px; color: rgba(247,247,245,0.4); text-decoration: line-through; }
+    .fee-was-l { font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: rgba(247,247,245,0.5); }
+
+    /* Dates */
+    .date-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 12px; }
+    .date-group-h {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--grey-3);
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--bone-3);
+    }
+    .date-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; font-size: 15px; color: var(--ink); }
+    .date-box { width: 15px; height: 15px; border: 1px solid var(--grey-3); border-radius: 2px; flex-shrink: 0; }
+    .date-note { max-width: 640px; margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--bone-3); display: flex; flex-direction: column; gap: 10px; }
+    .date-note p { font-size: 14px; line-height: 1.6; color: var(--grey-3); }
+    .sec-note { max-width: 640px; margin-top: 32px; }
+    .sec-note p { font-size: 14px; line-height: 1.6; color: var(--grey-3); }
+
+    /* Register CTA */
+    .register-body { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; max-width: 640px; }
+    .register-h2 { font-weight: 300; font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.02em; line-height: 1.1; }
+    .register-lede { font-size: 16px; line-height: 1.6; color: rgba(247,247,245,0.7); }
+
+    /* ─────────────────────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────────────────────── */
+    .footer { background: var(--bone); border-top: 1px solid var(--bone-3); padding: 40px 0; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .footer-row span { font-family: var(--mono); font-size: 11px; color: var(--grey-3); }
+
+    /* ─────────────────────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .quickfacts { grid-template-columns: 1fr; }
+      .check-grid { grid-template-columns: 1fr; }
+      .date-groups { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 620px) {
+      .w { padding: 0 20px; }
+      .nav-inner { padding: 0 20px; }
+      .nav-label { display: none; }
+      .page-hero { padding: 64px 20px 56px; }
+      .sec { padding: 56px 0; }
+      .sec-head { margin-bottom: 32px; }
+      .photo-break { height: 260px; }
+      .date-groups { grid-template-columns: 1fr; gap: 28px; }
+      .fee-block { align-items: flex-start; flex-direction: column; gap: 12px; }
+      .footer-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ NAV ═══ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-back" href="index.html">&larr;&nbsp; Back to UK Barre Academy</a>
+    <span class="nav-label">Founding Instructor Programme</span>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════ HERO ═══ -->
+<section class="page-hero">
+  <div class="page-hero-photo"></div>
+  <div class="page-hero-scrim"></div>
+  <div class="page-hero-body">
+    <p class="eye">UK Barre Academy &middot; Founding Cohort 2026</p>
+    <h1 class="page-hero-h1">Founding Instructor Programme 2026</h1>
+    <p class="page-hero-lede">
+      Become one of the first instructors to train with UK Barre
+      Academy. A small, inaugural cohort of qualified movement
+      professionals, trained directly by Maggie Paterson.
+    </p>
+    <div class="page-hero-ctas">
+      <a class="btn btn-bone btn-lg" href="#register">Register your interest &nbsp;&rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ QUICKFACTS ═══ -->
+<div class="quickfacts">
+  <div class="quickfact">
+    <span class="quickfact-n">6&ndash;10</span>
+    <span class="quickfact-l">Participants</span>
+  </div>
+  <div class="quickfact">
+    <span class="quickfact-n">1</span>
+    <span class="quickfact-l">Training Day</span>
+  </div>
+  <div class="quickfact">
+    <span class="quickfact-n">8</span>
+    <span class="quickfact-l">CPD Hours</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ INTRO ═══ -->
+<section class="sec">
+  <div class="w">
+    <div class="sec-head">
+      <p class="eye">The Invitation</p>
+      <h2 class="sec-h2">A new standard for Barre education, from day one.</h2>
+    </div>
+    <div class="sec-body">
+      <p>UK Barre Academy is inviting a small group of qualified movement professionals to join its inaugural Founding Instructor Programme.</p>
+      <p>Created by Maggie Paterson and built on more than 40 years of experience in ballet, dance, Pilates, yoga and fitness, this intensive one-day certification programme combines classical Barre technique with intelligent movement, strength, alignment, musicality and confident teaching practice.</p>
+      <p>The Founding Instructor Programme is limited to just 6&ndash;10 participants and is offered at an exclusive introductory price.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ THE METHOD ═══ -->
+<section class="sec sec-quiet">
+  <div class="w">
+    <div class="sec-head">
+      <p class="eye">A New Standard for Barre Education</p>
+      <h2 class="sec-h2">How to perform it, and how to teach it.</h2>
+      <p class="sec-lede">The UK Barre Academy method is designed to help instructors understand not only how to perform Barre exercises, but how to teach them safely, effectively and confidently. The programme combines:</p>
+    </div>
+    <ul class="tag-list">
+      <li class="tag">Ballet technique and alignment</li>
+      <li class="tag">Pilates-based core strength</li>
+      <li class="tag">Functional fitness and conditioning</li>
+      <li class="tag">Light hand-weight training</li>
+      <li class="tag">Barre choreography and cardiovascular flow</li>
+      <li class="tag">Musicality, cueing and class structure</li>
+      <li class="tag">Adaptations for different abilities</li>
+      <li class="tag">Safe and effective teaching practice</li>
+    </ul>
+  </div>
+</section>
+
+<div class="photo-break" style="background-image:url('assets/founding-2.png')"></div>
+
+<!-- ═══════════════════════════════════════════════════════ MODULES ═══ -->
+<section class="sec sec-dark">
+  <div class="w">
+    <div class="sec-head">
+      <p class="eye">The Curriculum</p>
+      <h2 class="sec-h2">8 modules. 8 hours. One complete Barre teaching method.</h2>
+      <p class="sec-lede">The course is completed in one intensive training day.</p>
+    </div>
+    <p class="badge">Course Time <strong>&middot; 9:30am&ndash;6:30pm</strong></p>
+    <ul class="num-list">
+      <li class="num-item"><span class="num-n">01</span><span>Foundations, Warm-Up and Alignment</span></li>
+      <li class="num-item"><span class="num-n">02</span><span>Pilates Core Foundation</span></li>
+      <li class="num-item"><span class="num-n">03</span><span>Feet, Ankles, Knees and Hips</span></li>
+      <li class="num-item"><span class="num-n">04</span><span>Classical Barre Technique</span></li>
+      <li class="num-item"><span class="num-n">05</span><span>Barre Flow, Choreography and Cardiovascular Conditioning</span></li>
+      <li class="num-item"><span class="num-n">06</span><span>Upper Body Strength and Arm Definition</span></li>
+      <li class="num-item"><span class="num-n">07</span><span>Leg Strength and Barre Conditioning</span></li>
+      <li class="num-item"><span class="num-n">08</span><span>Barre Stretch, Mobility and Recovery</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ WHO IS IT FOR ═══ -->
+<section class="sec">
+  <div class="w">
+    <div class="sec-head">
+      <p class="eye">Who Is the Course For?</p>
+      <h2 class="sec-h2">Qualified movement professionals, ready to add Barre.</h2>
+      <p class="sec-lede">The programme is suitable for:</p>
+    </div>
+    <ul class="tag-list">
+      <li class="tag">Pilates instructors</li>
+      <li class="tag">Yoga teachers</li>
+      <li class="tag">Personal trainers</li>
+      <li class="tag">Group exercise instructors</li>
+      <li class="tag">Dance teachers</li>
+      <li class="tag">Experienced dancers</li>
+      <li class="tag">Qualified fitness professionals looking to add Barre to their teaching portfolio</li>
+    </ul>
+    <div class="sec-note">
+      <p>Applicants will be asked to provide details of their qualifications and relevant movement or teaching experience.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ WHAT YOU GET ═══ -->
+<section class="sec sec-quiet">
+  <div class="w">
+    <div class="sec-head">
+      <p class="eye">What Will I Receive?</p>
+      <h2 class="sec-h2">Founding Instructors will receive:</h2>
+    </div>
+    <div class="check-grid">
+      <ul class="check-list">
+        <li>Eight hours of practical, in-person training</li>
+        <li>The complete UK Barre Academy eight-module method</li>
+        <li>A comprehensive course handbook</li>
+        <li>Practical teaching guidance</li>
+        <li>Cueing and class-planning support</li>
+        <li>Individual feedback and coaching</li>
+      </ul>
+      <ul class="check-list">
+        <li>Continuous practical assessment</li>
+        <li>Final teaching assessment</li>
+        <li>UK Barre Academy certification upon successful completion</li>
+        <li>Founding Instructor recognition</li>
+        <li>Priority access to future UK Barre Academy training</li>
+        <li>Ongoing post-course support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ FEE ═══ -->
+<section class="sec sec-dark">
+  <div class="w">
+    <div class="sec-head">
+      <p class="eye">Founding Instructor Course Fee</p>
+      <h2 class="sec-h2">An exclusive introductory rate.</h2>
+    </div>
+    <div class="fee-block">
+      <span class="fee-now">&pound;250</span>
+      <div class="fee-was">
+        <span class="fee-was-n">&pound;500</span>
+        <span class="fee-was-l">Standard course fee</span>
+      </div>
+    </div>
+    <div class="sec-body">
+      <p>Founding Instructors receive an exclusive 50% introductory rate in recognition of joining the academy&rsquo;s inaugural cohort and providing constructive feedback following the course.</p>
+      <p>Places are limited to the first Founding Instructor cohort only.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ DATES ═══ -->
+<section class="sec">
+  <div class="w">
+    <div class="sec-head">
+      <p class="eye">Dates</p>
+      <h2 class="sec-h2">One day of attendance.</h2>
+      <p class="sec-lede">Please select every date you could attend. The final course date or dates will be confirmed according to demand.</p>
+    </div>
+    <div class="date-groups">
+      <div>
+        <p class="date-group-h">August 2026</p>
+        <div class="date-row"><span class="date-box"></span><span>Saturday 29 August</span></div>
+        <div class="date-row"><span class="date-box"></span><span>Sunday 30 August</span></div>
+      </div>
+      <div>
+        <p class="date-group-h">September 2026</p>
+        <div class="date-row"><span class="date-box"></span><span>Saturday 5 September</span></div>
+        <div class="date-row"><span class="date-box"></span><span>Sunday 6 September</span></div>
+      </div>
+      <div>
+        <p class="date-group-h">October 2026</p>
+        <div class="date-row"><span class="date-box"></span><span>Saturday 24 October</span></div>
+        <div class="date-row"><span class="date-box"></span><span>Sunday 25 October</span></div>
+      </div>
+    </div>
+    <div class="date-note">
+      <p>All courses run from 9:30am until 6:30pm at a professional dance studio in London.</p>
+      <p>The confirmed venue will be provided before payment is requested.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ REGISTER ═══ -->
+<section class="sec sec-dark" id="register">
+  <div class="w">
+    <div class="register-body">
+      <p class="eye">Register Your Interest</p>
+      <h2 class="register-h2">Reserve your place in the founding cohort.</h2>
+      <p class="register-lede">Tell us which dates work for you and a little about your teaching background &mdash; we&rsquo;ll be in touch with next steps.</p>
+      <!--
+        TODO: wire up the Typeform popup here. Replace this button's
+        onclick (or add the Typeform embed script + data-tf-popup
+        attribute per their embed snippet) once the form is ready.
+      -->
+      <button class="btn btn-bone btn-lg" id="registerInterestBtn" type="button">Register your interest &nbsp;&rarr;</button>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════ FOOTER ═══ -->
+<footer class="footer">
+  <div class="w footer-row">
+    <span>&copy; 2026 UK Barre Academy</span>
+    <a class="nav-back" href="index.html">&larr;&nbsp; Back to UK Barre Academy</a>
+  </div>
+</footer>
+
+</body>
+</html>
