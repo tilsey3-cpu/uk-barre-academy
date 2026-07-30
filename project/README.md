@@ -1,5 +1,7 @@
 # UK Barre Academy — Design System
 
+> **Superseded for new work.** This brief describes the original ink/bone/sand, Inter Tight, editorial-hairline system. The live coming-soon homepage has since moved to a pure black/white, pill-button, card-based system (see `../CLAUDE.md`, `../app/`). This document and `colors_and_type.css`'s primary tokens now only govern the not-yet-migrated legacy pages (`full-site.html`, `training-manual.html`, `founding-instructor-programme.html`) — `colors_and_type.css`'s legacy tokens are scoped under `.uba-legacy` for that reason. Read `../CLAUDE.md` first for anything new.
+
 A premium, editorial, performance-grade design system for **UK Barre Academy (UBA)** — a training platform that develops the next generation of barre instructors.
 
 > The brand sits closer to **high-end health tech** than fitness. Precision over hype. Calm over loud.
