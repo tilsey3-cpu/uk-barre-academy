@@ -65,7 +65,7 @@ export default function HowItWorks() {
         </Reveal>
 
         <div ref={wrapRef} className="relative max-w-4xl mx-auto">
-          <div className="absolute left-10 sm:left-[344px] top-2 bottom-2 w-px bg-line">
+          <div className="absolute left-10 sm:left-[376px] top-2 bottom-2 w-px bg-line">
             <div ref={lineRef} className="w-full h-full bg-black" />
           </div>
 
