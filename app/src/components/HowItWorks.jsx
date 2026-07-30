@@ -24,17 +24,10 @@ const STEPS = [
   },
 ];
 
-function Badge({ n }) {
-  return (
-    <div className="w-11 h-11 rounded-full bg-black text-white flex items-center justify-center font-mono text-xs shrink-0">
-      {n}
-    </div>
-  );
-}
-
 export default function HowItWorks() {
   const wrapRef = useRef(null);
   const lineRef = useRef(null);
+  const badgeRefs = useRef([]);
 
   useEffect(() => {
     const wrap = wrapRef.current;
@@ -46,9 +39,19 @@ export default function HowItWorks() {
       gsap.to(line, {
         scaleY: 1,
         ease: 'none',
-        scrollTrigger: { trigger: wrap, start: 'top 75%', end: 'bottom 60%', scrub: true },
+        scrollTrigger: { trigger: wrap, start: 'top 70%', end: 'bottom 55%', scrub: true },
+      });
+
+      badgeRefs.current.forEach((badge) => {
+        if (!badge) return;
+        ScrollTriggerToggle(badge);
       });
     }, wrap);
+
+    function ScrollTriggerToggle(badge) {
+      gsap.timeline({ scrollTrigger: { trigger: badge, start: 'top 68%', toggleActions: 'play none none reverse' } })
+        .to(badge, { backgroundColor: '#000000', color: '#ffffff', duration: 0.3, ease: 'power2.out' });
+    }
 
     return () => ctx.revert();
   }, []);
@@ -56,35 +59,44 @@ export default function HowItWorks() {
   return (
     <section className="bg-white py-24">
       <div className="max-w-container mx-auto px-6 sm:px-10 lg:px-16">
-        <Reveal className="flex flex-col items-center text-center gap-5 mb-16">
+        <Reveal className="flex flex-col items-center text-center gap-5 mb-20">
           <p className="eyebrow">How It Works</p>
           <h2 className="h-display max-w-2xl text-balance">From application to certified Founding Instructor.</h2>
         </Reveal>
 
-        <div ref={wrapRef} className="relative max-w-3xl mx-auto">
-          <div className="absolute left-5 sm:left-[160px] top-2 bottom-2 w-px bg-line">
+        <div ref={wrapRef} className="relative max-w-4xl mx-auto">
+          <div className="absolute left-8 sm:left-[344px] top-2 bottom-2 w-px bg-line">
             <div ref={lineRef} className="w-full h-full bg-black" />
           </div>
 
-          <div className="flex flex-col gap-14 sm:gap-16">
-            {STEPS.map((step) => (
-              <Reveal key={step.n} y={24} className="grid grid-cols-[40px_1fr] sm:grid-cols-[112px_48px_1fr] gap-x-4 sm:gap-x-6 items-start">
+          <div className="flex flex-col gap-24 sm:gap-32">
+            {STEPS.map((step, i) => (
+              <Reveal
+                key={step.n}
+                y={24}
+                className="grid grid-cols-[64px_1fr] sm:grid-cols-[300px_88px_1fr] gap-x-6 sm:gap-x-8 items-start"
+              >
                 <img
                   src={step.img}
                   alt={step.title}
-                  className="hidden sm:block w-28 h-28 object-cover rounded-2xl"
+                  className="hidden sm:block w-[300px] h-[300px] object-cover rounded-2xl"
                 />
                 <div className="relative z-10 flex sm:justify-center">
-                  <Badge n={step.n} />
+                  <div
+                    ref={(el) => (badgeRefs.current[i] = el)}
+                    className="w-16 h-16 rounded-full bg-[#EDEDED] text-black flex items-center justify-center font-mono text-base shrink-0"
+                  >
+                    {step.n}
+                  </div>
                 </div>
-                <div className="flex flex-col gap-2 pt-1">
+                <div className="flex flex-col gap-3 pt-2">
                   <img
                     src={step.img}
                     alt={step.title}
-                    className="sm:hidden w-20 h-20 object-cover rounded-xl mb-2"
+                    className="sm:hidden w-full aspect-square object-cover rounded-2xl mb-2"
                   />
-                  <h3 className="text-xl sm:text-2xl font-light tracking-tight">{step.title}</h3>
-                  <p className="text-muted leading-relaxed max-w-md">{step.desc}</p>
+                  <h3 className="text-2xl sm:text-3xl font-light tracking-tight">{step.title}</h3>
+                  <p className="text-muted leading-relaxed max-w-sm">{step.desc}</p>
                 </div>
               </Reveal>
             ))}
