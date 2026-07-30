@@ -12,7 +12,7 @@ export default {
         offblack: '#0A0A0A',
       },
       maxWidth: {
-        container: '1080px',
+        container: '1320px',
       },
     },
   },

@@ -18,12 +18,12 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${
+      className={`fixed top-9 inset-x-0 z-50 transition-colors duration-300 ${
         solid ? 'bg-white border-b border-line' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-container mx-auto px-6 h-20 flex items-center justify-between">
-        <a href="#" aria-label="UK Barre Academy" className="relative block h-6 w-24 shrink-0">
+      <div className="max-w-container mx-auto px-6 sm:px-10 lg:px-16 h-24 flex items-center justify-between">
+        <a href="#" aria-label="UK Barre Academy" className="relative block h-10 w-40 shrink-0">
           <img
             src={asset('assets/UBA-logo-white.png')}
             alt="UK Barre Academy"

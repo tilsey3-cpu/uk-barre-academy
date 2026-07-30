@@ -26,7 +26,7 @@ export default function RegisterForm({ selectedDates, toggleDate }) {
 
   return (
     <section id="register" className="bg-black text-white py-24">
-      <div className="max-w-container mx-auto px-6">
+      <div className="max-w-container mx-auto px-6 sm:px-10 lg:px-16">
         <Reveal className="flex flex-col items-center text-center gap-5 mb-14">
           <p className="eyebrow eyebrow-inverted">Register Your Interest</p>
           <h2 className="h-display max-w-xl text-white text-balance">Reserve your place in the founding cohort.</h2>

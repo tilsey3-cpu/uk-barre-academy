@@ -1,4 +1,6 @@
+import { useEffect, useRef } from 'react';
 import { asset } from '../asset.js';
+import { gsap, prefersReducedMotion } from '../lib/gsapSetup.js';
 import Reveal from './Reveal.jsx';
 
 const STEPS = [
@@ -22,32 +24,71 @@ const STEPS = [
   },
 ];
 
+function Badge({ n }) {
+  return (
+    <div className="w-11 h-11 rounded-full bg-black text-white flex items-center justify-center font-mono text-xs shrink-0">
+      {n}
+    </div>
+  );
+}
+
 export default function HowItWorks() {
+  const wrapRef = useRef(null);
+  const lineRef = useRef(null);
+
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    const line = lineRef.current;
+    if (!wrap || !line || prefersReducedMotion()) return;
+
+    const ctx = gsap.context(() => {
+      gsap.set(line, { scaleY: 0, transformOrigin: 'top' });
+      gsap.to(line, {
+        scaleY: 1,
+        ease: 'none',
+        scrollTrigger: { trigger: wrap, start: 'top 75%', end: 'bottom 60%', scrub: true },
+      });
+    }, wrap);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section className="bg-white py-24">
-      <div className="max-w-container mx-auto px-6">
+      <div className="max-w-container mx-auto px-6 sm:px-10 lg:px-16">
         <Reveal className="flex flex-col items-center text-center gap-5 mb-16">
           <p className="eyebrow">How It Works</p>
           <h2 className="h-display max-w-2xl text-balance">From application to certified Founding Instructor.</h2>
         </Reveal>
 
-        <div className="flex flex-col gap-20 sm:gap-28">
-          {STEPS.map((step, i) => (
-            <Reveal key={step.n} y={32} className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-16 items-center">
-              <div className={i % 2 === 1 ? 'sm:order-2' : 'sm:order-1'}>
+        <div ref={wrapRef} className="relative max-w-3xl mx-auto">
+          <div className="absolute left-5 sm:left-[160px] top-2 bottom-2 w-px bg-line">
+            <div ref={lineRef} className="w-full h-full bg-black" />
+          </div>
+
+          <div className="flex flex-col gap-14 sm:gap-16">
+            {STEPS.map((step) => (
+              <Reveal key={step.n} y={24} className="grid grid-cols-[40px_1fr] sm:grid-cols-[112px_48px_1fr] gap-x-4 sm:gap-x-6 items-start">
                 <img
                   src={step.img}
                   alt={step.title}
-                  className="w-full aspect-[4/5] object-cover rounded-2xl"
+                  className="hidden sm:block w-28 h-28 object-cover rounded-2xl"
                 />
-              </div>
-              <div className={`flex flex-col gap-4 ${i % 2 === 1 ? 'sm:order-1' : 'sm:order-2'}`}>
-                <span className="text-6xl sm:text-7xl font-light text-line leading-none">{step.n}</span>
-                <h3 className="text-2xl sm:text-3xl font-light tracking-tight">{step.title}</h3>
-                <p className="text-muted leading-relaxed max-w-md">{step.desc}</p>
-              </div>
-            </Reveal>
-          ))}
+                <div className="relative z-10 flex sm:justify-center">
+                  <Badge n={step.n} />
+                </div>
+                <div className="flex flex-col gap-2 pt-1">
+                  <img
+                    src={step.img}
+                    alt={step.title}
+                    className="sm:hidden w-20 h-20 object-cover rounded-xl mb-2"
+                  />
+                  <h3 className="text-xl sm:text-2xl font-light tracking-tight">{step.title}</h3>
+                  <p className="text-muted leading-relaxed max-w-md">{step.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>

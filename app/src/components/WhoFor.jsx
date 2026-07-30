@@ -14,7 +14,7 @@ const ITEMS = [
 export default function WhoFor() {
   return (
     <section className="bg-white py-24">
-      <div className="max-w-container mx-auto px-6">
+      <div className="max-w-container mx-auto px-6 sm:px-10 lg:px-16">
         <Reveal className="flex flex-col items-center text-center gap-5 mb-12">
           <p className="eyebrow">Who Is the Course For?</p>
           <h2 className="h-display max-w-2xl text-balance">Qualified movement professionals, ready to add Barre.</h2>

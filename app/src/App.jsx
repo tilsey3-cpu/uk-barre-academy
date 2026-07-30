@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import MarqueeBanner from './components/MarqueeBanner.jsx';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import StatsStrip from './components/StatsStrip.jsx';
@@ -25,6 +26,7 @@ export default function App() {
 
   return (
     <div className="bg-white text-black">
+      <MarqueeBanner />
       <Header />
       <Hero />
       <StatsStrip />
@@ -36,7 +38,7 @@ export default function App() {
       <WhoFor />
       <WhatReceive />
       <Fee />
-      <Dates selectedDates={selectedDates} toggleDate={toggleDate} />
+      <Dates />
       <RegisterForm selectedDates={selectedDates} toggleDate={toggleDate} />
       <Footer />
     </div>

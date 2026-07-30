@@ -3,7 +3,7 @@ import Reveal from './Reveal.jsx';
 export default function Invitation() {
   return (
     <section className="bg-white py-24">
-      <Reveal className="max-w-container mx-auto px-6 flex flex-col items-center text-center gap-5">
+      <Reveal className="max-w-container mx-auto px-6 sm:px-10 lg:px-16 flex flex-col items-center text-center gap-5">
         <p className="eyebrow">The Invitation</p>
         <h2 className="h-display max-w-2xl text-balance">A new standard for Barre education, from day one.</h2>
         <div className="max-w-2xl flex flex-col gap-4 text-muted text-base leading-relaxed pt-2">

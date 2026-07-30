@@ -15,15 +15,15 @@ const ITEMS = [
 export default function Method() {
   return (
     <section className="bg-black text-white py-24">
-      <div className="max-w-container mx-auto px-6">
+      <div className="max-w-container mx-auto px-6 sm:px-10 lg:px-16">
         <Reveal className="flex flex-col items-center text-center gap-5 mb-14">
           <p className="eyebrow eyebrow-inverted">A New Standard for Barre Education</p>
           <h2 className="h-display max-w-2xl text-white text-balance">How to perform it, and how to teach it.</h2>
           <p className="max-w-2xl text-white/70 leading-relaxed">
             The UK Barre Academy method is designed to help instructors understand not only how to
-            perform Barre exercises, but how to teach them safely, effectively and confidently. The
-            programme combines:
+            perform Barre exercises, but how to teach them safely, effectively and confidently.
           </p>
+          <p className="text-white/70">The programme combines:</p>
         </Reveal>
 
         <Reveal

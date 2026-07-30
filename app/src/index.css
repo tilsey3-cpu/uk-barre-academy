@@ -50,3 +50,22 @@ body {
   border: 2px solid #000000;
   background: #F5F5F5;
 }
+
+.marquee-track {
+  animation: marquee-scroll 26s linear infinite;
+  width: max-content;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  .marquee-row:nth-child(2) {
+    display: none;
+  }
+}

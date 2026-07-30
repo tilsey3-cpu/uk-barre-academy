@@ -10,7 +10,7 @@ const STATS = [
 export default function Founder() {
   return (
     <section className="bg-white py-24">
-      <div className="max-w-container mx-auto px-6">
+      <div className="max-w-container mx-auto px-6 sm:px-10 lg:px-16">
         <Reveal as="p" className="eyebrow text-center mb-14">Trained Directly By</Reveal>
         <Reveal y={28} className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-16 items-center">
           <img
