@@ -86,9 +86,10 @@ Current tokens live in `app/tailwind.config.js` / `app/src/index.css`. Full refe
 
 ## Motion
 
-- **Simple, functional transitions** — colour/background/border/opacity, 200ms ease (`transition-colors duration-300` on the header; the `.pill` class transitions opacity/background/color/border at 200ms ease).
-- Hover: opacity or fill/border colour change — never a saturated colour shift (there's no saturated colour to shift to).
-- No scroll-triggered reveal choreography in the current build. No bounce, spring, or looping animation.
+- **GSAP + ScrollTrigger** power scroll-driven moments: a `<Reveal>` wrapper (`app/src/components/Reveal.jsx`) fades/slides section content up on scroll-into-view (used once per section, with `stagger` for list/grid children); the hero runs a load-time entrance timeline instead of a scroll trigger. The Curriculum section additionally scrubs a vertical progress line to the scroll position (`scrollTrigger: { scrub: true }`).
+- **`prefers-reduced-motion` is respected everywhere** — `Reveal` and the hero/Curriculum animations check `prefersReducedMotion()` (`app/src/lib/gsapSetup.js`) and skip straight to the final state if it's set. Any new GSAP animation must do the same — never leave content at `opacity: 0` for reduced-motion users.
+- Simple CSS transitions still cover everything else — colour/background/border/opacity, 200–300ms ease (header solidify-on-scroll, `.pill` hover).
+- Hover: opacity or fill/border colour change, or a small `-translate-y` card lift — never a saturated colour shift (there's no saturated colour to shift to) and never bounce/spring.
 
 ## Shadows
 
@@ -98,8 +99,12 @@ Current tokens live in `app/tailwind.config.js` / `app/src/index.css`. Full refe
 
 ## Technical Notes
 
-- **Source:** `app/` — a React + Tailwind (Vite) project. Components in `app/src/components/`, one file per page section.
-- **Deploy model:** the site is **not** built by GitHub Pages or Vercel. Compile locally (`cd app && npm run build`) and copy `app/dist/index.html` + `app/dist/assets/*` over the repo root (`index.html`, `assets/`) — commit both the `app/` source changes and the compiled output together. GitHub Pages and Vercel then serve the repo root exactly as before, with zero pipeline changes.
+- **Source:** `app/` — a React + Tailwind (Vite) project. Components in `app/src/components/`, one file per page section. GSAP (+ ScrollTrigger) drives scroll/entrance animation; Radix UI (`@radix-ui/react-dialog`) backs the accessible mobile-nav Dialog. Not Next.js — see the tech-stack decision in `chats/` if that's ever revisited.
+- **Deploy model:** the site is **not** built by GitHub Pages or Vercel. Compile locally and copy the output over the repo root — commit both the `app/` source changes and the compiled output together. GitHub Pages and Vercel then serve the repo root exactly as before, with zero pipeline changes.
+  1. **First, delete any stale hashed bundle from the repo root:** `rm assets/index-*.css assets/index-*.js`. This step is mandatory, not optional — `app/public/assets` is a symlink to the repo-root `assets/` folder, so any previous build's hashed JS/CSS still sitting there gets silently re-copied into the *next* `dist/assets/` via Vite's publicDir step, and from there right back into the repo root. Skipping this step means old and new bundles pile up together and stale JS can end up live.
+  2. `cd app && npm run build`
+  3. `cp app/dist/index.html index.html && rsync -a app/dist/assets/ assets/` from the repo root.
+  4. Sanity check: `ls assets | grep '^index-'` should show exactly the two files referenced in `index.html` — nothing else.
 - **Base path:** `vite.config.js` sets `base: './'` (relative) — required because GitHub Pages serves this repo under `/uk-barre-academy/`, not domain root. Do not change this to an absolute `/` path without re-testing both GitHub Pages and Vercel.
 - **Assets:** `app/public/assets` is a symlink to the repo-root `assets/` folder, so `npm run dev`/`build` both resolve images from the single shared asset directory. Reference images in components via the `asset()` helper (`app/src/asset.js`, wraps `import.meta.env.BASE_URL`) — never a hardcoded `/assets/...` absolute path, which breaks under the GitHub Pages subpath.
 - The registration form and date picker are fully interactive client-side but **not wired to a backend** — submitting logs to the console and shows a client-side thank-you state. Replace with a real endpoint/Typeform when ready (see TODO comment in `app/src/components/RegisterForm.jsx`).

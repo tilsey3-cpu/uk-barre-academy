@@ -1,4 +1,5 @@
 import { asset } from '../asset.js';
+import Reveal from './Reveal.jsx';
 
 const STATS = [
   { n: '40+', l: 'Years Teaching' },
@@ -10,8 +11,8 @@ export default function Founder() {
   return (
     <section className="bg-white py-24">
       <div className="max-w-container mx-auto px-6">
-        <p className="eyebrow text-center mb-14">Trained Directly By</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-16 items-center">
+        <Reveal as="p" className="eyebrow text-center mb-14">Trained Directly By</Reveal>
+        <Reveal y={28} className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-16 items-center">
           <img
             src={asset('assets/maggie-paterson.png')}
             alt="Maggie Paterson"
@@ -33,7 +34,7 @@ export default function Founder() {
               ))}
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

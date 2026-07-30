@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { DATE_GROUPS } from '../dates.js';
+import Reveal from './Reveal.jsx';
 
 const ALL_DATES = DATE_GROUPS.flatMap((g) => g.dates);
 
@@ -26,14 +27,14 @@ export default function RegisterForm({ selectedDates, toggleDate }) {
   return (
     <section id="register" className="bg-black text-white py-24">
       <div className="max-w-container mx-auto px-6">
-        <div className="flex flex-col items-center text-center gap-5 mb-14">
+        <Reveal className="flex flex-col items-center text-center gap-5 mb-14">
           <p className="eyebrow eyebrow-inverted">Register Your Interest</p>
-          <h2 className="h-display max-w-xl text-white">Reserve your place in the founding cohort.</h2>
+          <h2 className="h-display max-w-xl text-white text-balance">Reserve your place in the founding cohort.</h2>
           <p className="text-white/70 max-w-lg">
             Tell us which dates work for you and a little about your teaching background &mdash;
             we&rsquo;ll be in touch with next steps.
           </p>
-        </div>
+        </Reveal>
 
         {submitted ? (
           <div className="max-w-lg mx-auto text-center rounded-2xl border border-white/20 bg-white/5 px-8 py-12">

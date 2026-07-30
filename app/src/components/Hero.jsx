@@ -1,18 +1,38 @@
+import { useEffect, useRef } from 'react';
 import { asset } from '../asset.js';
+import { gsap, prefersReducedMotion } from '../lib/gsapSetup.js';
 
 export default function Hero() {
+  const bodyRef = useRef(null);
+
+  useEffect(() => {
+    const el = bodyRef.current;
+    if (!el || prefersReducedMotion()) return;
+
+    const targets = gsap.utils.toArray(el.children);
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        targets,
+        { opacity: 0, y: 28 },
+        { opacity: 1, y: 0, duration: 1, stagger: 0.12, ease: 'power3.out', delay: 0.15 }
+      );
+    });
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-end sm:items-center">
+    <section className="relative min-h-screen flex items-end">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url('${asset('assets/founding-1.png')}')` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/55" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-transparent" />
 
-      <div className="relative max-w-container mx-auto px-6 pt-40 pb-20 sm:py-40">
-        <div className="max-w-xl flex flex-col gap-6 text-white">
+      <div className="relative w-full max-w-container mx-auto px-6 pb-16 sm:pb-20 pt-40">
+        <div ref={bodyRef} className="max-w-xl flex flex-col gap-6 text-white">
           <p className="eyebrow text-white/70">Website coming soon</p>
-          <h1 className="h-display text-white">
+          <h1 className="h-display text-white text-balance">
             A new standard for Barre education, starting with its instructors.
           </h1>
           <p className="text-base sm:text-lg leading-relaxed text-white/85">
@@ -23,7 +43,7 @@ export default function Hero() {
           <div>
             <a
               href="#register"
-              className="pill inline-flex items-center px-7 py-4 text-sm bg-white/10 border border-white/60 text-white hover:bg-white hover:text-black"
+              className="pill inline-flex items-center px-7 py-4 text-sm bg-white/10 border border-white/60 text-white hover:bg-white hover:text-black transition-colors"
             >
               Register your interest &nbsp;&rarr;
             </a>

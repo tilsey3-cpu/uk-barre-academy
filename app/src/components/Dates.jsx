@@ -1,17 +1,18 @@
 import { DATE_GROUPS } from '../dates.js';
+import Reveal from './Reveal.jsx';
 
 export default function Dates({ selectedDates, toggleDate }) {
   return (
     <section className="bg-white py-24">
       <div className="max-w-container mx-auto px-6">
-        <div className="flex flex-col items-center text-center gap-5 mb-4">
+        <Reveal className="flex flex-col items-center text-center gap-5 mb-4">
           <p className="eyebrow">Dates</p>
-          <h2 className="h-display max-w-2xl">One day of attendance.</h2>
+          <h2 className="h-display max-w-2xl text-balance">One day of attendance.</h2>
           <p className="text-muted max-w-lg">
             Please select every date you could attend. The final course date or dates will be
             confirmed according to demand.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 mt-14 max-w-3xl mx-auto">
           {DATE_GROUPS.map((group) => (

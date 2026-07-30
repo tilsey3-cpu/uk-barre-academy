@@ -1,4 +1,5 @@
 import { asset } from '../asset.js';
+import Reveal from './Reveal.jsx';
 
 const STEPS = [
   {
@@ -25,14 +26,14 @@ export default function HowItWorks() {
   return (
     <section className="bg-white py-24">
       <div className="max-w-container mx-auto px-6">
-        <div className="flex flex-col items-center text-center gap-5 mb-16">
+        <Reveal className="flex flex-col items-center text-center gap-5 mb-16">
           <p className="eyebrow">How It Works</p>
-          <h2 className="h-display max-w-2xl">From application to certified Founding Instructor.</h2>
-        </div>
+          <h2 className="h-display max-w-2xl text-balance">From application to certified Founding Instructor.</h2>
+        </Reveal>
 
         <div className="flex flex-col gap-20 sm:gap-28">
           {STEPS.map((step, i) => (
-            <div key={step.n} className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-16 items-center">
+            <Reveal key={step.n} y={32} className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-16 items-center">
               <div className={i % 2 === 1 ? 'sm:order-2' : 'sm:order-1'}>
                 <img
                   src={step.img}
@@ -45,7 +46,7 @@ export default function HowItWorks() {
                 <h3 className="text-2xl sm:text-3xl font-light tracking-tight">{step.title}</h3>
                 <p className="text-muted leading-relaxed max-w-md">{step.desc}</p>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

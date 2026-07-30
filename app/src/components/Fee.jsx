@@ -1,13 +1,18 @@
+import Reveal from './Reveal.jsx';
+
 export default function Fee() {
   return (
     <section className="bg-white py-24">
       <div className="max-w-container mx-auto px-6">
-        <div className="flex flex-col items-center text-center gap-5 mb-12">
+        <Reveal className="flex flex-col items-center text-center gap-5 mb-12">
           <p className="eyebrow">Founding Instructor Course Fee</p>
-          <h2 className="h-display max-w-2xl">An exclusive introductory rate.</h2>
-        </div>
+          <h2 className="h-display max-w-2xl text-balance">An exclusive introductory rate.</h2>
+        </Reveal>
 
-        <div className="card card-featured max-w-lg mx-auto flex flex-col items-center text-center gap-6 py-12">
+        <Reveal
+          y={18}
+          className="card card-featured max-w-lg mx-auto flex flex-col items-center text-center gap-6 py-12"
+        >
           <div className="flex items-baseline gap-4">
             <span className="text-6xl sm:text-7xl font-light tracking-tight">&pound;250</span>
             <div className="flex flex-col items-start">
@@ -20,7 +25,7 @@ export default function Fee() {
             the academy&rsquo;s inaugural cohort and providing constructive feedback following the course.
           </p>
           <p className="text-sm text-muted">Places are limited to the first Founding Instructor cohort only.</p>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
