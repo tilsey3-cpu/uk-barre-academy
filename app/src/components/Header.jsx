@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Menu, X } from 'lucide-react';
 import { asset } from '../asset.js';
+import { TYPEFORM_URL } from '../typeform.js';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -40,7 +41,9 @@ export default function Header() {
         </a>
 
         <a
-          href="#register"
+          href={TYPEFORM_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className={`pill hidden sm:inline-flex items-center px-6 py-3 text-sm ${
             solid ? 'bg-black text-white hover:opacity-80' : 'bg-white/95 text-black hover:bg-white'
           }`}
@@ -75,7 +78,12 @@ export default function Header() {
                 Register your interest in the Founding Instructor Programme.
               </Dialog.Description>
               <Dialog.Close asChild>
-                <a href="#register" className="pill text-center bg-black text-white px-6 py-3 text-sm">
+                <a
+                  href={TYPEFORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pill text-center bg-black text-white px-6 py-3 text-sm"
+                >
                   Register your interest &nbsp;&rarr;
                 </a>
               </Dialog.Close>

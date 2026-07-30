@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import MarqueeBanner from './components/MarqueeBanner.jsx';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
@@ -12,18 +11,10 @@ import WhoFor from './components/WhoFor.jsx';
 import WhatReceive from './components/WhatReceive.jsx';
 import Fee from './components/Fee.jsx';
 import Dates from './components/Dates.jsx';
-import RegisterForm from './components/RegisterForm.jsx';
+import RegisterCta from './components/RegisterCta.jsx';
 import Footer from './components/Footer.jsx';
 
 export default function App() {
-  const [selectedDates, setSelectedDates] = useState([]);
-
-  const toggleDate = (date) => {
-    setSelectedDates((prev) =>
-      prev.includes(date) ? prev.filter((d) => d !== date) : [...prev, date]
-    );
-  };
-
   return (
     <div className="bg-white text-black">
       <MarqueeBanner />
@@ -39,7 +30,7 @@ export default function App() {
       <WhatReceive />
       <Fee />
       <Dates />
-      <RegisterForm selectedDates={selectedDates} toggleDate={toggleDate} />
+      <RegisterCta />
       <Footer />
     </div>
   );

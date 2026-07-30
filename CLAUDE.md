@@ -107,7 +107,7 @@ Current tokens live in `app/tailwind.config.js` / `app/src/index.css`. Full refe
   4. Sanity check: `ls assets | grep '^index-'` should show exactly the two files referenced in `index.html` — nothing else.
 - **Base path:** `vite.config.js` sets `base: './'` (relative) — required because GitHub Pages serves this repo under `/uk-barre-academy/`, not domain root. Do not change this to an absolute `/` path without re-testing both GitHub Pages and Vercel.
 - **Assets:** `app/public/assets` is a symlink to the repo-root `assets/` folder, so `npm run dev`/`build` both resolve images from the single shared asset directory. Reference images in components via the `asset()` helper (`app/src/asset.js`, wraps `import.meta.env.BASE_URL`) — never a hardcoded `/assets/...` absolute path, which breaks under the GitHub Pages subpath.
-- The registration form and date picker are fully interactive client-side but **not wired to a backend** — submitting logs to the console and shows a client-side thank-you state. Replace with a real endpoint/Typeform when ready (see TODO comment in `app/src/components/RegisterForm.jsx`).
+- There is no in-page registration form. Every "Register your interest" CTA (header, mobile menu, hero, Fee card, closing CTA section) links out to the Typeform at `app/src/typeform.js` (`TYPEFORM_URL`, opened in a new tab). The Dates section is display-only, listing available dates without collecting a selection — date preference is captured in the Typeform itself.
 
 ---
 

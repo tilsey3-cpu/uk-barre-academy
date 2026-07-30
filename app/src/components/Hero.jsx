@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { asset } from '../asset.js';
 import { gsap, prefersReducedMotion } from '../lib/gsapSetup.js';
+import { TYPEFORM_URL } from '../typeform.js';
 
 export default function Hero() {
   const bodyRef = useRef(null);
@@ -42,7 +43,9 @@ export default function Hero() {
           </p>
           <div>
             <a
-              href="#register"
+              href={TYPEFORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="pill inline-flex items-center px-7 py-4 text-sm bg-white/10 border border-white/60 text-white hover:bg-white hover:text-black transition-colors"
             >
               Register your interest &nbsp;&rarr;

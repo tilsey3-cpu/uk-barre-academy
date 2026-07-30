@@ -1,5 +1,6 @@
 import { Check } from 'lucide-react';
 import Reveal from './Reveal.jsx';
+import { TYPEFORM_URL } from '../typeform.js';
 
 const INCLUDED = [
   'Eight hours of practical, in-person training',
@@ -54,7 +55,12 @@ export default function Fee() {
             View the full curriculum
           </a>
 
-          <a href="#register" className="pill text-center bg-black text-white px-6 py-4 text-sm hover:opacity-85">
+          <a
+            href={TYPEFORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pill text-center bg-black text-white px-6 py-4 text-sm hover:opacity-85"
+          >
             Register your interest
           </a>
         </Reveal>
