@@ -21,7 +21,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-end">
+    <section className="relative min-h-screen flex items-end pt-[152px]">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url('${asset('assets/founding-1.png')}')` }}
@@ -29,7 +29,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-transparent" />
 
-      <div className="relative w-full max-w-container mx-auto px-6 sm:px-14 lg:px-24 pb-16 sm:pb-20 pt-48">
+      <div className="relative w-full max-w-container mx-auto px-6 sm:px-14 lg:px-24 pb-16 sm:pb-20">
         <div ref={bodyRef} className="max-w-xl flex flex-col gap-6 text-white">
           <p className="eyebrow text-white/70">Website coming soon</p>
           <h1 className="h-display text-white text-balance">

@@ -65,7 +65,7 @@ export default function HowItWorks() {
         </Reveal>
 
         <div ref={wrapRef} className="relative max-w-4xl mx-auto">
-          <div className="absolute left-8 sm:left-[344px] top-2 bottom-2 w-px bg-line">
+          <div className="absolute left-10 sm:left-[344px] top-2 bottom-2 w-px bg-line">
             <div ref={lineRef} className="w-full h-full bg-black" />
           </div>
 
@@ -74,7 +74,7 @@ export default function HowItWorks() {
               <Reveal
                 key={step.n}
                 y={24}
-                className="grid grid-cols-[64px_1fr] sm:grid-cols-[300px_88px_1fr] gap-x-6 sm:gap-x-8 items-start"
+                className="grid grid-cols-[80px_1fr] sm:grid-cols-[300px_88px_1fr] gap-x-4 sm:gap-x-8 items-start"
               >
                 <img
                   src={step.img}
@@ -84,19 +84,19 @@ export default function HowItWorks() {
                 <div className="relative z-10 flex sm:justify-center">
                   <div
                     ref={(el) => (badgeRefs.current[i] = el)}
-                    className="w-16 h-16 rounded-full bg-[#EDEDED] text-black flex items-center justify-center font-mono text-base shrink-0"
+                    className="w-20 h-20 rounded-full bg-[#EDEDED] text-black flex items-center justify-center text-2xl shrink-0"
                   >
-                    {step.n}
+                    {Number(step.n)}
                   </div>
                 </div>
-                <div className="flex flex-col gap-3 pt-2">
+                <div className="flex flex-col gap-4 pt-1">
                   <img
                     src={step.img}
                     alt={step.title}
                     className="sm:hidden w-full aspect-square object-cover rounded-2xl mb-2"
                   />
-                  <h3 className="text-2xl sm:text-3xl font-light tracking-tight">{step.title}</h3>
-                  <p className="text-muted leading-relaxed max-w-sm">{step.desc}</p>
+                  <h3 className="h-display max-w-sm">{step.title}</h3>
+                  <p className="text-lg text-muted leading-relaxed max-w-sm">{step.desc}</p>
                 </div>
               </Reveal>
             ))}
