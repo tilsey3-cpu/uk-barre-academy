@@ -64,8 +64,8 @@ export default function HowItWorks() {
           <h2 className="h-display max-w-2xl text-balance">From application to certified Founding Instructor.</h2>
         </Reveal>
 
-        <div ref={wrapRef} className="relative max-w-4xl mx-auto">
-          <div className="absolute left-10 sm:left-[376px] top-2 bottom-2 w-px bg-line">
+        <div ref={wrapRef} className="relative max-w-5xl mx-auto">
+          <div className="absolute left-10 sm:left-1/2 sm:-translate-x-1/2 top-2 bottom-2 w-px bg-line">
             <div ref={lineRef} className="w-full h-full bg-black" />
           </div>
 
@@ -74,12 +74,12 @@ export default function HowItWorks() {
               <Reveal
                 key={step.n}
                 y={24}
-                className="grid grid-cols-[80px_1fr] sm:grid-cols-[300px_88px_1fr] gap-x-4 sm:gap-x-8 items-start"
+                className="grid grid-cols-[80px_1fr] sm:grid-cols-[1fr_88px_1fr] gap-x-4 sm:gap-x-10 items-start"
               >
                 <img
                   src={step.img}
                   alt={step.title}
-                  className="hidden sm:block w-[300px] h-[300px] object-cover rounded-2xl"
+                  className="hidden sm:block sm:justify-self-end w-[300px] h-[300px] object-cover rounded-2xl"
                 />
                 <div className="relative z-10 flex sm:justify-center">
                   <div
@@ -95,8 +95,8 @@ export default function HowItWorks() {
                     alt={step.title}
                     className="sm:hidden w-full aspect-square object-cover rounded-2xl mb-2"
                   />
-                  <h3 className="h-display max-w-sm">{step.title}</h3>
-                  <p className="text-lg text-muted leading-relaxed max-w-sm">{step.desc}</p>
+                  <h3 className="h-display max-w-md">{step.title}</h3>
+                  <p className="text-lg text-muted leading-relaxed max-w-md">{step.desc}</p>
                 </div>
               </Reveal>
             ))}
