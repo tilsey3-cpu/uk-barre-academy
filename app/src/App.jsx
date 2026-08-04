@@ -28,8 +28,8 @@ export default function App() {
       <Curriculum />
       <WhoFor />
       <WhatReceive />
-      <Fee />
       <Dates />
+      <Fee />
       <RegisterCta />
       <Footer />
     </div>

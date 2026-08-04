@@ -17,7 +17,7 @@ export default function Curriculum() {
       <div className="max-w-container mx-auto px-6 sm:px-10 lg:px-16">
         <div className="flex flex-col items-center text-center gap-3 mb-10">
           <p className="eyebrow eyebrow-inverted">The Curriculum</p>
-          <h2 className="h-display max-w-2xl text-white text-balance">8 modules. 8 hours. One complete Barre teaching method.</h2>
+          <h2 className="h-display max-w-3xl text-white text-balance">8 modules. 8 hours. One complete Barre teaching method.</h2>
           <p className="text-white/70">The course is completed in one intensive training day.</p>
           <p className="text-white/70">Course time: 9:30am&ndash;6:30pm</p>
         </div>

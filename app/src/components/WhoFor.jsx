@@ -17,7 +17,7 @@ export default function WhoFor() {
       <div className="max-w-container mx-auto px-6 sm:px-10 lg:px-16">
         <Reveal className="flex flex-col items-center text-center gap-5 mb-12">
           <p className="eyebrow">Who Is the Course For?</p>
-          <h2 className="h-display max-w-2xl text-balance">Qualified movement professionals, ready to add Barre.</h2>
+          <h2 className="h-display max-w-3xl text-balance">Qualified movement professionals, ready to add Barre.</h2>
           <p className="text-muted">The programme is suitable for:</p>
         </Reveal>
 
