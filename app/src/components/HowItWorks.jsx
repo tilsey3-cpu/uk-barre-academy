@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Award } from 'lucide-react';
 import { asset } from '../asset.js';
 import { gsap, prefersReducedMotion } from '../lib/gsapSetup.js';
 import Reveal from './Reveal.jsx';
@@ -102,6 +103,26 @@ export default function HowItWorks() {
             ))}
           </div>
         </div>
+
+        <Reveal
+          y={24}
+          className="mt-20 sm:mt-28 max-w-3xl mx-auto rounded-2xl bg-black text-white p-8 sm:p-10 flex flex-col gap-5"
+        >
+          <div className="flex items-center justify-between gap-4">
+            <Award size={28} className="shrink-0 text-white" />
+            <span className="pill bg-white/10 border border-white/25 text-white/90 text-xs uppercase tracking-widest font-semibold px-4 py-2 whitespace-nowrap">
+              Submitted for accreditation
+            </span>
+          </div>
+          <div className="flex flex-col gap-3">
+            <h3 className="text-2xl sm:text-3xl">Independent CPD Accreditation</h3>
+            <p className="text-white/75 leading-relaxed">
+              UK Barre Academy has submitted its Barre Instructor Certification for independent CPD
+              accreditation. Founding Instructors who successfully complete the programme will receive
+              an updated CPD-accredited certificate once the accreditation process has been completed.
+            </p>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

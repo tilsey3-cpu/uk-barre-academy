@@ -11,6 +11,7 @@ const ITEMS = [
   'Continuous practical assessment',
   'Final teaching assessment',
   'UK Barre Academy certification upon successful completion',
+  'Independent CPD Accreditation',
   'Founding Instructor recognition',
   'Priority access to future UK Barre Academy training',
   'Ongoing post-course support',

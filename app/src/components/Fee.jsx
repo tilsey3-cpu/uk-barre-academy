@@ -7,6 +7,7 @@ const INCLUDED = [
   'The complete UK Barre Academy eight-module method',
   'A comprehensive course handbook',
   'UK Barre Academy certification upon successful completion',
+  'Independent CPD Accreditation',
   'Founding Instructor recognition',
   'Priority access to future UK Barre Academy training',
 ];

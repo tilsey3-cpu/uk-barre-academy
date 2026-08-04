@@ -14,7 +14,7 @@ export default function Dates() {
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 mt-14 max-w-3xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-14 max-w-xl mx-auto">
           {DATE_GROUPS.map((group) => (
             <div key={group.month}>
               <p className="text-xs uppercase tracking-widest text-muted border-b border-line pb-3 mb-4 text-center">
