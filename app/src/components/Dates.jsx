@@ -24,6 +24,10 @@ export default function Dates() {
             <div key={d.date} className="card flex flex-col items-center text-center gap-2 py-10">
               <p className="text-xl">{d.date}</p>
               <p className="text-muted">{d.time}</p>
+              <div className="flex flex-col gap-0.5 pt-2">
+                <p className="text-sm font-medium">{d.venue}</p>
+                <p className="text-sm text-muted">{d.address}</p>
+              </div>
               <a
                 href={d.url}
                 target="_blank"
@@ -37,8 +41,7 @@ export default function Dates() {
         </Reveal>
 
         <div className="max-w-xl mx-auto text-center mt-14 pt-8 border-t border-line flex flex-col gap-2">
-          <p className="text-sm text-muted">All courses take place at a professional dance studio in London.</p>
-          <p className="text-sm text-muted">The confirmed venue will be provided ahead of your session.</p>
+          <p className="text-sm text-muted">Full arrival details will be shared ahead of your session.</p>
         </div>
       </div>
     </section>
