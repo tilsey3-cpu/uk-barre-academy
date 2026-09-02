@@ -68,7 +68,7 @@ export default function Fee() {
               >
                 <span className="flex flex-col gap-0.5">
                   <span className="text-sm font-medium">{d.date}</span>
-                  <span className="text-xs text-white/70">{d.time}</span>
+                  <span className="text-xs text-white/70">{d.venue} &middot; {d.time}</span>
                 </span>
                 <ArrowRight size={18} className="shrink-0" />
               </a>
