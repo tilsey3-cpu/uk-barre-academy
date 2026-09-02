@@ -15,13 +15,14 @@ import Dates from './components/Dates.jsx';
 import RegisterCta from './components/RegisterCta.jsx';
 import Footer from './components/Footer.jsx';
 import DateModal from './components/DateModal.jsx';
+import MobileStickyCta from './components/MobileStickyCta.jsx';
 
 export default function App() {
   const [dateModalOpen, setDateModalOpen] = useState(false);
   const openDateModal = () => setDateModalOpen(true);
 
   return (
-    <div className="bg-white text-black">
+    <div className="bg-white text-black pb-20 sm:pb-0">
       <MarqueeBanner />
       <Header onOpenDateModal={openDateModal} />
       <Hero onOpenDateModal={openDateModal} />
@@ -38,6 +39,7 @@ export default function App() {
       <RegisterCta onOpenDateModal={openDateModal} />
       <Footer />
       <DateModal open={dateModalOpen} onOpenChange={setDateModalOpen} />
+      <MobileStickyCta onOpenDateModal={openDateModal} />
     </div>
   );
 }

@@ -169,17 +169,23 @@ export default function HowItWorks() {
             <div className="relative flex items-center justify-between gap-4">
               <Award size={28} className="shrink-0 text-white" />
               <span className="pill bg-white/15 border border-white/30 text-white text-xs uppercase tracking-widest font-semibold px-4 py-2 whitespace-nowrap">
-                Submitted for accreditation
+                CPD accredited
               </span>
             </div>
             <div className="relative flex flex-col gap-3">
               <h3 className="text-2xl sm:text-3xl text-white">Independent CPD Accreditation</h3>
               <p className="text-white/90 leading-relaxed">
-                UK Barre Academy has submitted its Barre Instructor Certification for independent CPD
-                accreditation. Founding Instructors who successfully complete the programme will receive
-                an updated CPD-accredited certificate once the accreditation process has been completed.
+                UK Barre Academy&rsquo;s Barre Instructor Certification is independently CPD accredited.
+                Founding Instructors who successfully complete the programme receive a CPD-accredited
+                certificate.
               </p>
             </div>
+            <a
+              href="#what-will-i-receive"
+              className="relative self-start inline-flex items-center gap-2 text-sm font-medium text-white underline underline-offset-4 decoration-white/50 hover:decoration-white transition-colors"
+            >
+              What else will I receive? &rarr;
+            </a>
           </div>
         </Reveal>
       </div>
