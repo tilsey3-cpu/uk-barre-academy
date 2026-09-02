@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Menu, X } from 'lucide-react';
 import { asset } from '../asset.js';
-import { TYPEFORM_URL } from '../typeform.js';
 
-export default function Header() {
+export default function Header({ onOpenDateModal }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -40,16 +39,15 @@ export default function Header() {
           />
         </a>
 
-        <a
-          href={TYPEFORM_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          type="button"
+          onClick={onOpenDateModal}
           className={`pill hidden sm:inline-flex items-center px-6 py-3 text-sm ${
             solid ? 'bg-black text-white hover:opacity-80' : 'bg-white/95 text-black hover:bg-white'
           }`}
         >
-          Register your interest &nbsp;&rarr;
-        </a>
+          Become a Founding Instructor &nbsp;&rarr;
+        </button>
 
         <Dialog.Root open={menuOpen} onOpenChange={setMenuOpen}>
           <Dialog.Trigger asChild>
@@ -75,17 +73,16 @@ export default function Header() {
                 </Dialog.Close>
               </div>
               <Dialog.Description className="sr-only">
-                Register your interest in the Founding Instructor Programme.
+                Become a Founding Instructor and book your place on the programme.
               </Dialog.Description>
               <Dialog.Close asChild>
-                <a
-                  href={TYPEFORM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={onOpenDateModal}
                   className="pill text-center bg-black text-white px-6 py-3 text-sm"
                 >
-                  Register your interest &nbsp;&rarr;
-                </a>
+                  Become a Founding Instructor &nbsp;&rarr;
+                </button>
               </Dialog.Close>
             </Dialog.Content>
           </Dialog.Portal>

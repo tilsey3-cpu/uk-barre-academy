@@ -1,9 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { asset } from '../asset.js';
 import { gsap, prefersReducedMotion } from '../lib/gsapSetup.js';
-import { TYPEFORM_URL } from '../typeform.js';
 
-export default function Hero() {
+export default function Hero({ onOpenDateModal }) {
   const bodyRef = useRef(null);
 
   useEffect(() => {
@@ -42,14 +41,13 @@ export default function Hero() {
             Programme 2026 &mdash; trained directly by Maggie Paterson.
           </p>
           <div>
-            <a
-              href={TYPEFORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={onOpenDateModal}
               className="pill inline-flex items-center px-7 py-4 text-sm bg-white/10 border border-white/60 text-white hover:bg-white hover:text-black transition-colors"
             >
-              Register your interest &nbsp;&rarr;
-            </a>
+              Become a Founding Instructor &nbsp;&rarr;
+            </button>
           </div>
           <p className="text-sm text-white/60 pt-4 border-t border-white/20 mt-2">
             Founded by <span className="text-white">Maggie Paterson</span> &middot; 40+ years in ballet, Pilates and movement education

@@ -1,6 +1,6 @@
-import { Check } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 import Reveal from './Reveal.jsx';
-import { TYPEFORM_URL } from '../typeform.js';
+import { DATE_GROUPS } from '../dates.js';
 
 const INCLUDED = [
   'Eight hours of practical, in-person training',
@@ -56,14 +56,24 @@ export default function Fee() {
             View the full curriculum
           </a>
 
-          <a
-            href={TYPEFORM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="pill text-center bg-black text-white px-6 py-4 text-sm hover:opacity-85"
-          >
-            Register your interest
-          </a>
+          <div className="flex flex-col gap-3">
+            <p className="text-xs uppercase tracking-widest text-muted font-semibold">Book your date</p>
+            {DATE_GROUPS.map((d) => (
+              <a
+                key={d.date}
+                href={d.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-2xl bg-black text-white px-5 py-4 flex items-center justify-between gap-4 hover:opacity-85 transition-opacity"
+              >
+                <span className="flex flex-col gap-0.5">
+                  <span className="text-sm font-medium">{d.date}</span>
+                  <span className="text-xs text-white/70">{d.time}</span>
+                </span>
+                <ArrowRight size={18} className="shrink-0" />
+              </a>
+            ))}
+          </div>
         </Reveal>
 
         <p className="text-center text-muted leading-relaxed max-w-lg mx-auto mt-8">

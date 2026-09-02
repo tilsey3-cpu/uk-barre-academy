@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import MarqueeBanner from './components/MarqueeBanner.jsx';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
@@ -13,13 +14,17 @@ import Fee from './components/Fee.jsx';
 import Dates from './components/Dates.jsx';
 import RegisterCta from './components/RegisterCta.jsx';
 import Footer from './components/Footer.jsx';
+import DateModal from './components/DateModal.jsx';
 
 export default function App() {
+  const [dateModalOpen, setDateModalOpen] = useState(false);
+  const openDateModal = () => setDateModalOpen(true);
+
   return (
     <div className="bg-white text-black">
       <MarqueeBanner />
-      <Header />
-      <Hero />
+      <Header onOpenDateModal={openDateModal} />
+      <Hero onOpenDateModal={openDateModal} />
       <StatsStrip />
       <Invitation />
       <HowItWorks />
@@ -30,8 +35,9 @@ export default function App() {
       <WhatReceive />
       <Dates />
       <Fee />
-      <RegisterCta />
+      <RegisterCta onOpenDateModal={openDateModal} />
       <Footer />
+      <DateModal open={dateModalOpen} onOpenChange={setDateModalOpen} />
     </div>
   );
 }
