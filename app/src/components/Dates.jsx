@@ -14,30 +14,22 @@ export default function Dates() {
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-14 max-w-xl mx-auto">
-          {DATE_GROUPS.map((group) => (
-            <div key={group.month}>
-              <p className="text-xs uppercase tracking-widest text-muted border-b border-line pb-3 mb-4 text-center">
-                {group.month}
-              </p>
-              <div className="flex flex-col gap-3">
-                {group.dates.map((date) => (
-                  <div
-                    key={date}
-                    className="pill w-full text-center px-5 py-3 text-sm border bg-white text-black border-line"
-                  >
-                    {date}
-                  </div>
-                ))}
-              </div>
+        <Reveal
+          as="div"
+          stagger={0.06}
+          y={12}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-14 max-w-2xl mx-auto"
+        >
+          {DATE_GROUPS.map((d) => (
+            <div key={d.date} className="card flex flex-col items-center text-center gap-2 py-10">
+              <p className="text-xl">{d.date}</p>
+              <p className="text-muted">{d.time}</p>
             </div>
           ))}
-        </div>
+        </Reveal>
 
         <div className="max-w-xl mx-auto text-center mt-14 pt-8 border-t border-line flex flex-col gap-2">
-          <p className="text-sm text-muted">
-            All courses run from 9:30am until 6:30pm at a professional dance studio in London.
-          </p>
+          <p className="text-sm text-muted">All courses take place at a professional dance studio in London.</p>
           <p className="text-sm text-muted">The confirmed venue will be provided before payment is requested.</p>
         </div>
       </div>

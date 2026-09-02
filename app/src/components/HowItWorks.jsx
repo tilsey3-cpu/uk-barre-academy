@@ -29,6 +29,54 @@ export default function HowItWorks() {
   const wrapRef = useRef(null);
   const lineRef = useRef(null);
   const badgeRefs = useRef([]);
+  const cpdRef = useRef(null);
+  const glareRef = useRef(null);
+
+  useEffect(() => {
+    const el = cpdRef.current;
+    const glare = glareRef.current;
+    if (!el || prefersReducedMotion()) return;
+
+    const rotateX = gsap.quickTo(el, 'rotationX', { duration: 0.5, ease: 'power3.out' });
+    const rotateY = gsap.quickTo(el, 'rotationY', { duration: 0.5, ease: 'power3.out' });
+    const scale = gsap.quickTo(el, 'scale', { duration: 0.5, ease: 'power3.out' });
+
+    gsap.set(el, { transformPerspective: 800, transformStyle: 'preserve-3d' });
+
+    const maxTilt = 8;
+
+    function handleMove(e) {
+      const rect = el.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width;
+      const py = (e.clientY - rect.top) / rect.height;
+      rotateY((px - 0.5) * maxTilt * 2);
+      rotateX(-(py - 0.5) * maxTilt * 2);
+      scale(1.015);
+      if (glare) {
+        glare.style.background = `radial-gradient(circle at ${px * 100}% ${py * 100}%, rgba(255,255,255,0.65), transparent 55%)`;
+        glare.style.opacity = '1';
+      }
+    }
+
+    function reset() {
+      rotateX(0);
+      rotateY(0);
+      scale(1);
+      if (glare) glare.style.opacity = '0';
+    }
+
+    el.addEventListener('pointermove', handleMove);
+    el.addEventListener('pointerleave', reset);
+    el.addEventListener('pointerup', reset);
+    el.addEventListener('pointercancel', reset);
+
+    return () => {
+      el.removeEventListener('pointermove', handleMove);
+      el.removeEventListener('pointerleave', reset);
+      el.removeEventListener('pointerup', reset);
+      el.removeEventListener('pointercancel', reset);
+    };
+  }, []);
 
   useEffect(() => {
     const wrap = wrapRef.current;
@@ -104,23 +152,34 @@ export default function HowItWorks() {
           </div>
         </div>
 
-        <Reveal
-          y={24}
-          className="mt-20 sm:mt-28 max-w-3xl mx-auto rounded-2xl bg-black text-white p-8 sm:p-10 flex flex-col gap-5"
-        >
-          <div className="flex items-center justify-between gap-4">
-            <Award size={28} className="shrink-0 text-white" />
-            <span className="pill bg-white/10 border border-white/25 text-white/90 text-xs uppercase tracking-widest font-semibold px-4 py-2 whitespace-nowrap">
-              Submitted for accreditation
-            </span>
-          </div>
-          <div className="flex flex-col gap-3">
-            <h3 className="text-2xl sm:text-3xl">Independent CPD Accreditation</h3>
-            <p className="text-white/75 leading-relaxed">
-              UK Barre Academy has submitted its Barre Instructor Certification for independent CPD
-              accreditation. Founding Instructors who successfully complete the programme will receive
-              an updated CPD-accredited certificate once the accreditation process has been completed.
-            </p>
+        <Reveal y={24} className="mt-20 sm:mt-28 max-w-3xl mx-auto">
+          <div
+            ref={cpdRef}
+            className="relative overflow-hidden rounded-2xl text-white p-8 sm:p-10 flex flex-col gap-5 shadow-[0_25px_60px_-20px_rgba(180,140,30,0.5)]"
+            style={{
+              transformStyle: 'preserve-3d',
+              background:
+                'radial-gradient(circle at 25% 15%, rgba(255,255,255,0.4), transparent 45%), linear-gradient(135deg, #F5E5A8 0%, #D4AF37 22%, #B8860B 48%, #D4AF37 74%, #F5E5A8 100%)',
+            }}
+          >
+            <div
+              ref={glareRef}
+              className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300"
+            />
+            <div className="relative flex items-center justify-between gap-4">
+              <Award size={28} className="shrink-0 text-white" />
+              <span className="pill bg-white/15 border border-white/30 text-white text-xs uppercase tracking-widest font-semibold px-4 py-2 whitespace-nowrap">
+                Submitted for accreditation
+              </span>
+            </div>
+            <div className="relative flex flex-col gap-3">
+              <h3 className="text-2xl sm:text-3xl text-white">Independent CPD Accreditation</h3>
+              <p className="text-white/90 leading-relaxed">
+                UK Barre Academy has submitted its Barre Instructor Certification for independent CPD
+                accreditation. Founding Instructors who successfully complete the programme will receive
+                an updated CPD-accredited certificate once the accreditation process has been completed.
+              </p>
+            </div>
           </div>
         </Reveal>
       </div>
