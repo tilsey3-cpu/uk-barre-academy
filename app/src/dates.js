@@ -5,6 +5,7 @@ export const DATE_GROUPS = [
     venue: 'BASE Dance Studios',
     address: 'Vauxhall, London SE11 5EJ',
     url: 'https://buy.stripe.com/4gMeVd24S7sO1NVax9asg00',
+    spotsRemaining: 2,
   },
   {
     date: 'Sunday 25 October 2026',
@@ -12,5 +13,11 @@ export const DATE_GROUPS = [
     venue: 'City Academy',
     address: 'Clerkenwell, London EC1R 5EG',
     url: 'https://book.stripe.com/aFa4gzaBo7sO1NV7kXasg01',
+    soldOut: true,
   },
 ];
+
+export const WAITLIST = {
+  date: 'Saturday 5 December 2026',
+  url: 'https://form.typeform.com/to/j2TXiTm7',
+};

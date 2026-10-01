@@ -1,6 +1,6 @@
 import { Check, ArrowRight } from 'lucide-react';
 import Reveal from './Reveal.jsx';
-import { DATE_GROUPS } from '../dates.js';
+import { DATE_GROUPS, WAITLIST } from '../dates.js';
 
 const INCLUDED = [
   'Eight hours of practical, in-person training',
@@ -58,21 +58,49 @@ export default function Fee() {
 
           <div className="flex flex-col gap-3">
             <p className="text-xs uppercase tracking-widest text-muted font-semibold">Book your date</p>
-            {DATE_GROUPS.map((d) => (
-              <a
-                key={d.date}
-                href={d.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-2xl bg-black text-white px-5 py-4 flex items-center justify-between gap-4 hover:opacity-85 transition-opacity"
-              >
-                <span className="flex flex-col gap-0.5">
-                  <span className="text-sm font-medium">{d.date}</span>
-                  <span className="text-xs text-white/70">{d.venue} &middot; {d.time}</span>
-                </span>
-                <ArrowRight size={18} className="shrink-0" />
-              </a>
-            ))}
+            {DATE_GROUPS.map((d) =>
+              d.soldOut ? (
+                <div
+                  key={d.date}
+                  className="rounded-2xl bg-[#F5F5F5] text-muted px-5 py-4 flex items-center justify-between gap-4 border border-line"
+                >
+                  <span className="flex flex-col gap-0.5">
+                    <span className="text-sm font-medium">{d.date}</span>
+                    <span className="text-xs text-muted">{d.venue} &middot; {d.time}</span>
+                  </span>
+                  <span className="text-xs uppercase tracking-widest font-semibold shrink-0">Sold out</span>
+                </div>
+              ) : (
+                <a
+                  key={d.date}
+                  href={d.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-2xl bg-black text-white px-5 py-4 flex items-center justify-between gap-4 hover:opacity-85 transition-opacity"
+                >
+                  <span className="flex flex-col gap-0.5">
+                    <span className="text-sm font-medium">{d.date}</span>
+                    <span className="text-xs text-white/70">
+                      {d.venue} &middot; {d.time}
+                      {d.spotsRemaining ? ` · ${d.spotsRemaining} places remaining` : ''}
+                    </span>
+                  </span>
+                  <ArrowRight size={18} className="shrink-0" />
+                </a>
+              )
+            )}
+            <a
+              href={WAITLIST.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl border border-line text-black px-5 py-4 flex items-center justify-between gap-4 hover:border-black transition-colors"
+            >
+              <span className="flex flex-col gap-0.5">
+                <span className="text-sm font-medium">Join the waitlist</span>
+                <span className="text-xs text-muted">{WAITLIST.date}</span>
+              </span>
+              <ArrowRight size={18} className="shrink-0" />
+            </a>
           </div>
         </Reveal>
 

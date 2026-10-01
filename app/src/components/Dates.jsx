@@ -1,5 +1,5 @@
 import { ArrowRight } from 'lucide-react';
-import { DATE_GROUPS } from '../dates.js';
+import { DATE_GROUPS, WAITLIST } from '../dates.js';
 import Reveal from './Reveal.jsx';
 
 export default function Dates() {
@@ -28,16 +28,44 @@ export default function Dates() {
                 <p className="text-sm font-medium">{d.venue}</p>
                 <p className="text-sm text-muted">{d.address}</p>
               </div>
-              <a
-                href={d.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pill mt-4 inline-flex items-center gap-1.5 px-6 py-3 text-sm bg-black text-white hover:opacity-85"
-              >
-                Book this date <ArrowRight size={16} />
-              </a>
+              {d.spotsRemaining ? (
+                <span className="pill mt-3 bg-[#F5F5F5] border border-line text-xs uppercase tracking-widest font-semibold px-4 py-1.5">
+                  {d.spotsRemaining} places remaining
+                </span>
+              ) : null}
+              {d.soldOut ? (
+                <span className="pill mt-4 inline-flex items-center px-6 py-3 text-sm bg-[#F5F5F5] text-muted border border-line">
+                  Sold out
+                </span>
+              ) : (
+                <a
+                  href={d.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pill mt-4 inline-flex items-center gap-1.5 px-6 py-3 text-sm bg-black text-white hover:opacity-85"
+                >
+                  Book this date <ArrowRight size={16} />
+                </a>
+              )}
             </div>
           ))}
+        </Reveal>
+
+        <Reveal className="max-w-md mx-auto mt-6">
+          <div className="card flex flex-col items-center text-center gap-2 py-8">
+            <p className="text-lg">{WAITLIST.date}</p>
+            <p className="text-muted text-sm max-w-xs">
+              Join the waitlist to be notified as places open up or new dates are announced.
+            </p>
+            <a
+              href={WAITLIST.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pill mt-4 inline-flex items-center gap-1.5 px-6 py-3 text-sm border border-black text-black hover:bg-black hover:text-white transition-colors"
+            >
+              Join the waitlist <ArrowRight size={16} />
+            </a>
+          </div>
         </Reveal>
 
         <div className="max-w-xl mx-auto text-center mt-14 pt-8 border-t border-line flex flex-col gap-2">

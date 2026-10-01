@@ -1,6 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { X, ArrowRight } from 'lucide-react';
-import { DATE_GROUPS } from '../dates.js';
+import { DATE_GROUPS, WAITLIST } from '../dates.js';
 import { TYPEFORM_URL } from '../typeform.js';
 
 export default function DateModal({ open, onOpenChange }) {
@@ -8,7 +8,7 @@ export default function DateModal({ open, onOpenChange }) {
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/50 z-[70]" />
-        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[71] w-[calc(100%-3rem)] max-w-md bg-white rounded-2xl p-6 sm:p-8 focus:outline-none">
+        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[71] w-[calc(100%-3rem)] max-w-md bg-white rounded-2xl p-6 sm:p-8 focus:outline-none max-h-[85vh] overflow-y-auto">
           <div className="flex items-start justify-between gap-4 mb-6">
             <div className="flex flex-col gap-1.5">
               <Dialog.Title className="text-2xl">Become a Founding Instructor</Dialog.Title>
@@ -24,21 +24,37 @@ export default function DateModal({ open, onOpenChange }) {
           </div>
 
           <div className="flex flex-col gap-3">
-            {DATE_GROUPS.map((d) => (
-              <a
-                key={d.date}
-                href={d.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-2xl bg-black text-white px-5 py-4 flex items-center justify-between gap-4 hover:opacity-85 transition-opacity"
-              >
-                <span className="flex flex-col gap-0.5">
-                  <span className="text-sm font-medium">{d.date}</span>
-                  <span className="text-xs text-white/70">{d.venue} &middot; {d.time}</span>
-                </span>
-                <ArrowRight size={18} className="shrink-0" />
-              </a>
-            ))}
+            {DATE_GROUPS.map((d) =>
+              d.soldOut ? (
+                <div
+                  key={d.date}
+                  className="rounded-2xl bg-[#F5F5F5] text-muted px-5 py-4 flex items-center justify-between gap-4 border border-line"
+                >
+                  <span className="flex flex-col gap-0.5">
+                    <span className="text-sm font-medium">{d.date}</span>
+                    <span className="text-xs text-muted">{d.venue} &middot; {d.time}</span>
+                  </span>
+                  <span className="text-xs uppercase tracking-widest font-semibold shrink-0">Sold out</span>
+                </div>
+              ) : (
+                <a
+                  key={d.date}
+                  href={d.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-2xl bg-black text-white px-5 py-4 flex items-center justify-between gap-4 hover:opacity-85 transition-opacity"
+                >
+                  <span className="flex flex-col gap-0.5">
+                    <span className="text-sm font-medium">{d.date}</span>
+                    <span className="text-xs text-white/70">
+                      {d.venue} &middot; {d.time}
+                      {d.spotsRemaining ? ` · ${d.spotsRemaining} places remaining` : ''}
+                    </span>
+                  </span>
+                  <ArrowRight size={18} className="shrink-0" />
+                </a>
+              )
+            )}
           </div>
 
           <div className="flex items-center gap-3 my-5">
@@ -47,14 +63,29 @@ export default function DateModal({ open, onOpenChange }) {
             <div className="h-px flex-1 bg-line" />
           </div>
 
-          <a
-            href={TYPEFORM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-2xl border border-line text-black px-5 py-4 flex items-center justify-center gap-2 hover:border-black transition-colors text-sm font-medium"
-          >
-            Register Your Details
-          </a>
+          <div className="flex flex-col gap-3">
+            <a
+              href={WAITLIST.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl border border-line text-black px-5 py-4 flex items-center justify-between gap-4 hover:border-black transition-colors"
+            >
+              <span className="flex flex-col gap-0.5">
+                <span className="text-sm font-medium">Join the waitlist</span>
+                <span className="text-xs text-muted">{WAITLIST.date}</span>
+              </span>
+              <ArrowRight size={18} className="shrink-0" />
+            </a>
+
+            <a
+              href={TYPEFORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl border border-line text-black px-5 py-4 flex items-center justify-center gap-2 hover:border-black transition-colors text-sm font-medium"
+            >
+              Register Your Details
+            </a>
+          </div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
