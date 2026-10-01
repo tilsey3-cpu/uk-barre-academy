@@ -19,5 +19,5 @@ export const DATE_GROUPS = [
 
 export const WAITLIST = {
   date: 'Saturday 5 December 2026',
-  url: 'https://form.typeform.com/to/j2TXiTm7',
+  url: 'https://form.typeform.com/to/berqDyhq',
 };
