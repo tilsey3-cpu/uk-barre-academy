@@ -1,6 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { X, ArrowRight } from 'lucide-react';
-import { DATE_GROUPS, WAITLIST } from '../dates.js';
+import { DATE_GROUPS } from '../dates.js';
 import { TYPEFORM_URL } from '../typeform.js';
 
 export default function DateModal({ open, onOpenChange }) {
@@ -64,19 +64,6 @@ export default function DateModal({ open, onOpenChange }) {
           </div>
 
           <div className="flex flex-col gap-3">
-            <a
-              href={WAITLIST.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-2xl border border-line text-black px-5 py-4 flex items-center justify-between gap-4 hover:border-black transition-colors"
-            >
-              <span className="flex flex-col gap-0.5">
-                <span className="text-sm font-medium">Join the waitlist</span>
-                <span className="text-xs text-muted">{WAITLIST.date}</span>
-              </span>
-              <ArrowRight size={18} className="shrink-0" />
-            </a>
-
             <a
               href={TYPEFORM_URL}
               target="_blank"

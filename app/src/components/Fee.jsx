@@ -1,6 +1,7 @@
 import { Check, ArrowRight } from 'lucide-react';
 import Reveal from './Reveal.jsx';
-import { DATE_GROUPS, WAITLIST } from '../dates.js';
+import { DATE_GROUPS } from '../dates.js';
+import { TYPEFORM_URL } from '../typeform.js';
 
 const INCLUDED = [
   'Eight hours of practical, in-person training',
@@ -89,17 +90,20 @@ export default function Fee() {
                 </a>
               )
             )}
+
+            <div className="flex items-center gap-3 my-1">
+              <div className="h-px flex-1 bg-line" />
+              <span className="text-xs uppercase tracking-widest text-muted">Or</span>
+              <div className="h-px flex-1 bg-line" />
+            </div>
+
             <a
-              href={WAITLIST.url}
+              href={TYPEFORM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-2xl border border-line text-black px-5 py-4 flex items-center justify-between gap-4 hover:border-black transition-colors"
+              className="rounded-2xl border border-line text-black px-5 py-4 flex items-center justify-center hover:border-black transition-colors text-sm font-medium"
             >
-              <span className="flex flex-col gap-0.5">
-                <span className="text-sm font-medium">Join the waitlist</span>
-                <span className="text-xs text-muted">{WAITLIST.date}</span>
-              </span>
-              <ArrowRight size={18} className="shrink-0" />
+              Register Your Details
             </a>
           </div>
         </Reveal>

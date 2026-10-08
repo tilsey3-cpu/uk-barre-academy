@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react';
-import { DATE_GROUPS, WAITLIST } from '../dates.js';
+import { DATE_GROUPS } from '../dates.js';
+import { TYPEFORM_URL } from '../typeform.js';
 import Reveal from './Reveal.jsx';
 
 export default function Dates() {
@@ -51,21 +52,21 @@ export default function Dates() {
           ))}
         </Reveal>
 
-        <Reveal className="max-w-md mx-auto mt-6">
-          <div className="card flex flex-col items-center text-center gap-2 py-8">
-            <p className="text-lg">{WAITLIST.date}</p>
-            <p className="text-muted text-sm max-w-xs">
-              Join the waitlist to be notified as places open up or new dates are announced.
-            </p>
-            <a
-              href={WAITLIST.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="pill mt-4 inline-flex items-center gap-1.5 px-6 py-3 text-sm border border-black text-black hover:bg-black hover:text-white transition-colors"
-            >
-              Join the waitlist <ArrowRight size={16} />
-            </a>
-          </div>
+        <Reveal className="max-w-xs mx-auto mt-10 flex items-center gap-3">
+          <div className="h-px flex-1 bg-line" />
+          <span className="text-xs uppercase tracking-widest text-muted">Or</span>
+          <div className="h-px flex-1 bg-line" />
+        </Reveal>
+
+        <Reveal className="flex justify-center mt-5">
+          <a
+            href={TYPEFORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pill inline-flex items-center px-6 py-3 text-sm border border-black text-black hover:bg-black hover:text-white transition-colors"
+          >
+            Register Your Details
+          </a>
         </Reveal>
 
         <div className="max-w-xl mx-auto text-center mt-14 pt-8 border-t border-line flex flex-col gap-2">
