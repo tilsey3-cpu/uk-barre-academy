@@ -105,16 +105,25 @@ img,video{max-width:100%}
   .film-grid{display:block;padding:0 !important}
   .film-r{display:none}
   .film-l{position:absolute;left:20px;right:20px;top:92px;z-index:2;opacity:var(--hv,1);transform:none;text-align:center}
-  .film-frame{position:absolute;top:max(18px,3.5svh);bottom:max(18px,3.5svh);left:16px;right:16px;height:auto;width:auto;aspect-ratio:auto;transform:scale(var(--fs,.5));border-radius:var(--fr,28px);box-shadow:0 30px 80px -20px rgba(0,0,0,.6)}
-  .film-frame video{object-fit:contain !important}
-  .film-fill{display:block;position:absolute;inset:-30px;width:calc(100% + 60px);height:calc(100% + 60px);object-fit:cover;filter:blur(30px) brightness(.45)}
-  .film-ctl{padding:16px 16px calc(20px + env(safe-area-inset-bottom)) !important}
+  .film-frame{position:absolute;top:calc(50% + 36px);left:50%;width:min(calc(100vw - 32px),calc((100svh - 240px) * .8));height:auto;aspect-ratio:4/5;transform-origin:50% 50%;transform:translate3d(-50%,-50%,0) scale(var(--fs,.5));border-radius:var(--fr,28px);box-shadow:0 30px 80px -20px rgba(0,0,0,.6)}
+  .film-frame video{object-fit:cover !important}
+  /* Controls sit in a strip under the picture, clear of the film's burned-in subtitles */
+  .film-frame{width:min(calc(100vw - 32px),calc((100svh - 300px) * .8));aspect-ratio:auto;display:flex;flex-direction:column;background:var(--ink)}
+  .film-frame video{position:relative !important;inset:auto !important;height:auto !important;aspect-ratio:4/5;display:block}
+  .film-ctl{position:relative !important;background:var(--ink) !important}
+  .film-ctl{padding:12px 14px !important}
   .nav{display:none}
   .nav-m{display:flex}
   .hero-main{grid-template-columns:1fr !important;grid-template-rows:1fr auto auto !important;row-gap:28px}
   .hero-main .hero-head{grid-column:1;grid-row:2}
   .hero-main .hero-card{grid-column:1;grid-row:3;align-self:start}
   .hero-card{width:100%;max-width:420px}
+  .hero{height:auto;min-height:min(100svh,940px)}
+  /* The 2027 card becomes one quiet line under the booking card */
+  .hc-next{margin-top:14px !important;padding:0 2px !important;background:none !important;border:0 !important;flex-direction:row !important;flex-wrap:wrap;align-items:baseline !important;gap:2px 10px !important}
+  .hc-next-title{font-size:15px !important;color:rgba(255,255,255,.9)}
+  .hc-next-sub{display:none !important}
+  .hc-next-cta{display:inline !important;min-height:0 !important;padding:0 !important;background:none !important;color:var(--paper) !important;font-size:15px !important;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
   .cur{grid-template-columns:1fr;gap:36px}
   .boxes{grid-template-columns:1fr}
   .book{grid-template-columns:1fr}
@@ -127,7 +136,11 @@ img,video{max-width:100%}
 @media (max-width:760px){
   .panel{padding-top:64px;padding-bottom:64px}
   .hero{height:auto;min-height:0;aspect-ratio:auto}
-  .hero-main{min-height:640px}
+  .hero-main{min-height:max(560px,calc(100svh - 80px));row-gap:20px !important}
+  .hc{padding:16px 16px 16px 18px !important;border-radius:16px !important}
+  .hc-date{margin-top:8px !important;font-size:21px !important}
+  .hc-cta{margin-top:12px !important}
+  .hc-sold{display:none !important}
   .film-copy{display:none}
   .stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:0}
   .stats>div+div{border-left:0}
@@ -152,7 +165,7 @@ img,video{max-width:100%}
 .u > footer{padding-bottom:84px}
 @media (max-width:1280px) and (min-width:1081px){.film-l h2{font-size:26px !important}.film-grid{gap:32px}}
 @media (max-width:1160px) and (min-width:1081px){.film-l h2{font-size:23px !important}}
-@media (max-width:400px){.t-hero{font-size:35px}.t-h2{font-size:26px}.cta-h{font-size:31px !important}}
+@media (max-width:400px){.t-hero{font-size:min(35px,8.4vw)}.hc-date{font-size:20px !important}.t-h2{font-size:26px}.cta-h{font-size:31px !important}}
 .u ::selection{background:var(--ink);color:var(--cream)}
 .u .dk ::selection,.u.dk ::selection{background:var(--cream);color:var(--ink)}
 .u{caret-color:var(--ink);accent-color:var(--ink);scrollbar-color:var(--quiet) transparent}

@@ -79,26 +79,26 @@ export default function Hero() {
             </p>
           </div>
           <div className="rise hero-card" style={{ animationDelay: '.8s' }}>
-          <BookLink className="btn" style={S.card}>
+          <BookLink className="btn hc" style={S.card}>
             <span style={S.cardTop}>
               <span className="t-label" style={S.cardLabel}>Next cohort</span>
               <span style={S.badge}><span aria-hidden="true" style={S.dot} />Booking now</span>
             </span>
-            <span style={S.date}>{NEXT_DATE.long}</span>
+            <span className="hc-date" style={S.date}>{NEXT_DATE.long}</span>
             <span style={S.meta}>
-              {NEXT_DATE.venue}, {NEXT_DATE.area} · {NEXT_DATE.time}
+              {NEXT_DATE.venue}, {NEXT_DATE.area} · <span style={{ whiteSpace: 'nowrap' }}>{NEXT_DATE.time}</span>
               <br />
               6–10 places · <s style={S.was}>{PRICE.was}</s> <b style={S.now}>{PRICE.now}</b> founding rate
             </span>
-            <span style={S.cta}>Book this date →</span>
-            <span style={S.soldOut}><s>{SOLD_OUT.date}</s> · Sold out</span>
+            <span className="hc-cta" style={S.cta}>Book this date →</span>
+            <span className="hc-sold" style={S.soldOut}><s>{SOLD_OUT.date}</s> · Sold out</span>
           </BookLink>
-          <a className="btn" href={TYPEFORM_URL} {...external} style={S.next}>
+          <a className="btn hc-next" href={TYPEFORM_URL} {...external} style={S.next}>
             <span style={S.nextText}>
-              <span style={S.nextTitle}>{NEXT_YEAR.title}</span>
-              <span style={S.nextSub}>Hear first when booking opens</span>
+              <span className="hc-next-title" style={S.nextTitle}>{NEXT_YEAR.title}</span>
+              <span className="hc-next-sub" style={S.nextSub}>Hear first when booking opens</span>
             </span>
-            <span style={S.nextCta}>{NEXT_YEAR.cta} →</span>
+            <span className="hc-next-cta" style={S.nextCta}>{NEXT_YEAR.cta} →</span>
           </a>
           </div>
         </div>

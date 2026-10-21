@@ -94,7 +94,7 @@ export default function DatesFee() {
               <div style={{ maxWidth: 460 }}>
                 <div style={S.date}>{NEXT_DATE.long}</div>
                 <p className="t-body" style={S.where}>
-                  {NEXT_DATE.venue}, {NEXT_DATE.area}, London {NEXT_DATE.postcode} · {NEXT_DATE.time}
+                  {NEXT_DATE.venue}, {NEXT_DATE.area}, London {NEXT_DATE.postcode} · <span style={{ whiteSpace: 'nowrap' }}>{NEXT_DATE.time}</span>
                 </p>
                 <div style={S.btns}>
                   <BookLink style={S.book}>Book this date →</BookLink>
