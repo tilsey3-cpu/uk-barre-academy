@@ -59,6 +59,7 @@ export const NAV = [
   { href: '#curriculum', label: 'Curriculum' },
   { href: '#reviews', label: 'Reviews' },
   { href: '#dates', label: 'Dates & fee' },
+  { href: '#faq', label: 'FAQs' },
 ];
 
 export const external = { target: '_blank', rel: 'noopener' };

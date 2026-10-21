@@ -1,3 +1,4 @@
+import { FAQS, answerText } from './faqs.js';
 import { EMAIL, INSTAGRAM_URL, MODULES, NEXT_DATE, NEXT_YEAR, PRICE, SITE_URL, TYPEFORM_URL } from './site.js';
 
 // Structured data and the llms.txt summary, built from site.js so they change with the dates and prices.
@@ -79,6 +80,15 @@ export function homeJsonLd() {
           location: venue,
         },
       },
+      {
+        '@type': 'FAQPage',
+        '@id': `${SITE_URL}/#faq`,
+        mainEntity: FAQS.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: answerText(f.a) },
+        })),
+      },
     ],
   };
 }
@@ -110,6 +120,10 @@ ${MODULES.map((m) => `- ${m}`).join('\n')}
 - ${NEXT_DATE.long}, ${NEXT_DATE.time}, at ${NEXT_DATE.venue}, ${NEXT_DATE.area}, London ${NEXT_DATE.postcode}.
 - Book: ${SITE_URL}/#dates
 - ${NEXT_YEAR.title}: register your interest at ${TYPEFORM_URL}
+
+## Frequently asked questions
+
+${FAQS.map((f) => `### ${f.q}\n\n${answerText(f.a)}`).join('\n\n')}
 
 ## Pages
 

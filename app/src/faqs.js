@@ -1,0 +1,92 @@
+// Frequently asked questions: Maggie Paterson's answers (October 2026), edited only for house style
+// (no exclamation marks). Each answer is a list of paragraphs; an array inside it is a bulleted list.
+// Shown in the FAQ section and published as FAQPage structured data, so keep them in step.
+import { PRICE } from './site.js';
+
+export const FAQS = [
+  {
+    q: 'What qualifications or experience do applicants need?',
+    a: [
+      'UK Barre Academy is designed for people who already have a background in teaching movement, fitness or dance.',
+      'Our training is suitable for qualified fitness instructors, personal trainers, Pilates and yoga teachers, and experienced or appropriately trained dance teachers.',
+      'You don’t need to be a dancer or have previous Barre teaching experience.',
+      'We welcome applicants from different movement backgrounds and are happy to discuss individual experience and qualifications before booking.',
+    ],
+  },
+  {
+    q: `Is the video assessment included in the ${PRICE.now} course fee?`,
+    a: [
+      `Yes. Your standard video assessment is included in the ${PRICE.now} Founding Instructor course fee, which increases to ${PRICE.was} from 2027.`,
+      'After your training day, you’ll have up to three months to practise and prepare.',
+      'You’ll then submit a video of yourself teaching three UBA modules to at least two participants. One of your chosen modules must be Module 5 or Module 7.',
+      'There are no additional written assignments to complete after the training day.',
+      'Certification is awarded once you’ve successfully passed your practical assessment.',
+    ],
+  },
+  {
+    q: 'What should trainees bring and wear on the day?',
+    a: [
+      'Please wear comfortable exercise clothing that allows you to move freely. You’ll be taking part in practical sessions throughout the day, so come prepared to exercise.',
+      'We recommend bringing:',
+      [
+        'A water bottle',
+        'A pen or pencil for taking notes',
+        'Lunch or money to purchase food locally',
+        'Any personal items you may need for a full day of movement',
+      ],
+      'You’ll receive your UK Barre Academy Instructor Training Manual on the day, so there’s no need to print anything beforehand.',
+    ],
+  },
+  {
+    q: 'Is lunch provided, and what are the breaks?',
+    a: [
+      'Lunch isn’t provided, but we have a one-hour lunch break during the training day.',
+      'You’re very welcome to bring your own lunch or explore the nearby cafés and restaurants.',
+      'There will also be opportunities for short water and comfort breaks during the practical sessions.',
+      'Our training days are full of practical movement and learning, so we make sure everyone has time to rest and refuel.',
+      'Full details, including the day’s schedule, will be provided in your joining instructions.',
+    ],
+  },
+  {
+    q: 'Once certified, can instructors teach anywhere, under their own name?',
+    a: [
+      'Absolutely. Our aim is to give you the knowledge, structure and confidence to make the UK Barre Academy method your own.',
+      'Once you’ve successfully completed your assessment, you can teach Barre independently, including under your own name or business, provided you have the appropriate professional qualifications, insurance and any approvals required by the venue or employer.',
+      'You’ll also be entitled to describe yourself as a UK Barre Academy Certified Instructor, in accordance with our branding guidelines.',
+      'Your certification does not expire. Optional UBA Active Instructor Membership is available for those who would like continued resources, updates and additional branding benefits.',
+      'UBA certification does not authorise you to train or certify other instructors in the UBA method.',
+    ],
+  },
+  {
+    q: 'Does certification help with insurance?',
+    a: [
+      'Your UBA certification provides evidence that you’ve completed specialist, CPD-accredited Barre instructor training and successfully passed a practical teaching assessment.',
+      'This may support an application to add Barre instruction to your existing professional insurance.',
+      'However, insurance providers have their own requirements, so we recommend contacting your insurer to confirm that Barre teaching is included in your policy.',
+      'UBA certification does not automatically provide insurance or guarantee acceptance by an insurer.',
+    ],
+  },
+  {
+    q: 'Who accredits the CPD hours?',
+    a: [
+      'UK Barre Academy’s instructor training has been independently assessed and accredited by The CPD Standards Office.',
+      'The programme includes eight hours of practical instructor training, followed by a practical teaching assessment.',
+      'Following successful completion, instructors receive their UK Barre Academy Instructor Certification, recognising their specialist training and practical teaching competence.',
+    ],
+  },
+  {
+    q: 'What happens if someone misses part of the day or fails the assessment?',
+    a: [
+      'We understand that unexpected circumstances can arise.',
+      'As this is a practical training programme, trainees must complete the required course content, participation and assessment requirements before certification can be awarded.',
+      'If you’re unable to attend or miss part of the day, please contact us as soon as possible so we can discuss the available options, including whether a transfer or additional training can be arranged.',
+      'If you don’t pass your assessment first time, don’t worry.',
+      'You’ll receive constructive feedback explaining what needs further development, along with the opportunity to improve and resubmit.',
+      'Your first video resubmission is complimentary. Any subsequent video assessments cost £50.',
+      'Our aim is to support you in becoming a confident, knowledgeable and capable Barre instructor, not simply to hand out certificates.',
+    ],
+  },
+];
+
+// Plain text of an answer, for structured data and llms.txt.
+export const answerText = (a) => a.map((block) => (Array.isArray(block) ? block.join('; ') + '.' : block)).join(' ');

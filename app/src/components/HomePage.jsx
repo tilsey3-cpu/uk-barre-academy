@@ -9,6 +9,7 @@ import Curriculum from './Curriculum.jsx';
 import WhoReceive from './WhoReceive.jsx';
 import Reviews from './Reviews.jsx';
 import DatesFee from './DatesFee.jsx';
+import Faq from './Faq.jsx';
 import Cta from './Cta.jsx';
 import Footer from './Footer.jsx';
 import BookingBar from './BookingBar.jsx';
@@ -31,6 +32,7 @@ export default function HomePage() {
           <WhoReceive />
           <Reviews />
           <DatesFee />
+          <Faq />
           <Cta />
         </main>
         <Footer />

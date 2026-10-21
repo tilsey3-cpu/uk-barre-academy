@@ -28,15 +28,16 @@ img,video{max-width:100%}
 /* ---------- layout ---------- */
 .w{width:100%;max-width:1280px;margin:0 auto;padding-left:clamp(20px,4.2vw,56px);padding-right:clamp(20px,4.2vw,56px)}
 .panel{min-height:min(100svh,940px);display:flex;flex-direction:column;justify-content:center;padding-top:88px;padding-bottom:88px}
-.hero{position:relative;height:min(100svh,940px);min-height:640px;display:flex;flex-direction:column;overflow:hidden}
+.hero{position:relative;min-height:max(640px,min(100svh,940px));display:flex;flex-direction:column;overflow:hidden}
 .nav{display:flex;align-items:center;gap:30px}
 .nav-m{display:none}
 .hero-main{flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-between;padding-top:clamp(28px,5vh,64px);padding-bottom:clamp(24px,4vh,48px);gap:32px}
 .wide{max-width:none;padding-left:clamp(20px,3.4vw,52px);padding-right:clamp(20px,3.4vw,52px)}
 .hero-main .hero-foot{display:contents}
 .hero-main{display:grid !important;grid-template-columns:minmax(0,1fr) 320px;grid-template-rows:auto 1fr auto;column-gap:40px}
-.hero-main .hero-card{grid-column:2;grid-row:1;align-self:start}
-.hero-main .hero-head{grid-column:1/-1;grid-row:3;align-self:end}
+/* Desktop: the cards sit top right and the headline bottom left, side by side, so neither pushes the other off screen */
+.hero-main .hero-card{grid-column:2;grid-row:1/4;align-self:start}
+.hero-main .hero-head{grid-column:1;grid-row:1/4;align-self:end}
 .hero-card{width:320px}
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
 .stats>div+div{border-left:1px solid rgba(255,255,255,.14)}
@@ -115,7 +116,7 @@ img,video{max-width:100%}
   .nav{display:none}
   .nav-m{display:flex}
   .hero-main{grid-template-columns:1fr !important;grid-template-rows:1fr auto auto !important;row-gap:28px}
-  .hero-main .hero-head{grid-column:1;grid-row:2}
+  .hero-main .hero-head{grid-column:1;grid-row:2;align-self:end}
   .hero-main .hero-card{grid-column:1;grid-row:3;align-self:start}
   .hero-card{width:100%;max-width:420px}
   .hero{height:auto;min-height:min(100svh,940px)}
@@ -171,6 +172,26 @@ img,video{max-width:100%}
 .u{caret-color:var(--ink);accent-color:var(--ink);scrollbar-color:var(--quiet) transparent}
 .t-stat,.hist,.mods,[data-bar],s{font-variant-numeric:tabular-nums}
 .u > footer a{display:inline-block;padding-top:4px;padding-bottom:4px}
+
+/* ---------- FAQ ---------- */
+.faq{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:start}
+.faq-side{position:sticky;top:110px}
+.faq details{background:var(--paper);border-radius:14px}
+.faq details+details{margin-top:8px}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 22px;font-size:17px;line-height:1.35;font-weight:500;letter-spacing:-.01em;border-radius:14px}
+.faq summary::-webkit-details-marker{display:none}
+.faq-ic{position:relative;flex:0 0 auto;width:30px;height:30px;border-radius:9999px;background:var(--cream);transition:background-color .2s ease}
+.faq-ic::before,.faq-ic::after{content:'';position:absolute;left:50%;top:50%;width:11px;height:1.5px;border-radius:2px;background:var(--ink);transform:translate(-50%,-50%);transition:transform .3s var(--ease)}
+.faq-ic::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq details[open] .faq-ic::after{transform:translate(-50%,-50%) rotate(0deg)}
+.faq summary:hover .faq-ic{background:var(--line)}
+.faq-a{padding:0 22px 22px;max-width:660px;color:#3a342e}
+.faq-a p{margin:0 0 12px}
+.faq-a ul{margin:0 0 12px;padding-left:20px}
+.faq-a li{margin:0 0 4px}
+.faq-a>:last-child{margin-bottom:0}
+@media (max-width:1080px){.faq{grid-template-columns:1fr;gap:28px}.faq-side{position:static}}
+@media (max-width:760px){.faq summary{padding:18px;font-size:16px}.faq-a{padding:0 18px 18px}}
 
 /* ---------- policy pages ---------- */
 .ph{position:sticky;top:0;z-index:20}
