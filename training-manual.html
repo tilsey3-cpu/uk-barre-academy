@@ -1,0 +1,959 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The UK Barre Academy Instructor Training Manual — the full 9-module curriculum behind the certification, from ballet fundamentals to a 50-minute class-ready format.">
+  <title>Instructor Training Manual — UK Barre Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ─────────────────────────────────────────────────────────────
+       TOKENS (shared with index.html)
+    ───────────────────────────────────────────────────────────── */
+    :root {
+      --ink:        #0A0A0A;
+      --bone:       #F7F7F5;
+      --bone-2:     #EFEFEC;
+      --bone-3:     #E5E4DF;
+      --grey-3:     #6E6E6E;
+      --grey-4:     #3A3A3A;
+      --sand:       #C8B79A;
+
+      --sans: 'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-std: cubic-bezier(0.22, 0.61, 0.36, 1);
+      --t-fast: 160ms;
+      --t-base: 280ms;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      background: var(--bone);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; margin: 0; padding: 0; }
+    h1, h2, h3, h4, p { margin: 0; }
+    button { font-family: var(--sans); cursor: pointer; border: none; padding: 0; background: none; }
+    img { display: block; max-width: 100%; }
+
+    .w { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      padding: 14px 22px;
+      transition: opacity var(--t-base) var(--ease-out);
+    }
+    .btn:hover { opacity: 0.76; }
+    .btn-ink  { background: var(--ink);  color: var(--bone); }
+    .btn-bone { background: var(--bone); color: var(--ink); }
+    .btn-ghost-dark {
+      background: transparent;
+      color: var(--bone);
+      border: 1px solid rgba(247,247,245,0.30);
+      padding: 13px 22px;
+    }
+
+    /* Eyebrow */
+    .eye {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--grey-3);
+    }
+    .eye::before {
+      content: '';
+      width: 1px;
+      height: 13px;
+      background: var(--sand);
+      flex-shrink: 0;
+    }
+    .sec-dark .eye { color: rgba(247,247,245,0.55); }
+
+    /* ─────────────────────────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      background: rgba(247,247,245,0.90);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--bone-3);
+    }
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 48px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--grey-4);
+      transition: color var(--t-fast);
+    }
+    .nav-back:hover { color: var(--ink); }
+    .nav-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--grey-3);
+      text-transform: uppercase;
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       COURSE HERO
+    ───────────────────────────────────────────────────────────── */
+    .course-hero {
+      position: relative;
+      background: var(--ink);
+      color: var(--bone);
+      overflow: hidden;
+      padding: 96px 48px 88px;
+    }
+    .course-hero-photo {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/manual-1.png');
+      background-size: cover;
+      background-position: center 38%;
+      filter: brightness(0.36) saturate(0.85);
+    }
+    .course-hero-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 45%, rgba(10,10,10,0.88) 100%);
+    }
+    .course-hero-body {
+      position: relative;
+      max-width: 1084px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .course-hero .eye { color: rgba(247,247,245,0.55); }
+    .course-hero-h1 {
+      font-weight: 200;
+      font-size: clamp(36px, 6vw, 76px);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      color: var(--bone);
+      max-width: 16ch;
+    }
+    .course-hero-lede {
+      font-size: 18px;
+      line-height: 1.6;
+      color: rgba(247,247,245,0.76);
+      max-width: 58ch;
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       QUICK FACTS
+    ───────────────────────────────────────────────────────────── */
+    .quickfacts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--bone-3);
+      border-top: 1px solid var(--bone-3);
+      border-bottom: 1px solid var(--bone-3);
+    }
+    .quickfact {
+      background: var(--bone);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .quickfact-n {
+      font-family: var(--mono);
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .quickfact-l {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--grey-3);
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       TABLE OF CONTENTS
+    ───────────────────────────────────────────────────────────── */
+    .toc-sec { padding: 88px 0 40px; }
+    .toc-head { max-width: 640px; margin-bottom: 48px; display: flex; flex-direction: column; gap: 16px; }
+    .toc-h2 {
+      font-weight: 300;
+      font-size: clamp(28px, 3.6vw, 44px);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .toc-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--bone-3);
+      border-top: 1px solid var(--bone-3);
+      border-bottom: 1px solid var(--bone-3);
+    }
+    .toc-item {
+      background: var(--bone);
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding: 20px 24px;
+      transition: background var(--t-fast);
+    }
+    .toc-item:hover { background: var(--bone-2); }
+    .toc-list li:last-child .toc-item { grid-column: 1 / -1; }
+    .toc-list li:last-child { grid-column: 1 / -1; }
+    .toc-n {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--sand);
+      letter-spacing: 0.1em;
+      flex-shrink: 0;
+    }
+    .toc-t { font-size: 15px; color: var(--ink); }
+    .toc-d {
+      margin-left: auto;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--grey-3);
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       MODULE SECTIONS
+    ───────────────────────────────────────────────────────────── */
+    .module { padding: 88px 0; scroll-margin-top: 80px; }
+    .module-dark { background: var(--ink); color: var(--bone); }
+    .module-quiet { background: var(--bone-2); }
+    .module-dark .toc-t,
+    .module-dark .module-h2,
+    .module-dark .obj-list li,
+    .module-dark .sub-title { color: var(--bone); }
+    .module-dark .obj-list li { border-top-color: rgba(247,247,245,0.14); }
+    .module-dark .who-tag { border-color: rgba(247,247,245,0.22); color: rgba(247,247,245,0.72); background: rgba(247,247,245,0.06); }
+    .module-dark .module-lede { color: rgba(247,247,245,0.68); }
+    .module-dark .module-duration { color: rgba(247,247,245,0.55); }
+    .module-dark .exercise-card { background: rgba(247,247,245,0.05); border-color: rgba(247,247,245,0.12); }
+    .module-dark .exercise-n { color: var(--sand); }
+    .module-dark .module-extra { border-top-color: rgba(247,247,245,0.14); }
+
+    .module-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 44px;
+      max-width: 900px;
+    }
+    .module-head-copy { display: flex; flex-direction: column; gap: 16px; }
+    .module-h2 {
+      font-weight: 300;
+      font-size: clamp(28px, 3.6vw, 42px);
+      letter-spacing: -0.02em;
+      line-height: 1.12;
+    }
+    .module-lede { font-size: 16px; line-height: 1.6; color: var(--grey-4); max-width: 56ch; }
+    .module-duration {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--grey-3);
+      white-space: nowrap;
+      padding-bottom: 6px;
+    }
+    .module-duration strong { color: var(--sand); font-weight: 500; }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+    .sub-title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--grey-3);
+      margin-bottom: 20px;
+    }
+    .obj-list { display: flex; flex-direction: column; }
+    .obj-list li {
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--ink);
+      padding: 14px 0;
+      border-top: 1px solid var(--bone-3);
+    }
+    .obj-list li:last-child { border-bottom: 1px solid var(--bone-3); }
+
+    .topic-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .who-tag {
+      font-size: 13px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--bone-3);
+      color: var(--grey-4);
+      background: var(--bone);
+    }
+    .module-quiet .who-tag { background: var(--bone-2); }
+
+    .module-extra {
+      margin-top: 44px;
+      padding-top: 32px;
+      border-top: 1px solid var(--bone-3);
+      max-width: 900px;
+    }
+    .module-extra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+
+    /* Exercise cards — Module 5 */
+    .exercise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-top: 44px;
+    }
+    .exercise-card {
+      background: var(--bone);
+      border: 1px solid var(--bone-3);
+      border-radius: 8px;
+      padding: 24px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .exercise-n {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--sand);
+    }
+    .exercise-name { font-size: 17px; font-weight: 500; letter-spacing: -0.01em; }
+    .exercise-points { display: flex; flex-direction: column; gap: 6px; }
+    .exercise-points li {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--grey-4);
+      padding-left: 14px;
+      position: relative;
+    }
+    .module-dark .exercise-points li { color: rgba(247,247,245,0.65); }
+    .exercise-points li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 5px;
+      height: 1px;
+      background: var(--sand);
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       PHOTO BREAK
+    ───────────────────────────────────────────────────────────── */
+    .photo-break {
+      height: 420px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       CLASS STRUCTURE
+    ───────────────────────────────────────────────────────────── */
+    .structure-list { display: flex; flex-direction: column; margin-top: 44px; }
+    .structure-item {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      align-items: center;
+      gap: 24px;
+      padding: 20px 0;
+      border-top: 1px solid var(--bone-3);
+    }
+    .structure-item:last-child { border-bottom: 1px solid var(--bone-3); }
+    .structure-n { font-family: var(--mono); font-size: 12px; color: var(--sand); }
+    .structure-t { font-size: 17px; font-weight: 300; letter-spacing: -0.01em; }
+    .structure-d { font-family: var(--mono); font-size: 13px; color: var(--grey-3); white-space: nowrap; }
+    .structure-total {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-top: 28px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(247,247,245,0.16);
+    }
+    .structure-total-l { font-size: 13px; text-transform: uppercase; letter-spacing: 0.16em; color: rgba(247,247,245,0.55); }
+    .structure-total-n { font-family: var(--mono); font-size: 32px; font-weight: 300; color: var(--sand); }
+
+    /* ─────────────────────────────────────────────────────────────
+       CLOSING CTA
+    ───────────────────────────────────────────────────────────── */
+    .manual-cta { padding: 96px 0; text-align: left; }
+    .manual-cta-body { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; max-width: 640px; }
+    .manual-cta-h2 { font-weight: 300; font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.02em; line-height: 1.1; }
+    .manual-cta-lede { font-size: 16px; line-height: 1.6; color: var(--grey-4); }
+
+    /* ─────────────────────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────────────────────── */
+    .footer {
+      background: var(--bone);
+      border-top: 1px solid var(--bone-3);
+      padding: 40px 0;
+    }
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-row span {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--grey-3);
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .module-grid { grid-template-columns: 1fr; gap: 40px; }
+      .module-extra-grid { grid-template-columns: 1fr; gap: 32px; }
+      .toc-list { grid-template-columns: 1fr; }
+      .quickfacts { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      .w { padding: 0 20px; }
+      .nav-inner { padding: 0 20px; }
+      .course-hero { padding: 64px 20px 56px; }
+      .toc-sec { padding: 56px 0 24px; }
+      .module { padding: 56px 0; }
+      .module-head { margin-bottom: 32px; }
+      .structure-item { grid-template-columns: 40px 1fr auto; gap: 14px; }
+      .photo-break { height: 260px; }
+      .footer-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ NAV ═══ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-back" href="index.html">&larr;&nbsp; Back to UK Barre Academy</a>
+    <span class="nav-label">Training Manual</span>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════ HERO ═══ -->
+<section class="course-hero">
+  <div class="course-hero-photo"></div>
+  <div class="course-hero-scrim"></div>
+  <div class="course-hero-body">
+    <p class="eye">UK Barre Academy &middot; Certification</p>
+    <h1 class="course-hero-h1">Instructor Training Manual</h1>
+    <p class="course-hero-lede">
+      The complete 9-module curriculum behind the UK Barre Academy
+      Certification&thinsp;&mdash;&thinsp;from ballet fundamentals and
+      Pilates core conditioning through to a structured, 50-minute
+      class-ready format.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ QUICKFACTS ═══ -->
+<div class="quickfacts">
+  <div class="quickfact">
+    <span class="quickfact-n">9</span>
+    <span class="quickfact-l">Training Modules</span>
+  </div>
+  <div class="quickfact">
+    <span class="quickfact-n">8</span>
+    <span class="quickfact-l">CPD Hours</span>
+  </div>
+  <div class="quickfact">
+    <span class="quickfact-n">50</span>
+    <span class="quickfact-l">Minute Class Format</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ TABLE OF CONTENTS ═══ -->
+<section class="toc-sec">
+  <div class="w">
+    <div class="toc-head">
+      <p class="eye">Curriculum</p>
+      <h2 class="toc-h2">Nine modules, one class-ready method.</h2>
+    </div>
+    <ul class="toc-list">
+      <li><a class="toc-item" href="#module-1"><span class="toc-n">01</span><span class="toc-t">Introduction to UK Barre Academy</span></a></li>
+      <li><a class="toc-item" href="#module-2"><span class="toc-n">02</span><span class="toc-t">Ballet Fundamentals</span></a></li>
+      <li><a class="toc-item" href="#module-3"><span class="toc-n">03</span><span class="toc-t">Warm-Up Principles</span><span class="toc-d">5 min</span></a></li>
+      <li><a class="toc-item" href="#module-4"><span class="toc-n">04</span><span class="toc-t">Pilates Core Conditioning</span><span class="toc-d">8 min</span></a></li>
+      <li><a class="toc-item" href="#module-5"><span class="toc-n">05</span><span class="toc-t">Classical Barre Technique</span><span class="toc-d">15 min</span></a></li>
+      <li><a class="toc-item" href="#module-6"><span class="toc-n">06</span><span class="toc-t">Barre Fitness Conditioning</span><span class="toc-d">8 min</span></a></li>
+      <li><a class="toc-item" href="#module-7"><span class="toc-n">07</span><span class="toc-t">Stretch and Mobility</span><span class="toc-d">5 min</span></a></li>
+      <li><a class="toc-item" href="#module-8"><span class="toc-n">08</span><span class="toc-t">Teaching Skills</span></a></li>
+      <li><a class="toc-item" href="#module-9"><span class="toc-n">09</span><span class="toc-t">Assessment</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 01 ═══ -->
+<section class="module" id="module-1">
+  <div class="w">
+    <div class="module-head">
+      <div class="module-head-copy">
+        <p class="eye">Module 01</p>
+        <h2 class="module-h2">Introduction to UK Barre Academy</h2>
+        <p class="module-lede">By the end of this module, learners will understand the philosophy, origins and benefits behind the method.</p>
+      </div>
+    </div>
+    <div class="module-grid">
+      <div>
+        <p class="sub-title">Learning Objectives</p>
+        <ul class="obj-list">
+          <li>Understand the UK Barre Academy philosophy.</li>
+          <li>Understand the origins of ballet barre training.</li>
+          <li>Recognise the benefits of ballet-inspired fitness.</li>
+        </ul>
+      </div>
+      <div>
+        <p class="sub-title">Topics Covered</p>
+        <ul class="topic-tags">
+          <li class="who-tag">History of Ballet</li>
+          <li class="who-tag">Evolution of Barre Fitness</li>
+          <li class="who-tag">The UK Barre Academy Method</li>
+          <li class="who-tag">Benefits of Ballet-Inspired Movement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 02 ═══ -->
+<section class="module module-quiet" id="module-2">
+  <div class="w">
+    <div class="module-head">
+      <div class="module-head-copy">
+        <p class="eye">Module 02</p>
+        <h2 class="module-h2">Ballet Fundamentals</h2>
+        <p class="module-lede">By the end of this module, learners will demonstrate correct posture and apply core ballet terminology.</p>
+      </div>
+    </div>
+    <div class="module-grid">
+      <div>
+        <p class="sub-title">Learning Objectives</p>
+        <ul class="obj-list">
+          <li>Demonstrate correct ballet posture.</li>
+          <li>Understand alignment principles.</li>
+          <li>Apply basic ballet terminology.</li>
+        </ul>
+      </div>
+      <div>
+        <p class="sub-title">Topics Covered</p>
+        <ul class="topic-tags">
+          <li class="who-tag">Neutral Alignment</li>
+          <li class="who-tag">Turnout Principles</li>
+          <li class="who-tag">Positions of the Feet</li>
+          <li class="who-tag">Positions of the Arms</li>
+          <li class="who-tag">Core Engagement</li>
+          <li class="who-tag">Ballet Terminology</li>
+        </ul>
+      </div>
+    </div>
+    <div class="module-extra">
+      <p class="sub-title">Key Teaching Points</p>
+      <ul class="topic-tags">
+        <li class="who-tag">Lengthen through the spine</li>
+        <li class="who-tag">Engage deep abdominals</li>
+        <li class="who-tag">Maintain shoulder stability</li>
+        <li class="who-tag">Work within natural turnout</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="photo-break" style="background-image:url('assets/manual-3.png')"></div>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 03 ═══ -->
+<section class="module" id="module-3">
+  <div class="w">
+    <div class="module-head">
+      <div class="module-head-copy">
+        <p class="eye">Module 03</p>
+        <h2 class="module-h2">Warm-Up Principles</h2>
+        <p class="module-lede">Preparing the body safely for movement through mobility and activation.</p>
+      </div>
+      <p class="module-duration">Class Duration <strong>&middot; 5 Minutes</strong></p>
+    </div>
+    <div class="module-grid">
+      <div>
+        <p class="sub-title">Learning Objectives</p>
+        <ul class="obj-list">
+          <li>Prepare the body safely for movement.</li>
+          <li>Understand mobility and activation.</li>
+        </ul>
+      </div>
+      <div>
+        <p class="sub-title">Topics Covered</p>
+        <ul class="topic-tags">
+          <li class="who-tag">Joint Mobilisation</li>
+          <li class="who-tag">Dynamic Stretching</li>
+          <li class="who-tag">Activation Drills</li>
+          <li class="who-tag">Movement Preparation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 04 ═══ -->
+<section class="module module-quiet" id="module-4">
+  <div class="w">
+    <div class="module-head">
+      <div class="module-head-copy">
+        <p class="eye">Module 04</p>
+        <h2 class="module-h2">Pilates Core Conditioning</h2>
+        <p class="module-lede">Building trunk stability through classical Pilates principles.</p>
+      </div>
+      <p class="module-duration">Class Duration <strong>&middot; 8 Minutes</strong></p>
+    </div>
+    <div class="module-grid">
+      <div>
+        <p class="sub-title">Learning Objectives</p>
+        <ul class="obj-list">
+          <li>Develop trunk stability.</li>
+          <li>Understand Pilates principles.</li>
+        </ul>
+      </div>
+      <div>
+        <p class="sub-title">Topics Covered</p>
+        <ul class="topic-tags">
+          <li class="who-tag">Neutral Spine</li>
+          <li class="who-tag">Breathing</li>
+          <li class="who-tag">Pelvic Stability</li>
+          <li class="who-tag">Core Activation</li>
+        </ul>
+      </div>
+    </div>
+    <div class="module-extra">
+      <p class="sub-title">Exercises</p>
+      <ul class="topic-tags">
+        <li class="who-tag">Roll Down</li>
+        <li class="who-tag">Pelvic Curl</li>
+        <li class="who-tag">Toe Taps</li>
+        <li class="who-tag">Single Leg Stretch</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 05 ═══ -->
+<section class="module module-dark" id="module-5">
+  <div class="w">
+    <div class="module-head">
+      <div class="module-head-copy">
+        <p class="eye">Module 05</p>
+        <h2 class="module-h2">Classical Barre Technique</h2>
+        <p class="module-lede">The technical core of the method&thinsp;&mdash;&thinsp;five classical exercises, taught with precision.</p>
+      </div>
+      <p class="module-duration">Class Duration <strong>&middot; 15 Minutes</strong></p>
+    </div>
+    <div class="module-grid">
+      <div>
+        <p class="sub-title">Learning Objectives</p>
+        <ul class="obj-list">
+          <li>Demonstrate classical barre exercises safely.</li>
+          <li>Apply correct ballet terminology.</li>
+        </ul>
+      </div>
+      <div>
+        <p class="sub-title">Topics Covered</p>
+        <ul class="topic-tags">
+          <li class="who-tag">Pli&eacute;s</li>
+          <li class="who-tag">Relev&eacute;s</li>
+          <li class="who-tag">Tendus</li>
+          <li class="who-tag">D&eacute;velopp&eacute;s</li>
+          <li class="who-tag">Battements</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exercise-grid">
+      <div class="exercise-card">
+        <span class="exercise-n">01</span>
+        <span class="exercise-name">Pli&eacute;s</span>
+        <ul class="exercise-points">
+          <li>Knees track over toes</li>
+          <li>Maintain posture</li>
+          <li>Control movement</li>
+        </ul>
+      </div>
+      <div class="exercise-card">
+        <span class="exercise-n">02</span>
+        <span class="exercise-name">Relev&eacute;s</span>
+        <ul class="exercise-points">
+          <li>Weight through first and second toes</li>
+          <li>Lift through the arches</li>
+        </ul>
+      </div>
+      <div class="exercise-card">
+        <span class="exercise-n">03</span>
+        <span class="exercise-name">Tendus</span>
+        <ul class="exercise-points">
+          <li>Fully articulate the foot</li>
+          <li>Lengthen through the working leg</li>
+        </ul>
+      </div>
+      <div class="exercise-card">
+        <span class="exercise-n">04</span>
+        <span class="exercise-name">D&eacute;velopp&eacute;s</span>
+        <ul class="exercise-points">
+          <li>Control range of motion</li>
+          <li>Maintain core stability</li>
+        </ul>
+      </div>
+      <div class="exercise-card">
+        <span class="exercise-n">05</span>
+        <span class="exercise-name">Battements</span>
+        <ul class="exercise-points">
+          <li>Precision before height</li>
+          <li>Stable standing leg</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="photo-break" style="background-image:url('assets/manual-2.png')"></div>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 06 ═══ -->
+<section class="module" id="module-6">
+  <div class="w">
+    <div class="module-head">
+      <div class="module-head-copy">
+        <p class="eye">Module 06</p>
+        <h2 class="module-h2">Barre Fitness Conditioning</h2>
+        <p class="module-lede">Layering fitness elements onto the technique, safely and with purpose.</p>
+      </div>
+      <p class="module-duration">Class Duration <strong>&middot; 8 Minutes</strong></p>
+    </div>
+    <div class="module-grid">
+      <div>
+        <p class="sub-title">Learning Objectives</p>
+        <ul class="obj-list">
+          <li>Incorporate fitness elements safely.</li>
+        </ul>
+      </div>
+      <div>
+        <p class="sub-title">Topics Covered</p>
+        <ul class="topic-tags">
+          <li class="who-tag">Pulse Work</li>
+          <li class="who-tag">Isometric Holds</li>
+          <li class="who-tag">Arm Weight Sequences</li>
+          <li class="who-tag">Muscular Endurance</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 07 ═══ -->
+<section class="module module-quiet" id="module-7">
+  <div class="w">
+    <div class="module-head">
+      <div class="module-head-copy">
+        <p class="eye">Module 07</p>
+        <h2 class="module-h2">Stretch and Mobility</h2>
+        <p class="module-lede">Improving flexibility safely, with an understanding of recovery technique.</p>
+      </div>
+      <p class="module-duration">Class Duration <strong>&middot; 5 Minutes</strong></p>
+    </div>
+    <div class="module-grid">
+      <div>
+        <p class="sub-title">Learning Objectives</p>
+        <ul class="obj-list">
+          <li>Improve flexibility safely.</li>
+          <li>Understand recovery techniques.</li>
+        </ul>
+      </div>
+      <div>
+        <p class="sub-title">Topics Covered</p>
+        <ul class="topic-tags">
+          <li class="who-tag">Hamstring Stretch</li>
+          <li class="who-tag">Hip Flexor Stretch</li>
+          <li class="who-tag">Adductor Stretch</li>
+          <li class="who-tag">Spinal Mobility</li>
+          <li class="who-tag">Breathwork</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 08 ═══ -->
+<section class="module" id="module-8">
+  <div class="w">
+    <div class="module-head">
+      <div class="module-head-copy">
+        <p class="eye">Module 08</p>
+        <h2 class="module-h2">Teaching Skills</h2>
+        <p class="module-lede">Moving from performing the method to delivering it, professionally.</p>
+      </div>
+    </div>
+    <div class="module-grid">
+      <div>
+        <p class="sub-title">Learning Objectives</p>
+        <ul class="obj-list">
+          <li>Deliver a professional barre class.</li>
+        </ul>
+      </div>
+      <div>
+        <p class="sub-title">Topics Covered</p>
+        <ul class="topic-tags">
+          <li class="who-tag">Verbal Cueing</li>
+          <li class="who-tag">Visual Demonstration</li>
+          <li class="who-tag">Hands-On Corrections</li>
+          <li class="who-tag">Progressions</li>
+          <li class="who-tag">Regressions</li>
+          <li class="who-tag">Class Management</li>
+        </ul>
+      </div>
+    </div>
+    <div class="module-extra">
+      <p class="sub-title">Practice Teaching</p>
+      <ul class="obj-list" style="max-width: 640px;">
+        <li>Learners teach a short section of the format.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 09 ═══ -->
+<section class="module module-dark" id="module-9">
+  <div class="w">
+    <div class="module-head">
+      <div class="module-head-copy">
+        <p class="eye">Module 09</p>
+        <h2 class="module-h2">Assessment</h2>
+        <p class="module-lede">The final checkpoint before certification&thinsp;&mdash;&thinsp;practical and written.</p>
+      </div>
+    </div>
+    <div class="module-extra-grid">
+      <div>
+        <p class="sub-title">Practical Assessment</p>
+        <p class="module-lede" style="margin-bottom: 16px;">Learners must demonstrate:</p>
+        <ul class="obj-list">
+          <li>Safe technique</li>
+          <li>Correct terminology</li>
+          <li>Effective cueing</li>
+          <li>Professional delivery</li>
+        </ul>
+      </div>
+      <div>
+        <p class="sub-title">Written Assessment</p>
+        <p class="module-lede" style="margin-bottom: 16px; visibility: hidden;">&nbsp;</p>
+        <ul class="obj-list">
+          <li>Ballet terminology</li>
+          <li>Alignment principles</li>
+          <li>Class structure</li>
+          <li>Safety considerations</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ CLASS STRUCTURE ═══ -->
+<section class="module module-dark">
+  <div class="w">
+    <div class="module-head">
+      <div class="module-head-copy">
+        <p class="eye">The Format</p>
+        <h2 class="module-h2">UK Barre Academy class structure.</h2>
+        <p class="module-lede">Every module feeds into a single, structured 50-minute class&thinsp;&mdash;&thinsp;the same shape, every time.</p>
+      </div>
+    </div>
+    <ul class="structure-list">
+      <li class="structure-item"><span class="structure-n">01</span><span class="structure-t">Warm-Up</span><span class="structure-d">5 mins</span></li>
+      <li class="structure-item"><span class="structure-n">02</span><span class="structure-t">Pilates Core</span><span class="structure-d">8 mins</span></li>
+      <li class="structure-item"><span class="structure-n">03</span><span class="structure-t">Lower Body Preparation</span><span class="structure-d">4 mins</span></li>
+      <li class="structure-item"><span class="structure-n">04</span><span class="structure-t">Pli&eacute;s</span><span class="structure-d">5 mins</span></li>
+      <li class="structure-item"><span class="structure-n">05</span><span class="structure-t">Cardio &amp; Coordination</span><span class="structure-d">5 mins</span></li>
+      <li class="structure-item"><span class="structure-n">06</span><span class="structure-t">Arm Weights</span><span class="structure-d">5 mins</span></li>
+      <li class="structure-item"><span class="structure-n">07</span><span class="structure-t">D&eacute;velopp&eacute;s &amp; Battements</span><span class="structure-d">5 mins</span></li>
+      <li class="structure-item"><span class="structure-n">08</span><span class="structure-t">Stretch &amp; Mobility</span><span class="structure-d">8 mins</span></li>
+      <li class="structure-item"><span class="structure-n">09</span><span class="structure-t">Cool Down</span><span class="structure-d">5 mins</span></li>
+    </ul>
+    <div class="structure-total">
+      <span class="structure-total-l">Total Class Time</span>
+      <span class="structure-total-n">50 Minutes</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ CLOSING CTA ═══ -->
+<section class="manual-cta">
+  <div class="w">
+    <div class="manual-cta-body">
+      <p class="eye">Get Certified</p>
+      <h2 class="manual-cta-h2">Ready to train as a UK Barre Academy instructor?</h2>
+      <p class="manual-cta-lede">Enquire to join the next training or request full course details.</p>
+      <a class="btn btn-ink" href="index.html#enquire">Back to enquire &nbsp;&rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ FOOTER ═══ -->
+<footer class="footer">
+  <div class="w footer-row">
+    <span>&copy; 2026 UK Barre Academy</span>
+    <a class="nav-back" href="index.html">&larr;&nbsp; Back to UK Barre Academy</a>
+  </div>
+</footer>
+
+</body>
+</html>

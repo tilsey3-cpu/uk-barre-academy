@@ -1,0 +1,72 @@
+/* Card chrome shared by all preview/*.html files */
+@import url('../colors_and_type.css');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body.card {
+  padding: 28px 32px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+body.card.dark {
+  background: var(--uba-ink);
+  color: var(--uba-bone);
+}
+
+body.card.dark {
+  --bg: var(--uba-ink);
+  --fg: var(--uba-bone);
+  --fg-2: #C9C9C5;
+  --fg-3: var(--uba-grey-200);
+  --line: rgba(247,247,245,0.10);
+}
+
+.row { display: flex; gap: 12px; align-items: stretch; flex-wrap: wrap; }
+.col { display: flex; flex-direction: column; gap: 8px; }
+.between { justify-content: space-between; }
+.center { align-items: center; }
+.grow { flex: 1; }
+
+.swatch {
+  flex: 1;
+  min-height: 76px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 12px;
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.swatch .name {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.swatch .hex {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+.label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--fg-3);
+  font-weight: 500;
+}
+
+.hairline { height: 1px; background: var(--line); width: 100%; }

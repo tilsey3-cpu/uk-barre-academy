@@ -1,0 +1,10 @@
+.DS_Store
+Thumbs.db
+*.log
+
+# Design handoff references (kept local, never published)
+design/
+chats/
+
+# taste-skill working files (screenshots, reports)
+.taste-skill/

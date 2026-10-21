@@ -1,0 +1,367 @@
+/* ============================================================
+   UK BARRE ACADEMY — Colors & Type
+   ============================================================
+   This file has two sections:
+
+   1. CURRENT — the live system (pure black/white, pill buttons,
+      card-based checklists, Avenir/Nunito Sans/Montserrat). This is
+      what app/src/index.css and app/tailwind.config.js implement.
+      Source of truth for new work — see CLAUDE.md.
+
+   2. LEGACY — the original ink/bone/sand, Inter Tight, hairline
+      system, scoped under `.uba-legacy` so it can't collide with
+      the current `:root` tokens if this file is ever loaded
+      wholesale. Still governs full-site.html, training-manual.html
+      and founding-instructor-programme.html until those are
+      migrated to the current system.
+   ============================================================ */
+
+/* -----------------------------
+   CURRENT — fonts
+   Primary: Avenir (system font, not webfont-licensable)
+   Fallbacks loaded from Google Fonts: Nunito Sans, Montserrat
+   ----------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* ------------------------------------------------------------
+     COLOR — pure black/white, no accent hue
+     ------------------------------------------------------------ */
+  --uba-white:        #FFFFFF;   /* default ground */
+  --uba-black:         #000000;  /* inverted-section ground */
+  --uba-muted:         #525252;  /* secondary text, eyebrows on white */
+  --uba-muted-inverse: #999999;  /* eyebrows on black */
+  --uba-line:          #E5E5E5;  /* card borders, dividers */
+  --uba-featured-fill: #F5F5F5;  /* the one "featured" card per page */
+  --uba-check:         #16A34A;  /* green-600 — included-item check, light */
+  --uba-check-inverse: #22C55E;  /* green-500 — included-item check, dark */
+
+  /* ------------------------------------------------------------
+     TYPE
+     ------------------------------------------------------------ */
+  --font-sans: Avenir, 'Nunito Sans', Montserrat, sans-serif;
+
+  --fs-eyebrow: 12px;   /* weight 800, uppercase, tracked +0.14em */
+  --fs-display: clamp(32px, 5vw, 48px); /* weight 400, line-height 1, tracked -0.01em */
+
+  /* ------------------------------------------------------------
+     RADII — pill-first
+     ------------------------------------------------------------ */
+  --radius-card: 16px;
+  --radius-pill: 9999px;
+
+  /* ------------------------------------------------------------
+     LAYOUT
+     ------------------------------------------------------------ */
+  --container-max: 1080px;
+  --section-py: 96px; /* py-24 */
+}
+
+/* ============================================================
+   LEGACY — pre-rebrand system
+   Scoped to .uba-legacy so it never collides with :root above.
+   Governs full-site.html / training-manual.html /
+   founding-instructor-programme.html only. See CLAUDE.md →
+   "Legacy pages" before touching those files.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+.uba-legacy {
+  /* ------------------------------------------------------------
+     COLOR — Core
+     ------------------------------------------------------------ */
+
+  /* Ink (primary brand black + charcoal) */
+  --uba-ink:           #0A0A0A;   /* near-black, the brand voice */
+  --uba-ink-2:         #111111;   /* charcoal alt */
+  --uba-ink-3:         #1C1C1C;   /* elevated surface on dark */
+
+  /* Bone (primary off-white) */
+  --uba-bone:          #F7F7F5;   /* the canvas */
+  --uba-bone-2:        #EFEFEC;   /* subtle layer on light */
+  --uba-bone-3:        #E5E4DF;   /* hairline / divider on light */
+
+  /* Warm greys */
+  --uba-grey-100:      #D1D1D1;
+  --uba-grey-200:      #A8A8A8;
+  --uba-grey-300:      #6E6E6E;
+  --uba-grey-400:      #3A3A3A;
+
+  /* Accent — used sparingly */
+  --uba-sand:          #C8B79A;   /* muted gold / sand — premium cue */
+  --uba-sand-soft:     #E2D6BF;   /* soft tonal shift */
+  --uba-ballet:        #E8DCD0;   /* ballet bone / warm beige */
+  --uba-ballet-deep:   #B8A28C;   /* deeper warm — for hovers / strokes */
+
+  /* ------------------------------------------------------------
+     COLOR — Semantic (light surface, the default)
+     ------------------------------------------------------------ */
+  --bg:                var(--uba-bone);
+  --bg-elev:           #FFFFFF;
+  --bg-sunken:         var(--uba-bone-2);
+  --bg-inverse:        var(--uba-ink);
+
+  --fg:                var(--uba-ink);
+  --fg-2:              var(--uba-grey-400);
+  --fg-3:              var(--uba-grey-300);
+  --fg-muted:          var(--uba-grey-200);
+  --fg-inverse:        var(--uba-bone);
+
+  --line:              var(--uba-bone-3);
+  --line-strong:       var(--uba-grey-100);
+  --line-inverse:      rgba(247, 247, 245, 0.12);
+
+  --accent:            var(--uba-ink);          /* default accent is ink */
+  --accent-warm:       var(--uba-sand);         /* warm accent */
+  --accent-warm-deep:  var(--uba-ballet-deep);
+
+  --focus-ring:        rgba(10, 10, 10, 0.18);
+
+  /* ------------------------------------------------------------
+     TYPE — Family
+     ------------------------------------------------------------ */
+  --font-sans:         'Inter Tight', 'Söhne', 'Neue Haas Grotesk', -apple-system,
+                       BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-mono:         'JetBrains Mono', 'GT America Mono', ui-monospace, SFMono-Regular,
+                       Menlo, Monaco, Consolas, monospace;
+
+  /* ------------------------------------------------------------
+     TYPE — Weight
+     ------------------------------------------------------------ */
+  --fw-thin:    200;
+  --fw-light:   300;
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+
+  /* ------------------------------------------------------------
+     TYPE — Size scale (editorial, with restraint)
+     ------------------------------------------------------------ */
+  --fs-xs:   12px;   /* eyebrow / caption */
+  --fs-sm:   14px;   /* meta / labels */
+  --fs-base: 16px;   /* body */
+  --fs-md:   18px;   /* lede / large body */
+  --fs-lg:   22px;
+  --fs-xl:   28px;
+  --fs-2xl:  36px;
+  --fs-3xl:  48px;
+  --fs-4xl:  64px;
+  --fs-5xl:  88px;
+  --fs-6xl:  120px;  /* statement display */
+
+  /* ------------------------------------------------------------
+     TYPE — Tracking & line-height
+     Tight tracking on display, generous leading on body.
+     ------------------------------------------------------------ */
+  --tracking-tightest: -0.04em;
+  --tracking-tighter:  -0.025em;
+  --tracking-tight:    -0.015em;
+  --tracking-normal:    0;
+  --tracking-wide:      0.04em;
+  --tracking-wider:     0.12em;   /* eyebrow caps */
+  --tracking-widest:    0.22em;   /* sectional caps */
+
+  --lh-tight:    1.04;
+  --lh-snug:     1.15;
+  --lh-normal:   1.45;
+  --lh-relaxed:  1.6;             /* body */
+  --lh-loose:    1.75;
+
+  /* ------------------------------------------------------------
+     SPACING scale (8pt base, with editorial 4pt sub-step)
+     ------------------------------------------------------------ */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   24px;
+  --space-6:   32px;
+  --space-7:   48px;
+  --space-8:   64px;
+  --space-9:   96px;
+  --space-10:  128px;
+  --space-11:  160px;
+  --space-12:  200px;
+
+  /* ------------------------------------------------------------
+     RADII — soft, never playful
+     ------------------------------------------------------------ */
+  --radius-0: 0;
+  --radius-1: 2px;
+  --radius-2: 4px;
+  --radius-3: 8px;
+  --radius-4: 12px;
+  --radius-pill: 999px;
+
+  /* ------------------------------------------------------------
+     SHADOWS — barely there. Calm authority.
+     ------------------------------------------------------------ */
+  --shadow-0: none;
+  --shadow-1: 0 1px 2px rgba(10, 10, 10, 0.04);
+  --shadow-2: 0 4px 18px rgba(10, 10, 10, 0.06);
+  --shadow-3: 0 12px 40px rgba(10, 10, 10, 0.08);
+
+  /* ------------------------------------------------------------
+     LAYOUT
+     ------------------------------------------------------------ */
+  --container-max:    1320px;
+  --gutter:           24px;
+  --gutter-lg:        48px;
+
+  /* ------------------------------------------------------------
+     MOTION — Effortless, not energetic.
+     ------------------------------------------------------------ */
+  --ease-standard: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-soft:  cubic-bezier(0.4, 0, 0.6, 1);
+  --dur-fast:    160ms;
+  --dur-base:    280ms;
+  --dur-slow:    520ms;
+  --dur-slower:  900ms;
+}
+
+/* ================================================================
+   LEGACY — Dark inverse (used in hero + product-style sections)
+   ================================================================ */
+.uba-legacy.uba-dark,
+.uba-legacy[data-theme="dark"] {
+  --bg:           var(--uba-ink);
+  --bg-elev:      var(--uba-ink-2);
+  --bg-sunken:    #050505;
+  --bg-inverse:   var(--uba-bone);
+
+  --fg:           var(--uba-bone);
+  --fg-2:         #C9C9C5;
+  --fg-3:         var(--uba-grey-200);
+  --fg-muted:     var(--uba-grey-300);
+  --fg-inverse:   var(--uba-ink);
+
+  --line:         rgba(247, 247, 245, 0.10);
+  --line-strong:  rgba(247, 247, 245, 0.22);
+  --line-inverse: var(--uba-bone-3);
+
+  --accent:       var(--uba-bone);
+  --focus-ring:   rgba(247, 247, 245, 0.28);
+}
+
+/* ================================================================
+   LEGACY — SEMANTIC TYPE STYLES
+   All scoped under .uba-legacy — apply that class to the page root
+   (or a wrapping element) before using any selector below.
+   ================================================================ */
+.uba-legacy { font-family: var(--font-sans); color: var(--fg); background: var(--bg); }
+.uba-legacy body { font-family: var(--font-sans); font-size: var(--fs-base); line-height: var(--lh-relaxed); color: var(--fg); -webkit-font-smoothing: antialiased; }
+
+/* Display — for hero statements. Tight, light, editorial. */
+.uba-legacy .uba-display,
+.uba-legacy .uba-h0 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-light);
+  font-size: clamp(56px, 8vw, var(--fs-6xl));
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tightest);
+  color: var(--fg);
+}
+
+/* H1 — page-level title — 56px desktop */
+.uba-legacy .uba-h1, .uba-legacy h1 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-light);
+  font-size: clamp(40px, 5vw, 56px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+
+/* H2 — section title — 40px desktop */
+.uba-legacy .uba-h2, .uba-legacy h2 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-light);
+  font-size: clamp(28px, 3.4vw, 40px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+/* H3 — block title — 28px */
+.uba-legacy .uba-h3, .uba-legacy h3 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-light);
+  font-size: 28px;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+}
+
+/* H4 — small title / card title — 20px */
+.uba-legacy .uba-h4, .uba-legacy h4 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-light);
+  font-size: 20px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+/* Lede — supporting paragraph after hero */
+.uba-legacy .uba-lede {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-md);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+  letter-spacing: 0;
+  max-width: 60ch;
+}
+
+/* Body */
+.uba-legacy .uba-body, .uba-legacy p {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-base);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+  text-wrap: pretty;
+  max-width: 70ch;
+}
+
+/* Small */
+.uba-legacy .uba-small, .uba-legacy small {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
+  color: var(--fg-3);
+}
+
+/* Eyebrow / kicker — uppercase tracked label, used to flag a section */
+.uba-legacy .uba-eyebrow {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--fg-3);
+}
+
+/* Mono — used for indices, micro-labels, technical context */
+.uba-legacy .uba-mono, .uba-legacy code, .uba-legacy kbd {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  letter-spacing: 0;
+  color: var(--fg-2);
+}
+
+/* Index numerals — editorial 01 / 02 / 03 used in lists */
+.uba-legacy .uba-index {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
+  color: var(--fg-3);
+  letter-spacing: var(--tracking-wide);
+}
+
+/* Quote — for testimonials, low ornament */
+.uba-legacy .uba-quote {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg);
+}

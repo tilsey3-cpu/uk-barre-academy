@@ -1,0 +1,156 @@
+{
+  "uba-006": {
+    "width": 2200,
+    "height": 1467,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1920
+    ]
+  },
+  "uba-059": {
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1333
+    ]
+  },
+  "uba-060": {
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1333
+    ]
+  },
+  "uba-063": {
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1333
+    ]
+  },
+  "uba-086": {
+    "width": 1467,
+    "height": 2200,
+    "widths": [
+      480,
+      800,
+      1200,
+      1467
+    ]
+  },
+  "uba-104": {
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1333
+    ]
+  },
+  "uba-151": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1920
+    ]
+  },
+  "uba-185": {
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1333
+    ]
+  },
+  "uba-cohort-group-graded": {
+    "width": 2000,
+    "height": 1500,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1920
+    ]
+  },
+  "uba-cohort-oct": {
+    "width": 2000,
+    "height": 1334,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1920
+    ]
+  },
+  "uba-hero-poster-1080": {
+    "width": 1920,
+    "height": 1080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1920
+    ]
+  },
+  "uba-promo-poster": {
+    "width": 720,
+    "height": 900,
+    "widths": [
+      480,
+      720
+    ]
+  },
+  "uba-studio-certification-1": {
+    "width": 1590,
+    "height": 989,
+    "widths": [
+      480,
+      800,
+      1200,
+      1590
+    ]
+  },
+  "uba-studio-founding-1": {
+    "width": 1648,
+    "height": 954,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1648
+    ]
+  },
+  "uba-studio-founding-2": {
+    "width": 1290,
+    "height": 1219,
+    "widths": [
+      480,
+      800,
+      1200,
+      1290
+    ]
+  }
+}
