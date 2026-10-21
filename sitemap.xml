@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ukbarreacademy.com/</loc></url>
-  <url><loc>https://ukbarreacademy.com/privacy-policy</loc></url>
-  <url><loc>https://ukbarreacademy.com/complaints-policy</loc></url>
-  <url><loc>https://ukbarreacademy.com/terms-and-conditions</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url><loc>https://ukbarreacademy.com/</loc><lastmod>2026-10-21</lastmod>
+    <image:image><image:loc>https://ukbarreacademy.com/media/uba-006.jpg</image:loc></image:image>
+    <image:image><image:loc>https://ukbarreacademy.com/media/uba-059.jpg</image:loc></image:image>
+    <image:image><image:loc>https://ukbarreacademy.com/media/uba-060.jpg</image:loc></image:image>
+    <image:image><image:loc>https://ukbarreacademy.com/media/uba-063.jpg</image:loc></image:image>
+    <image:image><image:loc>https://ukbarreacademy.com/media/uba-086.jpg</image:loc></image:image>
+    <image:image><image:loc>https://ukbarreacademy.com/media/uba-104.jpg</image:loc></image:image>
+    <image:image><image:loc>https://ukbarreacademy.com/media/uba-151.jpg</image:loc></image:image>
+    <image:image><image:loc>https://ukbarreacademy.com/media/uba-185.jpg</image:loc></image:image>
+    <image:image><image:loc>https://ukbarreacademy.com/media/uba-cohort-group-graded.jpg</image:loc></image:image>
+    <image:image><image:loc>https://ukbarreacademy.com/media/uba-cohort-oct.jpg</image:loc></image:image>
+    <image:image><image:loc>https://ukbarreacademy.com/media/uba-hero-poster-1080.jpg</image:loc></image:image>
+    <image:image><image:loc>https://ukbarreacademy.com/media/uba-promo-poster.jpg</image:loc></image:image>
+    <image:image><image:loc>https://ukbarreacademy.com/media/uba-studio-certification-1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://ukbarreacademy.com/media/uba-studio-founding-1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://ukbarreacademy.com/media/uba-studio-founding-2.jpg</image:loc></image:image>
+  </url>
+  <url><loc>https://ukbarreacademy.com/privacy-policy</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://ukbarreacademy.com/complaints-policy</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://ukbarreacademy.com/terms-and-conditions</loc><lastmod>2026-10-21</lastmod></url>
 </urlset>
