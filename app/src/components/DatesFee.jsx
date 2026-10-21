@@ -1,5 +1,5 @@
 import { sx } from '../lib/sx.js';
-import { COURSE_DATES, NEXT_DATE, PRICE, ROUTES, TYPEFORM_URL, external } from '../site.js';
+import { COURSE_DATES, NEXT_DATE, NEXT_YEAR, PRICE, ROUTES, TYPEFORM_URL, external } from '../site.js';
 import Picture from './Picture.jsx';
 import BookLink from './BookLink.jsx';
 import { Check } from './Icons.jsx';
@@ -24,6 +24,11 @@ const S = {
   histDate: sx('font-size: 15px; line-height: 1.3; font-weight: 500; letter-spacing: -0.01em;'),
   histNote: sx('font-size: 12px; line-height: 1.4; opacity: .7;'),
   histTag: sx('flex: 0 0 auto; font-size: 13px; line-height: 18px; font-weight: 500; padding: 6px 12px; border-radius: 9999px;'),
+  soon: sx('margin: 0 0 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding: 18px 18px 18px 22px; border-radius: 14px; background: var(--cream); color: var(--ink);'),
+  soonText: sx('display: flex; flex-direction: column; gap: 2px;'),
+  soonTitle: sx('font-size: 17px; line-height: 1.3; font-weight: 500; letter-spacing: -0.01em;'),
+  soonSub: sx('font-size: 14px; line-height: 1.45; color: var(--muted);'),
+  soonBtn: sx('display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 9999px; background: var(--ink); color: var(--paper); font-size: 14px; font-weight: 500; text-decoration: none; white-space: nowrap;'),
   photoCard: sx('position: relative; border-radius: 16px; background: var(--ink); color: var(--paper); min-height: clamp(380px, 52vh, 480px); display: flex;'),
   photo: sx('position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 25%; filter: saturate(0.8) contrast(1.05) brightness(0.99) sepia(0.08);'),
   photoShade: sx('position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14,13,11,0.86) 0%, rgba(14,13,11,0.5) 55%, rgba(14,13,11,0.1) 100%);'),
@@ -73,6 +78,13 @@ export default function DatesFee() {
             </li>
           ))}
         </ol>
+        <div className="rv" style={S.soon}>
+          <div style={S.soonText}>
+            <p style={{ ...S.soonTitle, margin: 0 }}>{NEXT_YEAR.title}</p>
+            <p style={{ ...S.soonSub, margin: 0 }}>The {NEXT_YEAR.year} programme is being scheduled. Register your interest to hear first when booking opens.</p>
+          </div>
+          <a className="btn" href={TYPEFORM_URL} {...external} style={S.soonBtn}>{NEXT_YEAR.cta} →</a>
+        </div>
         <div className="book">
           <div className="rv dk zoom" style={S.photoCard}>
             <Picture name="uba-059" alt="Trainees smiling along the barre" sizes="(max-width: 1080px) 100vw, 760px" style={S.photo} />

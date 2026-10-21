@@ -12,6 +12,7 @@ const PHOTOS = [
     chip: sx(`${CHIP} right: -10px; bottom: -14px;`),
     n: '40+',
     l: 'Years teaching',
+    sizes: '(max-width: 760px) calc(100vw - 40px), 34vw',
   },
   {
     name: 'uba-185',
@@ -20,6 +21,7 @@ const PHOTOS = [
     chip: sx(`${CHIP} left: 16px; top: 16px;`),
     n: '8',
     l: 'Method modules',
+    sizes: '(max-width: 760px) calc(50vw - 26px), 40vw',
   },
   {
     name: 'uba-086',
@@ -28,6 +30,7 @@ const PHOTOS = [
     chip: sx(`${CHIP} left: -10px; top: -14px;`),
     n: '01',
     l: 'Founding cohort',
+    sizes: '(max-width: 760px) calc(50vw - 26px), 34vw',
   },
 ];
 
@@ -53,13 +56,13 @@ export default function Maggie() {
             fitness to every module, from alignment and core strength to musicality and confident class delivery.
           </p>
         </div>
-        <div className="mag-photos" style={S.photos} tabIndex={0} role="region" aria-label="Maggie teaching in the studio">
+        <div className="mag-photos" style={S.photos}>
           {PHOTOS.map((p) => (
             <figure key={p.name} className="rv" style={S.figure}>
               <div className="zoom" style={S.zoom}>
-                <Picture name={p.name} alt={p.alt} sizes="(max-width: 760px) 74vw, 34vw" style={p.img} />
+                <Picture name={p.name} alt={p.alt} sizes={p.sizes} style={p.img} />
               </div>
-              <span style={p.chip}>
+              <span className="mag-chip" style={p.chip}>
                 <span style={S.chipN}>{p.n}</span>
                 <span style={S.chipL}>{p.l}</span>
               </span>

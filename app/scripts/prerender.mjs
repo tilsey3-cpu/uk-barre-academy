@@ -2,7 +2,7 @@
 // search engines and link previews. The client bundle then hydrates the page.
 import { readFile, writeFile, rm } from 'node:fs/promises';
 
-const { render, PAGES } = await import('../dist-ssr/entry-server.js');
+const { render, PAGES, homeJsonLd, jsonLdScript, llmsTxt } = await import('../dist-ssr/entry-server.js');
 const manifest = JSON.parse(await readFile('src/media-manifest.json', 'utf8'));
 
 // Vercel preview builds point link previews (og:url, og:image) at the preview itself.
@@ -23,17 +23,30 @@ for (const [page, meta] of Object.entries(PAGES)) {
   const html = template
     .replace('<!--app-html-->', render(page))
     .replace('<!--hero-preload-->', page === 'home' ? heroPreload : '')
+    .replace('<!--json-ld-->', page === 'home' ? jsonLdScript(homeJsonLd()) : '')
     .replaceAll('%PAGE%', page)
     .replaceAll('%TITLE%', attr(meta.title))
     .replaceAll('%DESCRIPTION%', attr(meta.description))
     .replaceAll('%PATH%', meta.path)
     .replaceAll('%SITE_URL%', siteUrl);
 
-  if (/coming soon/i.test(html)) throw new Error(`"coming soon" copy found in ${meta.file}`);
+  // No placeholder "coming soon" copy; the one exception is the announced next-year dates.
+  if (/coming soon/i.test(html.replace(/New \d{4} dates coming soon/g, ''))) throw new Error(`"coming soon" copy found in ${meta.file}`);
   if (/%[A-Z_]+%/.test(html)) throw new Error(`unfilled placeholder in ${meta.file}`);
   await writeFile(`dist/${meta.file}`, html);
   console.log(`Pre-rendered dist/${meta.file} (${Math.round(html.length / 1024)} KB)`);
 }
+
+// Sitemap with the build date, so search engines see when pages changed.
+const today = new Date().toISOString().slice(0, 10);
+const urls = Object.values(PAGES)
+  .map((p) => `  <url><loc>https://ukbarreacademy.com${p.path}</loc><lastmod>${today}</lastmod></url>`)
+  .join('\n');
+await writeFile('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
+
+// Plain-language summary for AI assistants, kept in step with site.js.
+await writeFile('dist/llms.txt', llmsTxt());
+console.log('Wrote dist/sitemap.xml and dist/llms.txt');
 
 await rm('dist-ssr', { recursive: true, force: true });
 console.log(`og:url base: ${siteUrl}`);

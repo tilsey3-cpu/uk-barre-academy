@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { asset } from '../asset.js';
 import { sx } from '../lib/sx.js';
-import { NEXT_DATE, PRICE, SOLD_OUT } from '../site.js';
+import { NEXT_DATE, NEXT_YEAR, PRICE, SOLD_OUT, TYPEFORM_URL, external } from '../site.js';
 import Picture from './Picture.jsx';
 import Header from './Header.jsx';
 import BookLink from './BookLink.jsx';
@@ -14,7 +14,7 @@ const S = {
   main: sx('position: relative; z-index: 2;'),
   h1: sx('margin: 0; max-width: 900px;'),
   lead: sx('margin: 18px 0 0; max-width: 460px; color: rgba(255,255,255,0.9); animation-delay: .65s;'),
-  card: sx('display: block; text-decoration: none; color: var(--paper); padding: 20px; border-radius: 18px; background: var(--warm); border: 1px solid rgba(255,255,255,0.14); animation-delay: .8s;'),
+  card: sx('display: block; text-decoration: none; color: var(--paper); padding: 20px; border-radius: 18px; background: var(--warm); border: 1px solid rgba(255,255,255,0.14);'),
   cardTop: sx('display: flex; justify-content: space-between; align-items: center; gap: 10px;'),
   cardLabel: sx('color: rgba(255,255,255,0.75);'),
   badge: sx('display: inline-flex; align-items: center; gap: 7px; padding: 5px 11px; border-radius: 9999px; background: var(--cream); color: var(--ink); font-size: 13px; line-height: 18px; font-weight: 500;'),
@@ -24,6 +24,11 @@ const S = {
   was: sx('color: rgba(255,255,255,0.5);'),
   now: sx('font-weight: 600; color: var(--paper);'),
   cta: sx('display: flex; justify-content: center; align-items: center; margin-top: 16px; min-height: 44px; border-radius: 9999px; background: var(--paper); color: var(--ink); font-size: 14px; font-weight: 500;'),
+  next: sx('margin-top: 10px; display: flex; flex-direction: column; gap: 14px; padding: 18px 20px 20px; border-radius: 18px; background: var(--warm); border: 1px solid rgba(255,255,255,0.14); color: var(--paper); text-decoration: none;'),
+  nextText: sx('display: flex; flex-direction: column; gap: 2px; min-width: 0;'),
+  nextTitle: sx('font-size: 17px; line-height: 1.25; letter-spacing: -0.01em;'),
+  nextSub: sx('font-size: 13px; line-height: 1.4; color: rgba(255,255,255,0.75);'),
+  nextCta: sx('display: flex; justify-content: center; align-items: center; min-height: 44px; border-radius: 9999px; background: var(--cream); color: var(--ink); font-size: 14px; font-weight: 500;'),
   soldOut: sx('display: block; margin-top: 10px; font-size: 12px; line-height: 16px; color: rgba(255,255,255,0.6); text-align: center;'),
 };
 
@@ -73,7 +78,8 @@ export default function Hero() {
               expert UBA instructor.
             </p>
           </div>
-          <BookLink className="rise btn hero-card" style={S.card}>
+          <div className="rise hero-card" style={{ animationDelay: '.8s' }}>
+          <BookLink className="btn" style={S.card}>
             <span style={S.cardTop}>
               <span className="t-label" style={S.cardLabel}>Next cohort</span>
               <span style={S.badge}><span aria-hidden="true" style={S.dot} />Booking now</span>
@@ -87,6 +93,14 @@ export default function Hero() {
             <span style={S.cta}>Book this date →</span>
             <span style={S.soldOut}><s>{SOLD_OUT.date}</s> · Sold out</span>
           </BookLink>
+          <a className="btn" href={TYPEFORM_URL} {...external} style={S.next}>
+            <span style={S.nextText}>
+              <span style={S.nextTitle}>{NEXT_YEAR.title}</span>
+              <span style={S.nextSub}>Hear first when booking opens</span>
+            </span>
+            <span style={S.nextCta}>{NEXT_YEAR.cta} →</span>
+          </a>
+          </div>
         </div>
       </div>
     </section>

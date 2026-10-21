@@ -132,11 +132,13 @@ img,video{max-width:100%}
   .stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:0}
   .stats>div+div{border-left:0}
   .stats>div:nth-child(n+3){border-top:1px solid rgba(255,255,255,.14)}
-  .mag-photos{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-right:-20px;padding-right:20px;scrollbar-width:none}
-  .mag-photos::-webkit-scrollbar{display:none}
-  .mag-photos>*{flex:0 0 74%;scroll-snap-align:start}
+  /* All three photos in view: Maggie full width, the two studio shots side by side, labels inside the frame */
+  .mag-photos{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:stretch}
+  .mag-photos>:first-child{grid-column:1/-1}
+  .mag-photos img{aspect-ratio:4/5 !important;max-height:none !important}
+  .mag-photos>:first-child img{aspect-ratio:4/3.6 !important}
+  .mag-chip{top:auto !important;right:auto !important;left:10px !important;bottom:10px !important;padding:9px 12px !important}
   .steps{grid-template-columns:1fr;gap:12px}
-  .step-img{display:none}
   .ticks2{grid-template-columns:1fr}
   .prom{grid-template-columns:1fr}
   .bar-l{display:none}.bar-s{display:inline}

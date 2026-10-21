@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { asset } from '../asset.js';
 import { sx } from '../lib/sx.js';
-import { EMAIL, NAV, NEXT_DATE, PRICE } from '../site.js';
+import { EMAIL, NAV, NEXT_DATE, NEXT_YEAR, PRICE, TYPEFORM_URL, external } from '../site.js';
 import BookLink from './BookLink.jsx';
 import { useSite } from './Site.jsx';
 import { Close } from './Icons.jsx';
@@ -19,6 +19,7 @@ const S = {
   link: sx('text-decoration: none; font-size: 34px; line-height: 1.25; letter-spacing: -0.03em; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.1);'),
   foot: sx('padding-bottom: 28px; display: flex; flex-direction: column; gap: 14px;'),
   book: sx('display: flex; justify-content: center; align-items: center; min-height: 52px; border-radius: 9999px; background: var(--cream); color: var(--ink); font-size: 15px; font-weight: 500; text-decoration: none;'),
+  soon: sx('display: flex; justify-content: center; align-items: center; min-height: 48px; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.4); color: var(--paper); font-size: 15px; font-weight: 500; text-decoration: none;'),
   contact: sx('color: rgba(255,255,255,0.6); text-align: center;'),
 };
 
@@ -65,6 +66,7 @@ export default function MobileMenu() {
             </nav>
             <div className="w" style={S.foot}>
               <BookLink style={S.book}>Book {NEXT_DATE.shortMonth} · {PRICE.now} →</BookLink>
+              <a href={TYPEFORM_URL} {...external} style={S.soon}>{NEXT_YEAR.year} dates · {NEXT_YEAR.cta}</a>
               <span className="t-small" style={S.contact}>{EMAIL} · @ukbarreacademy</span>
             </div>
           </Dialog.Content>

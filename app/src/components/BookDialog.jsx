@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { sx } from '../lib/sx.js';
-import { EMAIL, NEXT_DATE, PRICE, ROUTES, STRIPE_URL, external } from '../site.js';
+import { EMAIL, NEXT_DATE, NEXT_YEAR, PRICE, ROUTES, STRIPE_URL, TYPEFORM_URL, external } from '../site.js';
 import { Close, Lock } from './Icons.jsx';
 
 const S = {
@@ -16,7 +16,8 @@ const S = {
   box: sx('flex: 0 0 auto; width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--ink);'),
   link: sx('color: var(--ink);'),
   pay: sx('margin-top: 20px; display: flex; justify-content: center; align-items: center; gap: 10px; min-height: 52px; border-radius: 9999px; background: var(--ink); color: var(--paper); font-size: 15px; font-weight: 500; text-decoration: none; transition: opacity .2s ease;'),
-  note: sx('margin: 12px 0 0; font-size: 12px; line-height: 1.5; color: var(--muted); text-align: center;'),
+  note: sx('margin: 12px 0 0; font-size: 13px; line-height: 1.5; color: var(--muted); text-align: center;'),
+  later: sx('margin: 20px 0 0; font-size: 14px; line-height: 1.5; color: var(--muted); text-align: center;'),
 };
 
 // CIMSPA requires customers to accept the terms before paying, so every Book button lands here first.
@@ -98,6 +99,10 @@ export default function BookDialog({ open, onOpenChange, opener }) {
             </a>
             <p style={S.note}>
               Payment is taken securely by Stripe. Questions? <a href={`mailto:${EMAIL}`} style={S.link}>{EMAIL}</a>
+            </p>
+            <p style={S.later}>
+              Can’t make this date? {NEXT_YEAR.title}.{' '}
+              <a href={TYPEFORM_URL} {...external} style={S.link}>{NEXT_YEAR.cta}</a>
             </p>
           </Dialog.Content>
         </Dialog.Overlay>

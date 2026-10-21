@@ -60,7 +60,7 @@ export default function HowItWorks() {
               </span>
               <span className="t-small" style={S.desc}>{s.desc}</span>
               <span className="step-img zoom" style={S.imgWrap}>
-                <Picture name={s.img} alt={s.alt} sizes="(max-width: 1080px) 33vw, 400px" style={{ ...IMG, objectPosition: s.pos }} />
+                <Picture name={s.img} alt={s.alt} sizes="(max-width: 760px) calc(100vw - 84px), (max-width: 1080px) 33vw, 400px" style={{ ...IMG, objectPosition: s.pos }} />
               </span>
             </li>
           ))}

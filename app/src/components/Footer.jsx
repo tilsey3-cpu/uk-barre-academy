@@ -1,6 +1,6 @@
 import { asset } from '../asset.js';
 import { sx } from '../lib/sx.js';
-import { EMAIL, INSTAGRAM_URL, NAV, NEXT_DATE, ROUTES, SOLD_OUT, external } from '../site.js';
+import { EMAIL, INSTAGRAM_URL, NAV, NEXT_DATE, NEXT_YEAR, ROUTES, SOLD_OUT, TYPEFORM_URL, external } from '../site.js';
 import { useSite } from './Site.jsx';
 import { Instagram } from './Icons.jsx';
 
@@ -56,6 +56,9 @@ export default function Footer() {
           <div className="t-small">
             <p className="t-label" style={S.label}>Contact</p>
             <p style={{ margin: 0 }}><a className="ul" href={`mailto:${EMAIL}`} style={S.link}>{EMAIL}</a></p>
+            <p style={{ margin: '12px 0 0' }}>
+              <a href={TYPEFORM_URL} {...external} style={S.link}>Register for {NEXT_YEAR.year} dates →</a>
+            </p>
             <a className="btn" href={INSTAGRAM_URL} {...external} style={S.insta}><Instagram />@ukbarreacademy</a>
           </div>
         </div>

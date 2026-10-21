@@ -1,5 +1,5 @@
 import { sx } from '../lib/sx.js';
-import { NEXT_DATE, PRICE } from '../site.js';
+import { NEXT_DATE, NEXT_YEAR, PRICE, TYPEFORM_URL, external } from '../site.js';
 import Picture from './Picture.jsx';
 import BookLink from './BookLink.jsx';
 
@@ -12,6 +12,8 @@ const S = {
   side: sx('display: flex; flex-direction: column; gap: 14px; max-width: 320px;'),
   body: sx('margin: 0; color: rgba(255,255,255,0.85);'),
   book: sx('align-self: flex-start; display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 9999px; background: var(--paper); color: var(--ink); font-size: 14px; font-weight: 500; text-decoration: none;'),
+  soon: sx('margin: 4px 0 0; font-size: 14px; line-height: 1.5; color: rgba(255,255,255,0.85);'),
+  soonLink: sx('color: var(--paper); text-underline-offset: 4px;'),
 };
 
 export default function Cta() {
@@ -28,6 +30,9 @@ export default function Cta() {
             {NEXT_DATE.medium} · {NEXT_DATE.venue}, {NEXT_DATE.area}. Complete your booking securely online.
           </p>
           <BookLink style={S.book}>Secure your place · {PRICE.now} →</BookLink>
+          <p style={S.soon}>
+            {NEXT_YEAR.title}. <a href={TYPEFORM_URL} {...external} style={S.soonLink}>{NEXT_YEAR.cta}</a>
+          </p>
         </div>
       </div>
     </section>

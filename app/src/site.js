@@ -14,7 +14,13 @@ export const NEXT_DATE = {
   area: 'Finsbury Park',
   postcode: 'N4 3JP',
   time: '9:30am–6:30pm',
+  // Machine-readable start and end, for search engines (UK time; December is GMT).
+  startISO: '2026-12-05T09:30:00+00:00',
+  endISO: '2026-12-05T18:30:00+00:00',
 };
+
+// The next year's programme, announced but not yet bookable: every mention links to the interest form.
+export const NEXT_YEAR = { year: '2027', title: 'New 2027 dates coming soon', cta: 'Register your interest' };
 
 export const SOLD_OUT = { date: 'Sunday 25 October', venue: 'City Academy', area: 'Clerkenwell', postcode: 'EC1R 5EG' };
 
@@ -25,7 +31,19 @@ export const COURSE_DATES = [
   { date: NEXT_DATE.long, note: `${NEXT_DATE.venue}, ${NEXT_DATE.area}`, open: true },
 ];
 
-export const PRICE = { now: '£250', was: '£500' };
+export const PRICE = { now: '£250', was: '£500', amount: 250, currency: 'GBP' };
+
+// The eight modules of the training day, in teaching order.
+export const MODULES = [
+  'Foundations, Warm-Up and Alignment',
+  'Pilates Core Foundation',
+  'Feet, Ankles, Knees and Hips',
+  'Classical Barre Technique',
+  'Barre Flow, Choreography and Cardio Conditioning',
+  'Upper Body Strength and Arm Definition',
+  'Leg Strength and Barre Conditioning',
+  'Barre Stretch, Mobility and Recovery',
+];
 
 // Page routes. Relative, so they work at the domain root and in local previews.
 export const ROUTES = {

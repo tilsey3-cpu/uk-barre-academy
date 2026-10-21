@@ -1,5 +1,5 @@
 import { sx } from '../lib/sx.js';
-import { NEXT_DATE } from '../site.js';
+import { MODULES, NEXT_DATE } from '../site.js';
 import { Clock } from './Icons.jsx';
 
 const COMBINES = [
@@ -11,17 +11,6 @@ const COMBINES = [
   'Musicality, cueing and class structure',
   'Adaptations for different abilities',
   'Safe and effective teaching practice',
-];
-
-const MODULES = [
-  'Foundations, Warm-Up and Alignment',
-  'Pilates Core Foundation',
-  'Feet, Ankles, Knees and Hips',
-  'Classical Barre Technique',
-  'Barre Flow, Choreography and Cardio Conditioning',
-  'Upper Body Strength and Arm Definition',
-  'Leg Strength and Barre Conditioning',
-  'Barre Stretch, Mobility and Recovery',
 ];
 
 const S = {
