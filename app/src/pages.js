@@ -7,8 +7,8 @@ export const PAGES = {
     file: 'index.html',
     path: '/',
     // Google shows about 60 characters of a title and 155 of a description.
-    title: 'Barre Instructor Certification, London | UK Barre Academy',
-    description: `One-day, CPD-accredited Barre instructor certification in London with Maggie Paterson. Next cohort ${NEXT_DATE.dayMonth}, ${PRICE.now}. ${NEXT_YEAR.title}.`,
+    title: 'UK Barre Academy | Barre Instructor Certification, London',
+    description: `One-day, CPD-accredited Barre instructor certification in London with Maggie Paterson. Next cohort ${NEXT_DATE.dayMonth}, ${PRICE.now}. Register your interest in ${NEXT_YEAR.year} dates.`,
   },
   ...Object.fromEntries(
     POLICY_ORDER.map((slug) => [
