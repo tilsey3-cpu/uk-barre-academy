@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { asset } from '../asset.js';
 import { sx } from '../lib/sx.js';
 import { NAV, NEXT_DATE, ROUTES } from '../site.js';
@@ -17,10 +18,32 @@ const S = {
   menuBtn: sx('width: 44px; height: 44px; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.55); background: transparent; color: var(--paper); display: flex; align-items: center; justify-content: center; cursor: pointer;'),
 };
 
-export default function Header() {
+// On the homepage the header is `floating`: fixed to the top, clear over the hero photo, a solid bar once the
+// page scrolls, and out of the way while the promo film fills the screen. Policy pages use the sticky .ph wrapper.
+export default function Header({ floating = false, filmFullRef, updateRef }) {
   const { home, setMenuOpen } = useSite();
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (!floating) return undefined;
+    const el = ref.current;
+    const update = () => {
+      const hide = !!filmFullRef?.current;
+      el.dataset.solid = scrollY > 24 ? 'true' : 'false';
+      el.dataset.hidden = hide ? 'true' : 'false';
+      el.inert = hide;
+    };
+    if (updateRef) updateRef.current = update;
+    addEventListener('scroll', update, { passive: true });
+    update();
+    return () => {
+      removeEventListener('scroll', update);
+      if (updateRef) updateRef.current = null;
+    };
+  }, [floating, filmFullRef, updateRef]);
+
   return (
-    <header style={S.header}>
+    <header ref={ref} className={floating ? 'topbar dk' : undefined} style={floating ? undefined : S.header}>
       <div className="w wide" style={S.row}>
         <a href={home ? ROUTES.home : '#top'} style={S.logoLink}>
           <img src={asset('media/uba-logo-white.png')} alt="UK Barre Academy" width="116" height="38" style={S.logo} />

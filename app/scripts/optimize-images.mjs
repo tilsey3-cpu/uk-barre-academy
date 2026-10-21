@@ -8,6 +8,7 @@ import path from 'node:path';
 const SRC = 'public/media';
 const OUT = 'public/media/opt';
 const STEPS = [480, 800, 1200, 1600, 1920];
+const MAX = 2400; // largest variant: the original's full width, up to this cap (sharp on retina screens)
 
 const exists = (p) => access(p).then(() => true, () => false);
 
@@ -19,14 +20,14 @@ for (const file of files) {
   const name = file.replace(/\.jpg$/, '');
   const input = path.join(SRC, file);
   const { width, height } = await sharp(input).metadata();
-  const max = Math.min(width, 1920);
+  const max = Math.min(width, MAX);
   const widths = STEPS.filter((w) => w < max).concat(max);
 
   for (const w of widths) {
     const avif = path.join(OUT, `${name}-${w}.avif`);
     const webp = path.join(OUT, `${name}-${w}.webp`);
-    if (!(await exists(avif))) await sharp(input).resize({ width: w }).avif({ quality: 50, effort: 5 }).toFile(avif);
-    if (!(await exists(webp))) await sharp(input).resize({ width: w }).webp({ quality: 72 }).toFile(webp);
+    if (!(await exists(avif))) await sharp(input).resize({ width: w }).avif({ quality: 62, effort: 6 }).toFile(avif);
+    if (!(await exists(webp))) await sharp(input).resize({ width: w }).webp({ quality: 80 }).toFile(webp);
   }
   manifest[name] = { width, height, widths };
   console.log(`${name}: ${widths.join(', ')}`);

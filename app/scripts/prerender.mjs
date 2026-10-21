@@ -39,10 +39,12 @@ for (const [page, meta] of Object.entries(PAGES)) {
 
 // Sitemap with the build date, so search engines see when pages changed.
 const today = new Date().toISOString().slice(0, 10);
-const urls = Object.values(PAGES)
-  .map((p) => `  <url><loc>https://ukbarreacademy.com${p.path}</loc><lastmod>${today}</lastmod></url>`)
+// The homepage entry lists its photographs (full-size originals) so they can appear in image search.
+const photos = Object.keys(manifest).map((n) => `    <image:image><image:loc>https://ukbarreacademy.com/media/${n}.jpg</image:loc></image:image>`).join('\n');
+const urls = Object.entries(PAGES)
+  .map(([page, p]) => `  <url><loc>https://ukbarreacademy.com${p.path}</loc><lastmod>${today}</lastmod>${page === 'home' ? `\n${photos}\n  ` : ''}</url>`)
   .join('\n');
-await writeFile('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
+await writeFile('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n</urlset>\n`);
 
 // Plain-language summary for AI assistants, kept in step with site.js.
 await writeFile('dist/llms.txt', llmsTxt());

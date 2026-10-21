@@ -1,5 +1,6 @@
 import { useCallback, useRef } from 'react';
 import { SiteProvider } from './Site.jsx';
+import Header from './Header.jsx';
 import Hero from './Hero.jsx';
 import Film from './Film.jsx';
 import Invitation from './Invitation.jsx';
@@ -17,11 +18,16 @@ import BookingBar from './BookingBar.jsx';
 export default function HomePage() {
   const filmFullRef = useRef(false);
   const barUpdateRef = useRef(null);
-  const onFilmUpdate = useCallback(() => barUpdateRef.current?.(), []);
+  const headUpdateRef = useRef(null);
+  const onFilmUpdate = useCallback(() => {
+    barUpdateRef.current?.();
+    headUpdateRef.current?.();
+  }, []);
 
   return (
     <SiteProvider home="">
       <div id="top" className="u site">
+        <Header floating filmFullRef={filmFullRef} updateRef={headUpdateRef} />
         <main id="main">
           <Hero />
           <Film filmFullRef={filmFullRef} onUpdate={onFilmUpdate} />

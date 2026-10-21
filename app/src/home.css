@@ -173,6 +173,15 @@ img,video{max-width:100%}
 .t-stat,.hist,.mods,[data-bar],s{font-variant-numeric:tabular-nums}
 .u > footer a{display:inline-block;padding-top:4px;padding-bottom:4px}
 
+/* ---------- floating header (homepage) ---------- */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:45;color:var(--paper);background:transparent;transition:background-color .3s ease,transform .45s var(--ease)}
+.topbar[data-solid="true"]{background:var(--ink)}
+.topbar[data-hidden="true"]{transform:translate3d(0,-100%,0)}
+html:has(.topbar){scroll-padding-top:80px}
+
+/* Short intros set one sentence per line on wider screens */
+@media (min-width:761px){.line{display:block;white-space:nowrap}}
+
 /* ---------- FAQ ---------- */
 .faq{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:start}
 .faq-side{position:sticky;top:110px}

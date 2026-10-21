@@ -3,7 +3,6 @@ import { asset } from '../asset.js';
 import { sx } from '../lib/sx.js';
 import { NEXT_DATE, NEXT_YEAR, PRICE, SOLD_OUT, TYPEFORM_URL, external } from '../site.js';
 import Picture from './Picture.jsx';
-import Header from './Header.jsx';
 import BookLink from './BookLink.jsx';
 
 const S = {
@@ -64,7 +63,8 @@ export default function Hero() {
       <div style={S.shade2} />
       <div style={S.shade3} />
 
-      <Header />
+      {/* Room for the fixed header, which HomePage renders once. */}
+      <div aria-hidden="true" style={{ height: 80, flex: '0 0 auto' }} />
 
       <div className="w wide hero-main" style={S.main}>
         <div className="hero-foot">

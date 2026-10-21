@@ -15,7 +15,7 @@ const FEE_INCLUDES = [
 const S = {
   section: sx('background: var(--paper);'),
   head: sx('margin-bottom: clamp(28px, 5vh, 44px);'),
-  intro: sx('margin: 0; max-width: 360px; color: var(--muted);'),
+  intro: sx('margin: 0; color: var(--muted);'),
   hist: sx('margin: 0 0 16px; padding: 0; list-style: none;'),
   histRow: sx('display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; border-radius: 14px;'),
   histPast: sx('background: var(--cream); color: var(--ink);'),
@@ -64,7 +64,8 @@ export default function DatesFee() {
             <h2 className="rv t-h2" style={{ margin: 0 }}>Dates &amp; fee</h2>
           </div>
           <p className="rv t-body" style={S.intro}>
-            One day of attendance, limited to 6–10 places per cohort. Full arrival details are shared ahead of your session.
+            <span className="line">One day of attendance, limited to 6–10 places per cohort.</span>{' '}
+            <span className="line">Full arrival details are shared ahead of your session.</span>
           </p>
         </div>
         <ol className="hist rv" aria-label="Course dates" style={S.hist}>
