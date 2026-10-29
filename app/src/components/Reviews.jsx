@@ -14,17 +14,17 @@ const byTitle = (title) => TESTIMONIALS.find((t) => t.title === title);
 // One half of each drifting row, in the reference's order. Each row renders its half twice,
 // identically, so the -50% loop is seamless.
 const ROW1 = [
-  { photo: 'uba-cohort-oct', alt: 'Our latest cohort celebrating outside the studio', pos: '50% 40%', rot: 2 },
+  { photo: 'uk-barre-academy-cohort-celebrating-london', alt: 'Our latest cohort celebrating outside the studio', pos: '50% 40%', rot: 2 },
   { review: 'Well-balanced training', tone: 'cream', rot: -2.5 },
   { review: 'A clear, structured approach', tone: 'dark', rot: 1.8 },
-  { photo: 'uba-studio-founding-2', alt: 'Two trainees holding standing splits at the barre', pos: '35% 45%', rot: -1.6 },
+  { photo: 'barre-instructor-training-standing-splits', alt: 'Two trainees holding standing splits at the barre', pos: '35% 45%', rot: -1.6 },
   { review: 'Music that motivates', tone: 'white', rot: -1.2 },
-  { photo: 'uba-cohort-group-graded', alt: 'Our first cohort celebrating together', pos: '50% 35%', rot: 1.4 },
+  { photo: 'uk-barre-academy-founding-cohort-group', alt: 'Our first cohort celebrating together', pos: '50% 35%', rot: 1.4 },
   { review: 'The value of a small group', tone: 'cream', rot: 2.6 },
   { review: 'Exceeded my expectations', tone: 'dark', rot: -1.8 },
-  { photo: 'uba-studio-founding-1', alt: 'Trainees in a wide second position along the barre', pos: '55% 45%', rot: -2.2 },
+  { photo: 'barre-instructor-training-plie-at-the-barre', alt: 'Trainees in a wide second position along the barre', pos: '55% 45%', rot: -2.2 },
   { review: 'Practical, module by module', tone: 'white', rot: -2.5 },
-  { photo: 'uba-studio-certification-1', alt: 'Trainees facing the mirror at the barre', pos: '50% 55%', rot: 1.8 },
+  { photo: 'barre-certification-training-mirror-studio', alt: 'Trainees facing the mirror at the barre', pos: '50% 55%', rot: 1.8 },
 ];
 const ROW2_TONE = ['dark', 'cream', 'white'];
 const ROW2_ROT = [-1.2, 2.6, -1.8, -2.5, 1.8, -1.2, 2.6, -1.8, -2.5, 1.8, -1.2, 2.6];

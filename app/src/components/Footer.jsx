@@ -1,6 +1,6 @@
 import { asset } from '../asset.js';
 import { sx } from '../lib/sx.js';
-import { EMAIL, INSTAGRAM_URL, NAV, NEXT_DATE, NEXT_YEAR, ROUTES, SOLD_OUT, TYPEFORM_URL, external } from '../site.js';
+import { ACCREDITATION, EMAIL, INSTAGRAM_URL, NAV, NEXT_DATE, NEXT_YEAR, PAST_VENUE, ROUTES, TYPEFORM_URL, external } from '../site.js';
 import { useSite } from './Site.jsx';
 import { Instagram } from './Icons.jsx';
 
@@ -8,6 +8,7 @@ const S = {
   footer: sx('background: var(--ink); color: var(--paper);'),
   inner: sx('padding-top: 64px; padding-bottom: 28px;'),
   logo: sx('height: 42px; width: auto; display: block;'),
+  cimspa: sx('display: block; margin-top: 20px; height: 40px; width: auto;'),
   about: sx('margin: 20px 0 0; max-width: 320px; color: rgba(255,255,255,0.65);'),
   label: sx('margin: 0 0 14px; color: var(--quiet);'),
   list: sx('margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px;'),
@@ -27,9 +28,16 @@ export default function Footer() {
           <div>
             <img src={asset('media/uba-logo-white.png')} alt="UK Barre Academy" width="128" height="42" style={S.logo} loading="lazy" />
             <p className="t-small" style={S.about}>
-              A new standard for Barre education. Independently CPD accredited instructor training, founded by Maggie
-              Paterson.
+              A new standard for Barre education, founded by Maggie Paterson. {ACCREDITATION}
             </p>
+            <img
+              src={asset('media/accreditation/cimspa-education-partner-white.png')}
+              alt="CIMSPA Education Partner"
+              width="553"
+              height="160"
+              loading="lazy"
+              style={S.cimspa}
+            />
           </div>
           <nav aria-label="Footer" className="t-small">
             <p className="t-label" style={S.label}>Explore</p>
@@ -48,9 +56,9 @@ export default function Footer() {
               <span style={S.dim}>{NEXT_DATE.area}, {NEXT_DATE.postcode}</span>
             </p>
             <p style={{ margin: '12px 0 0' }}>
-              {SOLD_OUT.venue}
+              {PAST_VENUE.venue}
               <br />
-              <span style={S.dim}>{SOLD_OUT.area}, {SOLD_OUT.postcode}</span>
+              <span style={S.dim}>{PAST_VENUE.area}, {PAST_VENUE.postcode}</span>
             </p>
           </div>
           <div className="t-small">

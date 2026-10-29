@@ -19,7 +19,7 @@ const S = {
 export default function Cta() {
   return (
     <section className="dk" style={S.section}>
-      <Picture name="uba-151" alt="The cohort in arabesque along the barre, arms lifted" sizes="100vw" style={S.photo} />
+      <Picture name="barre-instructor-training-arabesque-at-the-barre" alt="The cohort in arabesque along the barre, arms lifted" sizes="100vw" style={S.photo} />
       <div style={S.shade} />
       <div className="w split" style={S.inner}>
         <div style={{ maxWidth: 760 }}>

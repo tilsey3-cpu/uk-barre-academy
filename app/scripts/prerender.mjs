@@ -13,7 +13,7 @@ const siteUrl =
 
 const attr = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
-const poster = 'uba-hero-poster-1080';
+const poster = 'uk-barre-academy-barre-instructor-training-london';
 const posterSet = manifest[poster].widths.map((w) => `./media/opt/${poster}-${w}.avif ${w}w`).join(', ');
 const heroPreload = `<link rel="preload" as="image" type="image/avif" imagesrcset="${posterSet}" imagesizes="(max-width: 760px) 200vw, 100vw" fetchpriority="high">`;
 

@@ -6,7 +6,7 @@ const CHIP = 'position: absolute; padding: 12px 16px; border-radius: 12px; backg
 
 const PHOTOS = [
   {
-    name: 'uba-006',
+    name: 'maggie-paterson-barre-teacher-port-de-bras',
     alt: 'Maggie Paterson demonstrating a port de bras',
     img: sx(`display: block; width: 100%; aspect-ratio: 4 / 4.4; max-height: 340px; object-fit: cover; object-position: 52% 18%; ${GRADE}`),
     chip: sx(`${CHIP} right: -10px; bottom: -14px;`),
@@ -15,7 +15,7 @@ const PHOTOS = [
     sizes: '(max-width: 760px) calc(100vw - 40px), 34vw',
   },
   {
-    name: 'uba-185',
+    name: 'barre-instructor-certification-cohort-at-the-barre',
     alt: 'The cohort lined up at the barre, arms lifted',
     img: sx(`display: block; width: 100%; aspect-ratio: 4 / 3.6; max-height: 400px; object-fit: cover; object-position: 55% 30%; ${GRADE}`),
     chip: sx(`${CHIP} left: 16px; top: 16px;`),
@@ -24,7 +24,7 @@ const PHOTOS = [
     sizes: '(max-width: 760px) calc(50vw - 26px), 40vw',
   },
   {
-    name: 'uba-086',
+    name: 'maggie-paterson-correcting-barre-position',
     alt: 'Maggie correcting a trainee’s position at the barre',
     img: sx(`display: block; width: 100%; aspect-ratio: 4 / 4.4; max-height: 340px; object-fit: cover; object-position: 50% 28%; ${GRADE}`),
     chip: sx(`${CHIP} left: -10px; top: -14px;`),

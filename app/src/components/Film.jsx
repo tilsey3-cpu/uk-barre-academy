@@ -156,7 +156,7 @@ export default function Film({ filmFullRef, onUpdate }) {
   return (
     <section id="film" ref={sectionRef} className="film dk" style={S.section}>
       <div className="film-stick">
-        <Picture name="uba-promo-poster" alt="" sizes="480px" className="film-bg" style={S.bg} />
+        <Picture name="uk-barre-academy-instructor-training-film" alt="" sizes="480px" className="film-bg" style={S.bg} />
         <div className="w wide film-grid" style={S.grid}>
           <div className="film-l">
             <h2 style={S.h2}>UK Barre Academy, in two minutes.</h2>
@@ -165,11 +165,11 @@ export default function Film({ filmFullRef, onUpdate }) {
             </p>
           </div>
           <div className="film-frame">
-            <Picture name="uba-promo-poster" alt="" sizes="480px" className="film-fill" />
+            <Picture name="uk-barre-academy-instructor-training-film" alt="" sizes="480px" className="film-fill" />
             <video
               ref={videoRef}
               src={asset('media/uba-promo.mp4')}
-              poster={asset('media/uba-promo-poster.jpg')}
+              poster={asset('media/uk-barre-academy-instructor-training-film.jpg')}
               muted
               loop
               playsInline

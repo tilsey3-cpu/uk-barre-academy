@@ -1,4 +1,6 @@
+import { asset } from '../asset.js';
 import { sx } from '../lib/sx.js';
+import { ACCREDITATION } from '../site.js';
 import { Award, Check } from './Icons.jsx';
 
 const SUITABLE = [
@@ -47,6 +49,10 @@ const S = {
   dark: sx('border-radius: 16px; background: var(--warm); color: var(--paper); padding: clamp(22px, 2.4vw, 32px); display: flex; flex-direction: column; gap: 18px;'),
   darkHead: sx('display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px;'),
   cpd: sx('display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 9999px; background: linear-gradient(135deg, #f5e5a8 0%, var(--gold) 30%, var(--gold-deep) 55%, var(--gold) 85%); color: var(--paper); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-shadow: 0 1px 2px rgba(120,80,0,0.4);'),
+  accr: sx('margin-top: 16px; border-radius: 16px; background: var(--cream); padding: clamp(20px, 2.4vw, 28px) clamp(22px, 2.4vw, 32px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 40px;'),
+  accrText: sx('margin: 0; max-width: 560px; color: var(--ink); text-wrap: balance;'),
+  marks: sx('display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px;'),
+  cimspa: sx('display: block; height: 48px; width: auto;'),
   promise: sx('padding: 16px; border-radius: 12px; background: rgba(255,255,255,0.06);'),
   promiseT: sx('margin: 0 0 6px; font-size: 15px; font-weight: 600;'),
   promiseB: sx('margin: 0; font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.68);'),
@@ -95,6 +101,21 @@ export default function WhoReceive() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+        {/* Organisation-level accreditation, kept apart from the course details: the course itself is not yet CIMSPA-endorsed */}
+        <div className="rv accr" style={S.accr}>
+          <p className="t-lead" style={S.accrText}>{ACCREDITATION}</p>
+          <div style={S.marks}>
+            <img
+              src={asset('media/accreditation/cimspa-education-partner.png')}
+              alt="CIMSPA Education Partner"
+              width="553"
+              height="160"
+              loading="lazy"
+              style={S.cimspa}
+            />
+            <span style={S.cpd}><Award />CPD accredited</span>
           </div>
         </div>
       </div>

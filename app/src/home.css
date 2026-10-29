@@ -50,6 +50,7 @@ img,video{max-width:100%}
 .prom{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .hist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .book{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:16px}
+.done{margin-top:16px;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:16px}
 .foot{display:grid;grid-template-columns:1.5fr repeat(3,minmax(0,1fr));gap:40px}
 .split{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px}
 .bar-l{display:inline}.bar-s{display:none}
@@ -128,6 +129,7 @@ img,video{max-width:100%}
   .cur{grid-template-columns:1fr;gap:36px}
   .boxes{grid-template-columns:1fr}
   .book{grid-template-columns:1fr}
+  .done{grid-template-columns:1fr}
   .hist{grid-template-columns:1fr}
   .foot{grid-template-columns:repeat(2,minmax(0,1fr))}
   .foot>:first-child{grid-column:1/-1}

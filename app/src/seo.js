@@ -36,14 +36,15 @@ export function homeJsonLd() {
         sameAs: [INSTAGRAM_URL],
         founder: { '@id': FOUNDER_ID },
         areaServed: 'GB',
-        description: 'Independently CPD-accredited Barre instructor training in London, founded by Maggie Paterson.',
+        // Organisation-level only: UBA is a CIMSPA Education Partner; the course is not (yet) CIMSPA-endorsed.
+        description: 'Barre instructor training in London, founded by Maggie Paterson. A CIMSPA Education Partner and CPD-accredited training provider.',
       },
       {
         '@type': 'Person',
         '@id': FOUNDER_ID,
         name: 'Maggie Paterson',
         jobTitle: 'Founder',
-        image: `${SITE_URL}/media/uba-006.jpg`,
+        image: `${SITE_URL}/media/maggie-paterson-barre-teacher-port-de-bras.jpg`,
         worksFor: { '@id': ORG_ID },
         description: 'Founder of UK Barre Academy, with over 40 years of experience across ballet, dance, Pilates, yoga and fitness.',
       },
@@ -59,7 +60,7 @@ export function homeJsonLd() {
         '@type': 'Course',
         '@id': `${SITE_URL}/#founding-instructor-course`,
         name: 'Founding Instructor Course',
-        image: [`${SITE_URL}/media/uba-hero-poster-1080.jpg`, `${SITE_URL}/media/uba-185.jpg`, `${SITE_URL}/media/uba-151.jpg`],
+        image: [`${SITE_URL}/media/uk-barre-academy-barre-instructor-training-london.jpg`, `${SITE_URL}/media/barre-instructor-certification-cohort-at-the-barre.jpg`, `${SITE_URL}/media/barre-instructor-training-arabesque-at-the-barre.jpg`],
         description: COURSE_DESCRIPTION,
         provider: { '@id': ORG_ID },
         inLanguage: 'en-GB',
@@ -103,7 +104,7 @@ export const jsonLdScript = (data) =>
 export function llmsTxt() {
   return `# UK Barre Academy
 
-> UK Barre Academy (UBA) certifies Barre instructors in the UK. Its Founding Instructor Course is a one-day, independently CPD-accredited certification in London for qualified movement professionals, founded by Maggie Paterson (over 40 years of teaching across ballet, dance, Pilates, yoga and fitness).
+> UK Barre Academy (UBA) certifies Barre instructors in the UK. Its Founding Instructor Course is a one-day, independently CPD-accredited certification in London for qualified movement professionals, founded by Maggie Paterson (over 40 years of teaching across ballet, dance, Pilates, yoga and fitness). UK Barre Academy is a CIMSPA Education Partner and a CPD-accredited training provider (CPD accreditation by The CPD Standards Office).
 
 ## The course
 

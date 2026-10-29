@@ -1,17 +1,15 @@
 {
-  "uba-006": {
-    "width": 2200,
-    "height": 1467,
+  "barre-certification-training-mirror-studio": {
+    "width": 1590,
+    "height": 989,
     "widths": [
       480,
       800,
       1200,
-      1600,
-      1920,
-      2200
+      1590
     ]
   },
-  "uba-059": {
+  "barre-instructor-certification-cohort-at-the-barre": {
     "width": 1333,
     "height": 2000,
     "widths": [
@@ -21,7 +19,7 @@
       1333
     ]
   },
-  "uba-060": {
+  "barre-instructor-course-trainees-at-the-barre": {
     "width": 1333,
     "height": 2000,
     "widths": [
@@ -31,7 +29,7 @@
       1333
     ]
   },
-  "uba-063": {
+  "barre-instructor-trainee-london-studio": {
     "width": 1333,
     "height": 2000,
     "widths": [
@@ -41,27 +39,7 @@
       1333
     ]
   },
-  "uba-086": {
-    "width": 1467,
-    "height": 2200,
-    "widths": [
-      480,
-      800,
-      1200,
-      1467
-    ]
-  },
-  "uba-104": {
-    "width": 1333,
-    "height": 2000,
-    "widths": [
-      480,
-      800,
-      1200,
-      1333
-    ]
-  },
-  "uba-151": {
+  "barre-instructor-training-arabesque-at-the-barre": {
     "width": 2000,
     "height": 1333,
     "widths": [
@@ -73,7 +51,7 @@
       2000
     ]
   },
-  "uba-185": {
+  "barre-instructor-training-london-trainees": {
     "width": 1333,
     "height": 2000,
     "widths": [
@@ -83,19 +61,71 @@
       1333
     ]
   },
-  "uba-cohort-group-graded": {
-    "width": 2000,
-    "height": 1500,
+  "barre-instructor-training-plie-at-the-barre": {
+    "width": 1648,
+    "height": 954,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1648
+    ]
+  },
+  "barre-instructor-training-standing-splits": {
+    "width": 1290,
+    "height": 1219,
+    "widths": [
+      480,
+      800,
+      1200,
+      1290
+    ]
+  },
+  "barre-instructor-training-studio-sequence": {
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1333
+    ]
+  },
+  "maggie-paterson-barre-teacher-port-de-bras": {
+    "width": 2200,
+    "height": 1467,
     "widths": [
       480,
       800,
       1200,
       1600,
       1920,
-      2000
+      2200
     ]
   },
-  "uba-cohort-oct": {
+  "maggie-paterson-correcting-barre-position": {
+    "width": 1467,
+    "height": 2200,
+    "widths": [
+      480,
+      800,
+      1200,
+      1467
+    ]
+  },
+  "uk-barre-academy-barre-instructor-training-london": {
+    "width": 1920,
+    "height": 1080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1920
+    ]
+  },
+  "uk-barre-academy-cohort-celebrating-london": {
     "width": 2000,
     "height": 1334,
     "widths": [
@@ -107,54 +137,36 @@
       2000
     ]
   },
-  "uba-hero-poster-1080": {
-    "width": 1920,
-    "height": 1080,
+  "uk-barre-academy-founding-cohort-group": {
+    "width": 2000,
+    "height": 1500,
     "widths": [
       480,
       800,
       1200,
       1600,
-      1920
+      1920,
+      2000
     ]
   },
-  "uba-promo-poster": {
+  "uk-barre-academy-founding-instructors-course-completed": {
+    "width": 2400,
+    "height": 1600,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1920,
+      2400
+    ]
+  },
+  "uk-barre-academy-instructor-training-film": {
     "width": 720,
     "height": 900,
     "widths": [
       480,
       720
-    ]
-  },
-  "uba-studio-certification-1": {
-    "width": 1590,
-    "height": 989,
-    "widths": [
-      480,
-      800,
-      1200,
-      1590
-    ]
-  },
-  "uba-studio-founding-1": {
-    "width": 1648,
-    "height": 954,
-    "widths": [
-      480,
-      800,
-      1200,
-      1600,
-      1648
-    ]
-  },
-  "uba-studio-founding-2": {
-    "width": 1290,
-    "height": 1219,
-    "widths": [
-      480,
-      800,
-      1200,
-      1290
     ]
   }
 }

@@ -22,14 +22,23 @@ export const NEXT_DATE = {
 // The next year's programme, announced but not yet bookable: every mention links to the interest form.
 export const NEXT_YEAR = { year: '2027', title: 'New 2027 dates coming soon', cta: 'Register your interest' };
 
-export const SOLD_OUT = { date: 'Sunday 25 October', venue: 'City Academy', area: 'Clerkenwell', postcode: 'EC1R 5EG' };
+// The October 2026 venue in Clerkenwell (listed in the footer).
+export const PAST_VENUE = { venue: 'City Academy', area: 'Clerkenwell', postcode: 'EC1R 5EG' };
 
-// The "Dates & fee" strip, oldest first. `open` marks the bookable date.
+// Shown in the hero card once earlier cohorts have finished.
+export const COMPLETED_NOTE = 'Both October cohorts completed';
+
+// The "Dates & fee" strip, oldest first. `open` marks the bookable date; the rest are completed cohorts.
 export const COURSE_DATES = [
-  { date: 'Sunday 4 October 2026', note: 'Founding cohort · Completed', open: false },
+  { date: 'Sunday 4 October 2026', note: 'Founding cohort', open: false },
   { date: 'Sunday 25 October 2026', note: 'City Academy, Clerkenwell', open: false },
   { date: NEXT_DATE.long, note: `${NEXT_DATE.venue}, ${NEXT_DATE.area}`, open: true },
 ];
+
+// CIMSPA (confirmed by CIMSPA, October 2026): UBA is a CIMSPA Education Partner. The Barre course itself is
+// NOT yet CIMSPA-endorsed (endorsement in progress), so never describe the course as endorsed or approved.
+export const ACCREDITATION =
+  'UK Barre Academy is proud to be a CIMSPA Education Partner and CPD-accredited training provider.';
 
 export const PRICE = { now: '£250', was: '£500', amount: 250, currency: 'GBP' };
 

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { asset } from '../asset.js';
 import { sx } from '../lib/sx.js';
-import { NEXT_DATE, NEXT_YEAR, PRICE, SOLD_OUT, TYPEFORM_URL, external } from '../site.js';
+import { COMPLETED_NOTE, NEXT_DATE, NEXT_YEAR, PRICE, TYPEFORM_URL, external } from '../site.js';
 import Picture from './Picture.jsx';
 import BookLink from './BookLink.jsx';
 
@@ -52,7 +52,7 @@ export default function Hero() {
   return (
     <section className="hero dk" style={S.section}>
       <Picture
-        name="uba-hero-poster-1080"
+        name="uk-barre-academy-barre-instructor-training-london"
         alt=""
         sizes="(max-width: 760px) 200vw, 100vw"
         priority
@@ -91,7 +91,7 @@ export default function Hero() {
               6–10 places · <s style={S.was}>{PRICE.was}</s> <b style={S.now}>{PRICE.now}</b> founding rate
             </span>
             <span className="hc-cta" style={S.cta}>Book this date →</span>
-            <span className="hc-sold" style={S.soldOut}><s>{SOLD_OUT.date}</s> · Sold out</span>
+            <span className="hc-sold" style={S.soldOut}>{COMPLETED_NOTE}</span>
           </BookLink>
           <a className="btn hc-next" href={TYPEFORM_URL} {...external} style={S.next}>
             <span style={S.nextText}>
