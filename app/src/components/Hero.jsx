@@ -4,6 +4,7 @@ import { sx } from '../lib/sx.js';
 import { COMPLETED_NOTE, NEXT_DATE, NEXT_YEAR, PRICE, TYPEFORM_URL, external } from '../site.js';
 import Picture from './Picture.jsx';
 import BookLink from './BookLink.jsx';
+import { CimspaLogo, CpdBadge } from './Accreditation.jsx';
 
 const S = {
   section: sx('background: var(--warm); color: var(--paper);'),
@@ -12,6 +13,7 @@ const S = {
   shade3: sx('position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 18% 85%, rgba(20,16,12,0.35) 0%, rgba(20,16,12,0) 100%);'),
   main: sx('position: relative; z-index: 2;'),
   h1: sx('margin: 0; max-width: 900px;'),
+  marks: sx('margin-top: 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; animation-delay: .75s;'),
   lead: sx('margin: 18px 0 0; max-width: 460px; color: rgba(255,255,255,0.9); animation-delay: .65s;'),
   card: sx('display: block; text-decoration: none; color: var(--paper); padding: 20px; border-radius: 18px; background: var(--warm); border: 1px solid rgba(255,255,255,0.14);'),
   cardTop: sx('display: flex; justify-content: space-between; align-items: center; gap: 10px;'),
@@ -77,6 +79,10 @@ export default function Hero() {
               CPD-accredited Barre instructor certification. One intensive day, eight modules, trained in person by an
               expert UBA instructor.
             </p>
+            <div className="rise hero-marks" style={S.marks}>
+              <CimspaLogo white eager height={36} />
+              <CpdBadge />
+            </div>
           </div>
           <div className="rise hero-card" style={{ animationDelay: '.8s' }}>
           <BookLink className="btn hc" style={S.card}>

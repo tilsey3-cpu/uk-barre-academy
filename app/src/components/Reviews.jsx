@@ -2,6 +2,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { sx } from '../lib/sx.js';
 import { REVIEW_CAPTION, TESTIMONIALS } from '../testimonials.js';
 import Picture from './Picture.jsx';
+import CompletedCohorts from './CompletedCohorts.jsx';
 import { Close, QuoteMark } from './Icons.jsx';
 
 const TONES = {
@@ -113,6 +114,8 @@ export default function Reviews() {
             )}
           </div>
         </div>
+
+        <CompletedCohorts />
 
         <Dialog.Portal>
           <Dialog.Overlay className="u" style={S.overlay}>

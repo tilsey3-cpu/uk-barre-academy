@@ -53,15 +53,7 @@ const S = {
   read: sx('margin: auto 0 0; padding-top: 14px; border-top: 1px solid var(--line); font-size: 12px; line-height: 1.5; color: var(--muted);'),
   readLink: sx('color: var(--ink);'),
   small: sx('margin: 0; font-size: 12px; line-height: 1.5; color: var(--muted);'),
-  doneFig: sx('margin: 0; border-radius: 16px; overflow: hidden; background: var(--cream);'),
-  donePhoto: sx('display: block; width: 100%; height: 100%; aspect-ratio: 3 / 2; object-fit: cover; object-position: 50% 45%;'),
-  doneCard: sx('border-radius: 16px; background: var(--cream); padding: clamp(22px, 2.4vw, 32px); display: flex; flex-direction: column; justify-content: space-between; gap: 24px;'),
-  doneText: sx('margin: 10px 0 0; color: var(--muted);'),
-  doneList: sx('margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px;'),
-  doneRow: sx('display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px 12px 16px; border-radius: 12px; background: var(--paper);'),
 };
-
-const COMPLETED = COURSE_DATES.filter((d) => !d.open);
 
 export default function DatesFee() {
   return (
@@ -142,34 +134,6 @@ export default function DatesFee() {
             <p style={S.small}>
               A 50% introductory rate for the inaugural cohort, in return for constructive feedback after the course.
             </p>
-          </div>
-        </div>
-        {/* Completed cohorts: the past dates with the group photo of a finished cohort */}
-        <div className="done">
-          <figure className="rv zoom" style={S.doneFig}>
-            <Picture
-              name="uk-barre-academy-founding-instructors-course-completed"
-              alt="UK Barre Academy Founding Instructors at the barre at the end of their training day, holding a UBA Certificate of Completion"
-              sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1080px) calc(100vw - 80px), 760px"
-              style={S.donePhoto}
-            />
-          </figure>
-          <div className="rv" style={S.doneCard}>
-            <div>
-              <h3 className="t-h3" style={{ margin: 0 }}>Completed cohorts</h3>
-              <p className="t-body" style={S.doneText}>Our first Founding Instructors, at the end of their training day.</p>
-            </div>
-            <ul style={S.doneList}>
-              {COMPLETED.map((d) => (
-                <li key={d.date} style={S.doneRow}>
-                  <span style={S.histText}>
-                    <span style={S.histDate}>{d.date}</span>
-                    <span style={S.histNote}>{d.note}</span>
-                  </span>
-                  <span style={{ ...S.histTag, ...S.histOpen }}>Completed</span>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </div>

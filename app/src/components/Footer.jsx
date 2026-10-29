@@ -3,12 +3,13 @@ import { sx } from '../lib/sx.js';
 import { ACCREDITATION, EMAIL, INSTAGRAM_URL, NAV, NEXT_DATE, NEXT_YEAR, PAST_VENUE, ROUTES, TYPEFORM_URL, external } from '../site.js';
 import { useSite } from './Site.jsx';
 import { Instagram } from './Icons.jsx';
+import { CimspaLogo } from './Accreditation.jsx';
 
 const S = {
   footer: sx('background: var(--ink); color: var(--paper);'),
   inner: sx('padding-top: 64px; padding-bottom: 28px;'),
   logo: sx('height: 42px; width: auto; display: block;'),
-  cimspa: sx('display: block; margin-top: 20px; height: 40px; width: auto;'),
+  cimspa: sx('margin-top: 20px;'),
   about: sx('margin: 20px 0 0; max-width: 320px; color: rgba(255,255,255,0.65);'),
   label: sx('margin: 0 0 14px; color: var(--quiet);'),
   list: sx('margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px;'),
@@ -30,14 +31,7 @@ export default function Footer() {
             <p className="t-small" style={S.about}>
               A new standard for Barre education, founded by Maggie Paterson. {ACCREDITATION}
             </p>
-            <img
-              src={asset('media/accreditation/cimspa-education-partner-white.png')}
-              alt="CIMSPA Education Partner"
-              width="553"
-              height="160"
-              loading="lazy"
-              style={S.cimspa}
-            />
+            <CimspaLogo white height={40} style={S.cimspa} />
           </div>
           <nav aria-label="Footer" className="t-small">
             <p className="t-label" style={S.label}>Explore</p>
