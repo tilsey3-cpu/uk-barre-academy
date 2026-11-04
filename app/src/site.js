@@ -1,6 +1,6 @@
 export const SITE_URL = 'https://ukbarreacademy.com';
 export const STRIPE_URL = 'https://book.stripe.com/00w00j10O4gC64b20Dasg02';
-export const TYPEFORM_URL = 'https://form.typeform.com/to/YTm9KDH0';
+export const TYPEFORM_URL = 'https://form.typeform.com/to/gfdb0Bcd';
 export const EMAIL = 'hello@ukbarreacademy.com';
 export const INSTAGRAM_URL = 'https://www.instagram.com/ukbarreacademy/';
 
@@ -40,7 +40,31 @@ export const COURSE_DATES = [
 export const ACCREDITATION =
   'UK Barre Academy is proud to be a CIMSPA Education Partner and CPD-accredited training provider.';
 
-export const PRICE = { now: '£250', was: '£500', amount: 250, currency: 'GBP' };
+// The 2026 founding rate (`now`) against the standard 2027 certification fee (`was`, see PLAN_2027).
+export const PRICE = { now: '£250', was: '£425', amount: 250, currency: 'GBP' };
+
+// 2027 programme (Maggie Paterson, November 2026): dates and formats are provisional, venues TBC, and the
+// interest form (Typeform) asks which date(s), which format and which London area people prefer.
+export const PLAN_2027 = {
+  title: 'Planning the 2027 programme',
+  intro:
+    'UK Barre Academy is planning its 2027 instructor-training dates, with beautiful London dance-studio venues to be confirmed. We’d love your input before finalising our schedule. Please register your interest below and tell us which dates and course format would work best for you.',
+  dates: ['6–7 February 2027', '17–18 April 2027', '5–6 June 2027', '2–3 October 2027'],
+  venue: 'Venue to be confirmed',
+  formats: [
+    { name: 'One-day intensive', detail: 'One full training day, approximately 8 hours.' },
+    { name: 'Two-day weekend', detail: 'Two shorter training days over a weekend, approximately 4 hours each day.' },
+  ],
+  // The full certification: £375 + £25 + £25 = £425.
+  total: { label: 'Total certification investment', price: '£425' },
+  breakdown: [
+    { label: 'Training course', price: '£375' },
+    { label: 'UK Barre Academy 50-page training manual', price: '£25' },
+    { label: 'One-hour class assessment and personalised feedback, by video submission', price: '£25' },
+  ],
+  cpdOnly: { label: 'Training day only', price: '£375', detail: 'For CPD or professional development, without the certification assessment.' },
+  questions: ['Which date(s) interest you most', 'Which format you would prefer', 'Your preferred London location, if you have one'],
+};
 
 // The eight modules of the training day, in teaching order.
 export const MODULES = [

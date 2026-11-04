@@ -16,7 +16,7 @@ export const FAQS = [
   {
     q: `Is the video assessment included in the ${PRICE.now} course fee?`,
     a: [
-      `Yes. Your standard video assessment is included in the ${PRICE.now} Founding Instructor course fee, which increases to ${PRICE.was} from 2027.`,
+      `Yes. Your standard video assessment is included in the ${PRICE.now} Founding Instructor course fee, which increases to ${PRICE.was} from 2027, when the full certification fee includes the training manual and class assessment.`,
       'After your training day, you’ll have up to three months to practise and prepare.',
       'You’ll then submit a video of yourself teaching three UBA modules to at least two participants. One of your chosen modules must be Module 5 or Module 7.',
       'There are no additional written assignments to complete after the training day.',
