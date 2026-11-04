@@ -1,5 +1,5 @@
 import { FAQS, answerText } from './faqs.js';
-import { EMAIL, INSTAGRAM_URL, MODULES, NEXT_DATE, NEXT_YEAR, PRICE, SITE_URL, TYPEFORM_URL } from './site.js';
+import { EMAIL, INSTAGRAM_URL, MODULES, NEXT_DATE, NEXT_YEAR, PLAN_2027, PRICE, SITE_URL, TYPEFORM_URL } from './site.js';
 
 // Structured data and the llms.txt summary, built from site.js so they change with the dates and prices.
 // Only facts that appear on the page itself go in here.
@@ -123,6 +123,13 @@ ${MODULES.map((m) => `- ${m}`).join('\n')}
 - ${NEXT_DATE.long}, ${NEXT_DATE.time}, at ${NEXT_DATE.venue}, ${NEXT_DATE.area}, London ${NEXT_DATE.postcode}.
 - Book: ${SITE_URL}/#dates
 - ${NEXT_YEAR.title}: register your interest at ${TYPEFORM_URL}
+
+## 2027 programme (provisional, not yet bookable)
+
+- Dates: ${PLAN_2027.dates.join('; ')}. Venues in London to be confirmed.
+- Formats under consideration: ${PLAN_2027.formats.map((f) => `${f.name} (${f.detail.replace(/\.$/, '')})`).join('; ')}.
+- Full certification: ${PLAN_2027.total.price}, made up of ${PLAN_2027.breakdown.map((b) => `${b.label} ${b.price}`).join('; ')}.
+- ${PLAN_2027.cpdOnly.label}: ${PLAN_2027.cpdOnly.price}. ${PLAN_2027.cpdOnly.detail}
 
 ## Frequently asked questions
 
