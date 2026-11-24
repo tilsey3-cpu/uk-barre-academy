@@ -1,5 +1,5 @@
 import { sx } from '../lib/sx.js';
-import { COURSE_DATES, NEXT_DATE, PRICE, ROUTES, TYPEFORM_URL, external } from '../site.js';
+import { COURSE_DATES, NEXT_DATE, PRICE, ROUTES, TYPEFORM_URL, WAITLIST_URL, external } from '../site.js';
 import Picture from './Picture.jsx';
 import BookLink from './BookLink.jsx';
 import Plan2027 from './Plan2027.jsx';
@@ -65,37 +65,63 @@ export default function DatesFee() {
           </p>
         </div>
         <ol className="hist rv" aria-label="Course dates" style={S.hist}>
-          {COURSE_DATES.map((d) => (
-            <li key={d.date} style={{ ...S.histRow, ...(d.open ? S.histOpen : S.histPast) }}>
-              <span style={S.histText}>
-                <span style={S.histDate}>{d.date}</span>
-                <span style={S.histNote}>{d.note}</span>
-              </span>
-              <span style={{ ...S.histTag, ...(d.open ? S.histPast : S.histOpen) }}>{d.open ? 'Booking now' : 'Completed'}</span>
-            </li>
-          ))}
+          {COURSE_DATES.map((d) => {
+            const isSoldOut = d.soldOut;
+            const isOpen = d.open && !isSoldOut;
+            return (
+              <li key={d.date} style={{ ...S.histRow, ...(isOpen ? S.histOpen : S.histPast) }}>
+                <span style={S.histText}>
+                  <span style={S.histDate}>{d.date}</span>
+                  <span style={S.histNote}>{d.note}</span>
+                </span>
+                <span style={{ ...S.histTag, ...(isOpen ? S.histPast : S.histOpen) }}>
+                  {isOpen ? 'Booking now' : isSoldOut ? 'Sold out' : 'Completed'}
+                </span>
+              </li>
+            );
+          })}
         </ol>
         <div className="book">
-          <div className="rv dk zoom" style={S.photoCard}>
-            <Picture name="barre-instructor-course-trainees-at-the-barre" alt="Trainees smiling along the barre" sizes="(max-width: 1080px) 100vw, 760px" style={S.photo} />
-            <div style={S.photoShade} />
-            <div style={S.photoBody}>
-              <span className="t-label" style={S.badge}>Booking now</span>
-              <div style={{ maxWidth: 460 }}>
-                <div style={S.date}>{NEXT_DATE.long}</div>
-                <p className="t-body" style={S.where}>
-                  {NEXT_DATE.venue}, {NEXT_DATE.area}, London {NEXT_DATE.postcode} · <span style={{ whiteSpace: 'nowrap' }}>{NEXT_DATE.time}</span>
-                </p>
-                <div style={S.btns}>
-                  <BookLink style={S.book}>Book this date →</BookLink>
-                  <a className="btn ghost" href={TYPEFORM_URL} {...external} style={S.interest}>Show your interest</a>
+          {(() => {
+            const nextDateData = COURSE_DATES.find((d) => d.date === NEXT_DATE.long);
+            const isSoldOut = nextDateData?.soldOut;
+            return (
+              <>
+                <div className="rv dk zoom" style={S.photoCard}>
+                  <Picture name="barre-instructor-course-trainees-at-the-barre" alt="Trainees smiling along the barre" sizes="(max-width: 1080px) 100vw, 760px" style={S.photo} />
+                  <div style={S.photoShade} />
+                  <div style={S.photoBody}>
+                    <span className="t-label" style={S.badge}>{isSoldOut ? 'Sold out' : 'Booking now'}</span>
+                    <div style={{ maxWidth: 460 }}>
+                      <div style={S.date}>{NEXT_DATE.long}</div>
+                      <p className="t-body" style={S.where}>
+                        {NEXT_DATE.venue}, {NEXT_DATE.area}, London {NEXT_DATE.postcode} · <span style={{ whiteSpace: 'nowrap' }}>{NEXT_DATE.time}</span>
+                      </p>
+                      <div style={S.btns}>
+                        {isSoldOut ? (
+                          <a className="btn" href={WAITLIST_URL} {...external} style={S.book}>Join the waitlist →</a>
+                        ) : (
+                          <>
+                            <BookLink style={S.book}>Book this date →</BookLink>
+                            <a className="btn ghost" href={TYPEFORM_URL} {...external} style={S.interest}>Show your interest</a>
+                          </>
+                        )}
+                      </div>
+                      <p style={S.agreeNote}>
+                        {isSoldOut ? (
+                          'Join the waitlist to be notified if a place becomes available.'
+                        ) : (
+                          <>
+                            By booking you agree to our <a href={ROUTES.terms} style={S.agreeLink}>Terms &amp; Conditions</a>.
+                          </>
+                        )}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <p style={S.agreeNote}>
-                  By booking you agree to our <a href={ROUTES.terms} style={S.agreeLink}>Terms &amp; Conditions</a>.
-                </p>
-              </div>
-            </div>
-          </div>
+              </>
+            );
+          })()}
           <div className="rv" style={S.fee}>
             <div style={S.feeTop}>
               <span className="t-label" style={S.feePill}>Founding rate</span>
