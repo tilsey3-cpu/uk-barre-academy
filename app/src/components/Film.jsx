@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { asset } from '../asset.js';
 import { sx } from '../lib/sx.js';
-import { NEXT_DATE, PRICE } from '../site.js';
+import { NEXT_DATE, PRICE, COURSE_DATES, WAITLIST_URL, external } from '../site.js';
 import Picture from './Picture.jsx';
 import { Sound } from './Icons.jsx';
 import BookLink from './BookLink.jsx';
@@ -187,10 +187,22 @@ export default function Film({ filmFullRef, onUpdate }) {
             </div>
           </div>
           <div className="film-r">
-            <p className="t-small" style={S.rSmall}>Next cohort</p>
-            <p style={S.rDate}>{NEXT_DATE.medium}</p>
-            <p className="t-small" style={S.rVenue}>{NEXT_DATE.venue}, {NEXT_DATE.area}</p>
-            <BookLink style={S.rBook}>Book · {PRICE.now} →</BookLink>
+            {(() => {
+              const nextDateData = COURSE_DATES.find((d) => d.date === NEXT_DATE.long);
+              const isSoldOut = nextDateData?.soldOut;
+              return (
+                <>
+                  <p className="t-small" style={S.rSmall}>{isSoldOut ? 'Sold out' : 'Next cohort'}</p>
+                  <p style={S.rDate}>{NEXT_DATE.medium}</p>
+                  <p className="t-small" style={S.rVenue}>{NEXT_DATE.venue}, {NEXT_DATE.area}</p>
+                  {isSoldOut ? (
+                    <a className="btn" href={WAITLIST_URL} {...external} style={S.rBook}>Join the waitlist →</a>
+                  ) : (
+                    <BookLink style={S.rBook}>Book · {PRICE.now} →</BookLink>
+                  )}
+                </>
+              );
+            })()}
           </div>
         </div>
       </div>
