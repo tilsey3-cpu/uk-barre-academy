@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { sx } from '../lib/sx.js';
-import { NEXT_DATE, PRICE } from '../site.js';
+import { NEXT_DATE, PRICE, SOLD_OUT } from '../site.js';
 import BookLink from './BookLink.jsx';
 
 const S = {
@@ -36,7 +36,7 @@ export default function BookingBar({ filmFullRef, updateRef }) {
   }, [filmFullRef, updateRef]);
 
   return (
-    <div ref={ref} data-bar="" role="region" aria-label="Book the next date" style={S.wrap}>
+    <div ref={ref} data-bar="" role="region" aria-label={SOLD_OUT ? 'Join the waitlist' : 'Book the next date'} style={S.wrap}>
       <div className="dk" style={S.bar}>
         <span className="t-small" style={S.info}>
           <span aria-hidden="true" style={S.dot} />
@@ -47,7 +47,7 @@ export default function BookingBar({ filmFullRef, updateRef }) {
             <b style={S.b}>{NEXT_DATE.short}</b> · {PRICE.now}
           </span>
         </span>
-        <BookLink style={S.book}>Book now →</BookLink>
+        <BookLink style={S.book}>{SOLD_OUT ? 'Join the waitlist →' : 'Book now →'}</BookLink>
       </div>
     </div>
   );

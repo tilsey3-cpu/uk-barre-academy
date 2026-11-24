@@ -1,5 +1,5 @@
 import { sx } from '../lib/sx.js';
-import { COURSE_DATES, NEXT_DATE, PRICE, ROUTES, TYPEFORM_URL, WAITLIST_URL, external } from '../site.js';
+import { COURSE_DATES, NEXT_DATE, NEXT_YEAR, PRICE, ROUTES, TYPEFORM_URL, WAITLIST_URL, external } from '../site.js';
 import Picture from './Picture.jsx';
 import BookLink from './BookLink.jsx';
 import Plan2027 from './Plan2027.jsx';
@@ -109,7 +109,9 @@ export default function DatesFee() {
                       </div>
                       <p style={S.agreeNote}>
                         {isSoldOut ? (
-                          'Join the waitlist to be notified if a place becomes available.'
+                          <>
+                            Join the waitlist to hear if a place opens up. Looking further ahead? <a href={TYPEFORM_URL} {...external} style={S.agreeLink}>Register your interest in {NEXT_YEAR.year} dates</a>.
+                          </>
                         ) : (
                           <>
                             By booking you agree to our <a href={ROUTES.terms} style={S.agreeLink}>Terms &amp; Conditions</a>.

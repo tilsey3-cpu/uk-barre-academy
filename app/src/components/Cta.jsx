@@ -1,5 +1,5 @@
 import { sx } from '../lib/sx.js';
-import { NEXT_DATE, NEXT_YEAR, PRICE, TYPEFORM_URL, external } from '../site.js';
+import { NEXT_DATE, NEXT_YEAR, PRICE, SOLD_OUT, TYPEFORM_URL, external } from '../site.js';
 import Picture from './Picture.jsx';
 import BookLink from './BookLink.jsx';
 
@@ -27,9 +27,9 @@ export default function Cta() {
         </div>
         <div className="rv" style={S.side}>
           <p className="t-body" style={S.body}>
-            {NEXT_DATE.medium} · {NEXT_DATE.venue}, {NEXT_DATE.area}. Complete your booking securely online.
+            {NEXT_DATE.medium} · {NEXT_DATE.venue}, {NEXT_DATE.area}. {SOLD_OUT ? 'Sold out. Join the waitlist to hear if a place opens up.' : 'Complete your booking securely online.'}
           </p>
-          <BookLink style={S.book}>Secure your place · {PRICE.now} →</BookLink>
+          <BookLink style={S.book}>{SOLD_OUT ? 'Join the waitlist →' : `Secure your place · ${PRICE.now} →`}</BookLink>
           <p style={S.soon}>
             {NEXT_YEAR.title}. <a href={TYPEFORM_URL} {...external} style={S.soonLink}>{NEXT_YEAR.cta}</a>
           </p>

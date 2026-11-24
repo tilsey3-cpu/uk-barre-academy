@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { asset } from '../asset.js';
 import { sx } from '../lib/sx.js';
-import { EMAIL, NAV, NEXT_DATE, NEXT_YEAR, PRICE, TYPEFORM_URL, external } from '../site.js';
+import { EMAIL, NAV, NEXT_DATE, NEXT_YEAR, PRICE, SOLD_OUT, TYPEFORM_URL, external } from '../site.js';
 import BookLink from './BookLink.jsx';
 import { useSite } from './Site.jsx';
 import { Close } from './Icons.jsx';
@@ -65,7 +65,7 @@ export default function MobileMenu() {
               ))}
             </nav>
             <div className="w" style={S.foot}>
-              <BookLink style={S.book}>Book {NEXT_DATE.shortMonth} · {PRICE.now} →</BookLink>
+              <BookLink style={S.book}>{SOLD_OUT ? `${NEXT_DATE.shortMonth} sold out · Join the waitlist →` : `Book ${NEXT_DATE.shortMonth} · ${PRICE.now} →`}</BookLink>
               <a href={TYPEFORM_URL} {...external} style={S.soon}>{NEXT_YEAR.year} dates · {NEXT_YEAR.cta}</a>
               <span className="t-small" style={S.contact}>{EMAIL} · @ukbarreacademy</span>
             </div>

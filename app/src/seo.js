@@ -1,5 +1,5 @@
 import { FAQS, answerText } from './faqs.js';
-import { EMAIL, INSTAGRAM_URL, MODULES, NEXT_DATE, NEXT_YEAR, PLAN_2027, PRICE, SITE_URL, TYPEFORM_URL } from './site.js';
+import { EMAIL, INSTAGRAM_URL, MODULES, NEXT_DATE, NEXT_YEAR, PLAN_2027, PRICE, SITE_URL, SOLD_OUT, TYPEFORM_URL, WAITLIST_URL } from './site.js';
 
 // Structured data and the llms.txt summary, built from site.js so they change with the dates and prices.
 // Only facts that appear on the page itself go in here.
@@ -71,7 +71,7 @@ export function homeJsonLd() {
           category: 'Paid',
           price: PRICE.amount,
           priceCurrency: PRICE.currency,
-          availability: 'https://schema.org/InStock',
+          availability: SOLD_OUT ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock',
           url: `${SITE_URL}/#dates`,
         },
         hasCourseInstance: {
@@ -121,7 +121,7 @@ ${MODULES.map((m) => `- ${m}`).join('\n')}
 ## Next date
 
 - ${NEXT_DATE.long}, ${NEXT_DATE.time}, at ${NEXT_DATE.venue}, ${NEXT_DATE.area}, London ${NEXT_DATE.postcode}.
-- Book: ${SITE_URL}/#dates
+${SOLD_OUT ? `- Sold out. Join the waitlist: ${WAITLIST_URL}` : `- Book: ${SITE_URL}/#dates`}
 - ${NEXT_YEAR.title}: register your interest at ${TYPEFORM_URL}
 
 ## 2027 programme (provisional, not yet bookable)

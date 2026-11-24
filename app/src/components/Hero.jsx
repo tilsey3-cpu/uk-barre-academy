@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { asset } from '../asset.js';
 import { sx } from '../lib/sx.js';
-import { COMPLETED_NOTE, NEXT_DATE, NEXT_YEAR, PRICE, TYPEFORM_URL, external } from '../site.js';
+import { COMPLETED_NOTE, SOLD_OUT, NEXT_DATE, NEXT_YEAR, PRICE, TYPEFORM_URL, external } from '../site.js';
 import Picture from './Picture.jsx';
 import BookLink from './BookLink.jsx';
 import { CimspaLogo, CpdBadge } from './Accreditation.jsx';
@@ -88,15 +88,15 @@ export default function Hero() {
           <BookLink className="btn hc" style={S.card}>
             <span style={S.cardTop}>
               <span className="t-label" style={S.cardLabel}>Next cohort</span>
-              <span style={S.badge}><span aria-hidden="true" style={S.dot} />Booking now</span>
+              <span style={S.badge}>{SOLD_OUT ? 'Sold out' : <><span aria-hidden="true" style={S.dot} />Booking now</>}</span>
             </span>
             <span className="hc-date" style={S.date}>{NEXT_DATE.long}</span>
             <span style={S.meta}>
               {NEXT_DATE.venue}, {NEXT_DATE.area} · <span style={{ whiteSpace: 'nowrap' }}>{NEXT_DATE.time}</span>
               <br />
-              6–10 places · <s style={S.was}>{PRICE.was}</s> <b style={S.now}>{PRICE.now}</b> founding rate
+              {SOLD_OUT ? 'Sold out' : '6–10 places'} · <s style={S.was}>{PRICE.was}</s> <b style={S.now}>{PRICE.now}</b> founding rate
             </span>
-            <span className="hc-cta" style={S.cta}>Book this date →</span>
+            <span className="hc-cta" style={S.cta}>{SOLD_OUT ? 'Join the waitlist →' : 'Book this date →'}</span>
             <span className="hc-sold" style={S.soldOut}>{COMPLETED_NOTE}</span>
           </BookLink>
           <a className="btn hc-next" href={TYPEFORM_URL} {...external} style={S.next}>

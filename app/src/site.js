@@ -29,11 +29,14 @@ export const PAST_VENUE = { venue: 'City Academy', area: 'Clerkenwell', postcode
 // Shown in the hero card once earlier cohorts have finished.
 export const COMPLETED_NOTE = 'Both October cohorts completed';
 
+// The next date is full: every Book button becomes "Join the waitlist" (WAITLIST_URL). Set to false to reopen booking.
+export const SOLD_OUT = true;
+
 // The "Dates & fee" strip, oldest first. `open` marks the bookable date; the rest are completed cohorts. `soldOut` marks a full date.
 export const COURSE_DATES = [
   { date: 'Sunday 4 October 2026', note: 'Founding cohort', open: false },
   { date: 'Sunday 25 October 2026', note: 'City Academy, Clerkenwell', open: false },
-  { date: NEXT_DATE.long, note: `${NEXT_DATE.venue}, ${NEXT_DATE.area}`, open: false, soldOut: true },
+  { date: NEXT_DATE.long, note: `${NEXT_DATE.venue}, ${NEXT_DATE.area}`, open: !SOLD_OUT, soldOut: SOLD_OUT },
 ];
 
 // CIMSPA (confirmed by CIMSPA, October 2026): UBA is a CIMSPA Education Partner. The Barre course itself is

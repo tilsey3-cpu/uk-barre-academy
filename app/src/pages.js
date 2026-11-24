@@ -1,4 +1,4 @@
-import { NEXT_DATE, NEXT_YEAR, PRICE } from './site.js';
+import { NEXT_DATE, NEXT_YEAR, PRICE, SOLD_OUT } from './site.js';
 import { POLICIES, POLICY_ORDER } from './policies.js';
 
 // Every route that gets pre-rendered. `file` is the HTML written to dist/ (served at the extensionless path).
@@ -8,7 +8,7 @@ export const PAGES = {
     path: '/',
     // Google shows about 60 characters of a title and 155 of a description.
     title: 'UK Barre Academy | Barre Instructor Certification, London',
-    description: `One-day, CPD-accredited Barre instructor certification in London with Maggie Paterson. Next cohort ${NEXT_DATE.dayMonth}, ${PRICE.now}. Register your interest in ${NEXT_YEAR.year} dates.`,
+    description: `One-day, CPD-accredited Barre instructor certification in London with Maggie Paterson. ${SOLD_OUT ? `${NEXT_DATE.dayMonth} cohort sold out, join the waitlist.` : `Next cohort ${NEXT_DATE.dayMonth}, ${PRICE.now}.`} Register your interest in ${NEXT_YEAR.year} dates.`,
   },
   ...Object.fromEntries(
     POLICY_ORDER.map((slug) => [

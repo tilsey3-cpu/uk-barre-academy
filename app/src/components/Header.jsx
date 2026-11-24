@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { asset } from '../asset.js';
 import { sx } from '../lib/sx.js';
-import { NAV, NEXT_DATE, ROUTES } from '../site.js';
+import { NAV, NEXT_DATE, ROUTES, SOLD_OUT } from '../site.js';
 import BookLink from './BookLink.jsx';
 import { useSite } from './Site.jsx';
 import { Menu } from './Icons.jsx';
@@ -52,10 +52,10 @@ export default function Header({ floating = false, filmFullRef, updateRef }) {
           {NAV.map((n) => (
             <a key={n.href} href={home + n.href} style={S.link}>{n.label}</a>
           ))}
-          <BookLink style={S.book}>Book {NEXT_DATE.dayMonth} →</BookLink>
+          <BookLink style={S.book}>{SOLD_OUT ? 'Join the waitlist →' : `Book ${NEXT_DATE.dayMonth} →`}</BookLink>
         </nav>
         <div className="nav-m" style={S.compact}>
-          <BookLink style={S.compactBook}>Book</BookLink>
+          <BookLink style={S.compactBook}>{SOLD_OUT ? 'Waitlist' : 'Book'}</BookLink>
           <button type="button" aria-label="Open menu" onClick={() => setMenuOpen(true)} style={S.menuBtn}>
             <Menu />
           </button>
