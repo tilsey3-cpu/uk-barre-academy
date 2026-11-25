@@ -1,5 +1,6 @@
 import { NEXT_DATE, NEXT_YEAR, PRICE, SOLD_OUT } from './site.js';
 import { POLICIES, POLICY_ORDER } from './policies.js';
+import { VIDEOS_SLUG } from './videos.js';
 
 // Every route that gets pre-rendered. `file` is the HTML written to dist/ (served at the extensionless path).
 export const PAGES = {
@@ -16,6 +17,14 @@ export const PAGES = {
       { file: `${slug}.html`, path: `/${slug}`, title: POLICIES[slug].docTitle, description: POLICIES[slug].description },
     ])
   ),
+  // Hidden: only reachable by its link. Left out of the sitemap and marked noindex.
+  [VIDEOS_SLUG]: {
+    file: `${VIDEOS_SLUG}.html`,
+    path: `/${VIDEOS_SLUG}`,
+    hidden: true,
+    title: 'Trainee video library | UK Barre Academy',
+    description: 'Module demonstration videos for UK Barre Academy trainees.',
+  },
 };
 
 export const pageFromPath = (pathname) => {

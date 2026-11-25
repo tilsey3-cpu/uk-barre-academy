@@ -24,6 +24,7 @@ for (const [page, meta] of Object.entries(PAGES)) {
     .replace('<!--app-html-->', render(page))
     .replace('<!--hero-preload-->', page === 'home' ? heroPreload : '')
     .replace('<!--json-ld-->', page === 'home' ? jsonLdScript(homeJsonLd()) : '')
+    .replaceAll('%ROBOTS%', meta.hidden ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1')
     .replaceAll('%PAGE%', page)
     .replaceAll('%TITLE%', attr(meta.title))
     .replaceAll('%DESCRIPTION%', attr(meta.description))
@@ -42,6 +43,7 @@ const today = new Date().toISOString().slice(0, 10);
 // The homepage entry lists its photographs (full-size originals) so they can appear in image search.
 const photos = Object.keys(manifest).map((n) => `    <image:image><image:loc>https://ukbarreacademy.com/media/${n}.jpg</image:loc></image:image>`).join('\n');
 const urls = Object.entries(PAGES)
+  .filter(([, p]) => !p.hidden)
   .map(([page, p]) => `  <url><loc>https://ukbarreacademy.com${p.path}</loc><lastmod>${today}</lastmod>${page === 'home' ? `\n${photos}\n  ` : ''}</url>`)
   .join('\n');
 await writeFile('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n</urlset>\n`);
