@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { asset } from '../asset.js';
 import { EMAIL, ROUTES } from '../site.js';
 import { ALL_CLIPS, VIDEO_GROUPS, clipMinutes, thumbSrc, videoSrc } from '../videos.js';
@@ -139,7 +139,7 @@ export default function VideosPage() {
         <section className="vl-intro" aria-labelledby="vl-h1">
           <h1 id="vl-h1">Your practice library</h1>
           <div className="vl-intro-side">
-            <p>Maggie’s demonstrations for all 8 UBA modules: {total} videos, {totalMins} minutes. Practise along and tick off each one. For the video assessment, one of the 3 modules taught must be Module 5 or Module 7.</p>
+            <p>The full warm-up, warm-down and arms sessions, the David Lloyd classes, then Maggie’s demonstrations of all 8 modules: {total} videos, {totalMins} minutes. For the video assessment, one of the 3 modules taught must be Module 5 or Module 7.</p>
             <div className="vl-sum">
               <div className="vl-sum-row">
                 <span className="vl-sum-n">{count} of {total} practised</span>
@@ -159,9 +159,16 @@ export default function VideosPage() {
           const d = clips.filter((c) => done.has(c.id)).length;
           const complete = d === clips.length;
           return (
-            <section key={g.id} id={g.id} className="vl-mod" aria-labelledby={`${g.id}-h`}>
+            <Fragment key={g.id}>
+            {g.opens && (
+              <div className="vl-part">
+                <h2>{g.opens.title}</h2>
+                <p>{g.opens.text}</p>
+              </div>
+            )}
+            <section id={g.id} className="vl-mod" aria-labelledby={`${g.id}-h`}>
               <header className="vl-mod-h">
-                <h2 id={`${g.id}-h`}>{g.title}</h2>
+                {g.opens || g.id.startsWith('m') ? <h3 id={`${g.id}-h`}>{g.title}</h3> : <h2 id={`${g.id}-h`}>{g.title}</h2>}
                 <p className="vl-mod-n">{g.name}</p>
                 <p className="vl-mod-m">
                   {clips.length} {clips.length === 1 ? 'video' : 'videos'} · {clipMinutes(clips) || 1} min
@@ -185,6 +192,7 @@ export default function VideosPage() {
                 ))}
               </ul>
             </section>
+            </Fragment>
           );
         })}
 
