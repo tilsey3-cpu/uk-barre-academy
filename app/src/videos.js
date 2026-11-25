@@ -7,7 +7,7 @@ export const VIDEOS_SLUG = 'practice_library';
 export const videoSrc = (file) => VIDEO_BASE + encodeURIComponent(`${file}.mp4`);
 export const thumbSrc = (file) => VIDEO_BASE + encodeURIComponent(`${file}.jpg`);
 
-// Page order, as Taylor set it: the full warm-up, the full warm-down, arms, the David Lloyd sessions,
+// Page order, as Taylor set it: the full warm-up, the full warm-down, arms, the class sessions,
 // then Maggie's module-by-module demonstrations. `wide` marks landscape or square clips (the rest were
 // filmed upright on a phone). `secs` is the running time. `opens` puts a heading above that group.
 export const VIDEO_GROUPS = [
@@ -20,7 +20,7 @@ export const VIDEO_GROUPS = [
   { id: 'arms', kind: 'session', nav: 'Arms', title: 'Arms', name: 'Module 6 with hand weights', videos: [
     { file: 'Module 6  (1)', title: 'Arms', secs: 214, wide: true },
   ] },
-  { id: 'david-lloyd', nav: 'David Lloyd', title: 'David Lloyd sessions', name: 'More of the class, module by module', videos: [
+  { id: 'class', nav: 'Class', title: 'Class sessions', name: 'The modules taught to a class', videos: [
     { file: 'Module 3', title: 'Module 3', secs: 217, wide: true },
     { file: 'Module 3 ', title: 'Module 3, from the barre', secs: 240, wide: true },
     { file: 'Module 4 & 5 combo ', title: 'Modules 4 & 5', secs: 171, wide: true },
