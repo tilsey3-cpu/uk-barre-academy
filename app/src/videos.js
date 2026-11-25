@@ -1,6 +1,6 @@
 // Hidden trainee video library (/trainee-videos-7k3q). Not linked anywhere, not in the sitemap, noindex.
 // Videos and thumbnails live in the Cloudflare R2 bucket `uba-videos`; `file` is the object name there.
-export const VIDEO_BASE = 'https://pub-c0dde070760e43e0b8bbb11bd65ad309.r2.dev/';
+export const VIDEO_BASE = 'https://pub-c0dde070760e43e0b8bbb11bd65ad309.r2.dev/web/';
 export const VIDEOS_SLUG = 'trainee-videos-7k3q';
 
 export const videoSrc = (file) => VIDEO_BASE + encodeURIComponent(`${file}.mp4`);
