@@ -4,7 +4,7 @@ import { EMAIL, ROUTES } from '../site.js';
 import { ALL_CLIPS, VIDEO_GROUPS, clipMinutes, thumbSrc, videoSrc } from '../videos.js';
 
 // The UBA practice library. A sticky header (progress, Continue) and a pill menu to every section; the
-// three full sessions as feature cards; then the David Lloyd classes and Maggie's 8 modules as rows.
+// three full sessions as feature cards; then the class sessions and Maggie's 8 modules as rows.
 // A video opens full-screen over the page. Ticks are kept in this browser only (no accounts).
 
 const STORE = 'uba-practised-v1';
