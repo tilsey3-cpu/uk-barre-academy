@@ -22,8 +22,8 @@ export const PAGES = {
     file: `${VIDEOS_SLUG}.html`,
     path: `/${VIDEOS_SLUG}`,
     hidden: true,
-    title: 'Trainee video library | UK Barre Academy',
-    description: 'Module demonstration videos for UK Barre Academy trainees.',
+    title: 'Practice library | UK Barre Academy',
+    description: 'Practice videos from Maggie Paterson for UK Barre Academy trainees.',
   },
 };
 
