@@ -8,3 +8,6 @@ chats/
 
 # taste-skill working files (screenshots, reports)
 .taste-skill/
+
+# Source videos (hosted on Cloudflare R2, never committed)
+UBA_Module Videos/
