@@ -24,15 +24,13 @@ export const VIDEO_GROUPS = [
   { id: 'm4', title: 'Module 4', name: 'Classical Barre Technique', videos: [
     { file: 'Module 4 ', title: 'Part 1', secs: 129 },
   ] },
-  { id: 'm45', title: 'Modules 4 & 5', name: 'Combination', videos: [
-    { file: 'Module 4 & 5 combo ', title: 'Combination', secs: 171, wide: true },
-  ] },
   { id: 'm5', title: 'Module 5', name: 'Barre Flow, Choreography and Cardio Conditioning', assessment: true, videos: [
     { file: 'Module 5 ', title: 'Part 1', secs: 62 },
     { file: 'Module 5  (1)', title: 'Part 2', secs: 66 },
     { file: 'Module 5  (2)', title: 'Part 3', secs: 61 },
     { file: 'Module 5  (3)', title: 'Part 4', secs: 51 },
     { file: 'Module 5- ', title: 'Part 5', secs: 76, wide: true },
+    { file: 'Module 4 & 5 combo ', title: 'With Module 4', secs: 171, wide: true },
   ] },
   { id: 'm6', title: 'Module 6', name: 'Upper Body Strength and Arm Definition', videos: [
     { file: 'Module 6', title: 'Part 1', secs: 93 },
