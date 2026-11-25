@@ -231,7 +231,7 @@ export default function VideosPage() {
         <section className="vl-intro" aria-labelledby="vl-h1">
           <h1 id="vl-h1">Practice library</h1>
           <div className="vl-intro-side">
-            <p>Maggie Paterson’s full sessions, the David Lloyd classes and every module of the UBA method, ready to practise along to. Tick off each video as you go.</p>
+            <p>Maggie Paterson’s full sessions and every module of the UBA method, ready to practise along to. Tick off each video as you go.</p>
             <ul className="vl-facts">
               <li className="vl-pill">{total} videos</li>
               <li className="vl-pill">{totalMins} minutes</li>

@@ -11,13 +11,13 @@ export const thumbSrc = (file) => VIDEO_BASE + encodeURIComponent(`${file}.jpg`)
 // then Maggie's module-by-module demonstrations. `wide` marks landscape or square clips (the rest were
 // filmed upright on a phone). `secs` is the running time. `opens` puts a heading above that group.
 export const VIDEO_GROUPS = [
-  { id: 'warm-up', kind: 'session', nav: 'Warm-up', title: 'Full warm-up', name: 'Module 1, taught to the class at David Lloyd', videos: [
+  { id: 'warm-up', kind: 'session', nav: 'Warm-up', title: 'Full warm-up', name: 'Module 1, taught to the class', videos: [
     { file: 'Module 1  (2)', title: 'Full warm-up', secs: 263, wide: true },
   ] },
-  { id: 'warm-down', kind: 'session', nav: 'Warm-down', title: 'Full warm-down', name: 'Barre stretch into floor stretches, at David Lloyd', videos: [
+  { id: 'warm-down', kind: 'session', nav: 'Warm-down', title: 'Full warm-down', name: 'Barre stretch into floor stretches', videos: [
     { file: 'Module 8  (1)', title: 'Full warm-down', secs: 218, wide: true },
   ] },
-  { id: 'arms', kind: 'session', nav: 'Arms', title: 'Arms', name: 'Module 6 with hand weights, at David Lloyd', videos: [
+  { id: 'arms', kind: 'session', nav: 'Arms', title: 'Arms', name: 'Module 6 with hand weights', videos: [
     { file: 'Module 6  (1)', title: 'Arms', secs: 214, wide: true },
   ] },
   { id: 'david-lloyd', nav: 'David Lloyd', title: 'David Lloyd sessions', name: 'More of the class, module by module', videos: [
