@@ -433,7 +433,7 @@ function Library() {
 // Password gate. The site is static, so this keeps out people who only have the link; it is not
 // server-side security. The password (case doesn't matter) is checked against its SHA-256 hash, and
 // a correct entry is remembered on this device.
-const GATE_HASH = 'a36291c6b67160d0b82a43c31ba010907d581f98e53acc33632cbb1e0f108fa7';
+const GATE_HASH = '108f45e00fba92764c7b8afcca686cdf285589ef7cc04a842f2c7ab4fae82fb8';
 const GATE_KEY = 'uba-library-unlocked';
 const sha256 = async (s) => {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
