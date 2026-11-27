@@ -467,13 +467,8 @@ function Gate({ onUnlock }) {
   return (
     <div className="u site vl-gate dk">
       <div className="vl-gate-in">
-        <a href={ROUTES.home} className="vl-logo"><img src={asset('media/uba-logo-white.png')} alt="UK Barre Academy" width="116" height="38" /></a>
         <div className="vl-gate-main">
-          <span className="vl-stack" aria-hidden="true">
-            {POSITIONS.slice(0, 4).map((q) => (
-              <span key={q.id}><Picture name={positionPhoto(q)} alt="" sizes="44px" priority /></span>
-            ))}
-          </span>
+          <a href={ROUTES.home} className="vl-gate-logo"><img src={asset('media/uba-logo-white.png')} alt="UK Barre Academy" width="116" height="38" /></a>
           <h1>Practice library</h1>
           <p>Maggie’s practice videos and dancer positions for UK Barre Academy trainees. Enter the password from your training day.</p>
           <form className={`vl-gate-form${error ? ' err' : ''}`} onSubmit={submit} key={shake}>
