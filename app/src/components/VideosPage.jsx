@@ -195,7 +195,7 @@ function Player({ clip, done, onToggle, onPick, onClose, onEnded, onPositions })
   );
 }
 
-export default function VideosPage() {
+function Library() {
   const [clip, setClip] = useState(null);
   const [done, setDone] = useState(() => new Set());
   const [active, setActive] = useState(VIDEO_GROUPS[0].id);
@@ -428,4 +428,87 @@ export default function VideosPage() {
       {pos !== undefined && <Positions start={pos} onClose={() => { setPos(undefined); if (!clip) posOpener.current?.focus({ preventScroll: true }); }} />}
     </div>
   );
+}
+
+// Password gate. The site is static, so this keeps out people who only have the link; it is not
+// server-side security. The password (case doesn't matter) is checked against its SHA-256 hash, and
+// a correct entry is remembered on this device.
+const GATE_HASH = 'a36291c6b67160d0b82a43c31ba010907d581f98e53acc33632cbb1e0f108fa7';
+const GATE_KEY = 'uba-library-unlocked';
+const sha256 = async (s) => {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
+};
+
+function Gate({ onUnlock }) {
+  const [value, setValue] = useState('');
+  const [error, setError] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [shake, setShake] = useState(0);
+  const input = useRef(null);
+  useEffect(() => { input.current?.focus(); }, []);
+
+  const submit = async (e) => {
+    e.preventDefault();
+    if (!value.trim() || busy) return;
+    setBusy(true);
+    const ok = (await sha256(value.trim().toLowerCase())) === GATE_HASH;
+    setBusy(false);
+    if (ok) {
+      try { localStorage.setItem(GATE_KEY, GATE_HASH); } catch { /* remembered for this visit only */ }
+      onUnlock();
+    } else {
+      setError(true);
+      setShake((n) => n + 1);
+      input.current?.select();
+    }
+  };
+
+  return (
+    <div className="u site vl-gate dk">
+      <div className="vl-gate-in">
+        <a href={ROUTES.home} className="vl-logo"><img src={asset('media/uba-logo-white.png')} alt="UK Barre Academy" width="116" height="38" /></a>
+        <div className="vl-gate-main">
+          <span className="vl-stack" aria-hidden="true">
+            {POSITIONS.slice(0, 4).map((q) => (
+              <span key={q.id}><Picture name={positionPhoto(q)} alt="" sizes="44px" priority /></span>
+            ))}
+          </span>
+          <h1>Practice library</h1>
+          <p>Maggie’s practice videos and dancer positions for UK Barre Academy trainees. Enter the password from your training day.</p>
+          <form className={`vl-gate-form${error ? ' err' : ''}`} onSubmit={submit} key={shake}>
+            <label htmlFor="vl-pw" className="vl-vh">Password</label>
+            <input
+              ref={input}
+              id="vl-pw"
+              type="password"
+              autoComplete="current-password"
+              placeholder="Password"
+              value={value}
+              onChange={(e) => { setValue(e.target.value); setError(false); }}
+              aria-invalid={error}
+              aria-describedby="vl-pw-msg"
+            />
+            <button type="submit" disabled={busy} aria-label="Unlock the practice library">
+              <Arrow />
+            </button>
+          </form>
+          <p id="vl-pw-msg" className="vl-gate-msg" role="alert">{error ? 'That password isn’t right. Please try again.' : ''}</p>
+        </div>
+        <p className="vl-gate-foot">Need the password? Email <a href={`mailto:${EMAIL}`}>{EMAIL}</a></p>
+      </div>
+    </div>
+  );
+}
+
+export default function VideosPage() {
+  // null until checked in the browser, so the server render and first client render match (both show the gate).
+  const [open, setOpen] = useState(null);
+  useEffect(() => {
+    let ok = false;
+    try { ok = localStorage.getItem(GATE_KEY) === GATE_HASH; } catch { /* ignore */ }
+    setOpen(ok);
+  }, []);
+  if (open) return <Library />;
+  return <Gate onUnlock={() => { setOpen(true); scrollTo(0, 0); }} />;
 }

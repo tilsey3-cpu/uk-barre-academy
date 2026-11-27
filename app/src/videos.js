@@ -1,8 +1,8 @@
-// Hidden trainee practice library (/practice_library; the first link, /trainee-videos-7k3q, redirects here). Not linked anywhere, not in the sitemap, noindex.
+// Hidden, password-gated trainee practice library (/practice-library). Older links (/trainee-videos-7k3q, /practice_library) redirect here. Not linked anywhere, not in the sitemap, noindex.
 // Videos and thumbnails live in the Cloudflare R2 bucket `uba-videos`, in its web/ folder; `file` is the
 // object name there without its extension (each video has a matching .mp4 and .jpg).
 export const VIDEO_BASE = 'https://pub-c0dde070760e43e0b8bbb11bd65ad309.r2.dev/web/';
-export const VIDEOS_SLUG = 'practice_library';
+export const VIDEOS_SLUG = 'practice-library';
 
 export const videoSrc = (file) => VIDEO_BASE + encodeURIComponent(`${file}.mp4`);
 export const thumbSrc = (file) => VIDEO_BASE + encodeURIComponent(`${file}.jpg`);

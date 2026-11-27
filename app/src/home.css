@@ -256,7 +256,7 @@ html:has(.topbar){scroll-padding-top:80px}
   .film-stick{position:relative}
 }
 
-/* Practice library (hidden page, /practice_library) */
+/* Practice library (hidden page, /practice-library) */
 .vl-page{background:var(--cream);--grade:saturate(.88) contrast(1.13) brightness(.92) sepia(.08);--head:120px;--r:18px}
 .vl-page button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .vl-page :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
@@ -383,6 +383,31 @@ html:has(.topbar){scroll-padding-top:80px}
 .vl-done:not(.on) .vl-tick path{stroke:var(--muted)}
 .vl-done.on .vl-tick.on circle{fill:#06210f}
 .vl-done.on .vl-tick.on path{stroke:var(--success-on-dark)}
+/* Password gate */
+.vl-gate{min-height:100svh;background:var(--ink);color:var(--paper)}
+.vl-gate-in{min-height:100svh;max-width:520px;margin:0 auto;padding:32px 20px;display:flex;flex-direction:column;box-sizing:border-box}
+.vl-gate .vl-logo img{height:30px}
+.vl-gate-main{margin:auto 0;padding:48px 0;animation:vl-rise .7s var(--ease) both}
+@keyframes vl-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.vl-gate .vl-stack>span{width:44px;height:44px;box-shadow:0 0 0 3px var(--ink)}
+.vl-gate .vl-stack>span+span{margin-left:-12px}
+.vl-gate h1{margin:28px 0 0;font-size:clamp(48px,9vw,72px);line-height:.95;font-weight:400;letter-spacing:-.05em}
+.vl-gate-main>p{margin:20px 0 0;font-size:17px;line-height:1.55;color:rgba(255,255,255,.72)}
+.vl-gate-form{margin-top:32px;display:flex;align-items:center;gap:8px;height:60px;padding:0 6px 0 22px;border-radius:9999px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);transition:box-shadow .2s ease,background-color .2s ease}
+.vl-gate-form:focus-within{background:rgba(255,255,255,.11);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+.vl-gate-form.err{box-shadow:inset 0 0 0 1px #e0796b;animation:vl-shake .4s var(--ease)}
+@keyframes vl-shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.vl-gate-form input{flex:1 1 auto;min-width:0;height:100%;border:0;background:none;color:var(--paper);font:inherit;font-size:17px;letter-spacing:.02em;outline:none}
+.vl-gate-form input::placeholder{color:rgba(255,255,255,.45);letter-spacing:0}
+.vl-gate-form button{flex:0 0 auto;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:0;border-radius:9999px;background:var(--paper);color:var(--ink) !important;transition:transform .25s var(--ease)}
+.vl-gate-form button:hover{transform:translateX(2px)}
+.vl-gate-form button:active{transform:scale(.94)}
+.vl-gate-msg{min-height:22px;margin:12px 0 0 22px;font-size:14px;color:#f0a093}
+.vl-gate-foot{margin:0;font-size:13px;color:rgba(255,255,255,.5)}
+.vl-gate-foot a{color:rgba(255,255,255,.8)}
+.vl-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){.vl-gate-main,.vl-gate-form.err{animation:none}}
+
 /* Dancer positions */
 .vl-teaser{margin-top:16px;display:flex;align-items:center;gap:14px;padding:12px 18px 12px 12px;border-radius:9999px;background:var(--ink);color:var(--paper);text-decoration:none;max-width:420px;transition:transform .3s var(--ease),background-color .2s ease}
 .vl-teaser:hover{transform:translateY(-2px);background:#1d1a17}

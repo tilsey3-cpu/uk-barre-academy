@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Page not found | UK Barre Academy</title>
+<script>
+  // Any spelling of the practice library address (Practice-library, PRACTICE_LIBRARY, a trailing slash) goes to the real page.
+  (function () {
+    var p = location.pathname.replace(/\/+$/, '').split('/').pop().toLowerCase().replace(/_/g, '-').replace(/\.html$/, '');
+    if (p === 'practice-library' || p === 'practicelibrary') location.replace('/practice-library' + location.hash);
+  })();
+</script>
+<style>
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f6f2ec;color:#0e0d0b;font-family:-apple-system,BlinkMacSystemFont,'Inter',sans-serif;text-align:center;padding:24px}
+  h1{font-weight:400;font-size:40px;letter-spacing:-.04em;margin:0}
+  p{margin:12px 0 28px;color:#5d5750}
+  a{display:inline-flex;align-items:center;height:48px;padding:0 24px;border-radius:9999px;background:#0e0d0b;color:#fff;text-decoration:none;font-weight:500}
+</style>
+</head>
+<body>
+<main>
+<h1>Page not found</h1>
+<p>This page doesn’t exist, or has moved.</p>
+<a href="/">Go to UK Barre Academy</a>
+</main>
+</body>
+</html>
