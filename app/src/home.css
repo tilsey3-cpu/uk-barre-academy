@@ -384,6 +384,28 @@ html:has(.topbar){scroll-padding-top:80px}
 .vl-done.on .vl-tick.on circle{fill:#06210f}
 .vl-done.on .vl-tick.on path{stroke:var(--success-on-dark)}
 /* Dancer positions */
+.vl-teaser{margin-top:16px;display:flex;align-items:center;gap:14px;padding:12px 18px 12px 12px;border-radius:9999px;background:var(--ink);color:var(--paper);text-decoration:none;max-width:420px;transition:transform .3s var(--ease),background-color .2s ease}
+.vl-teaser:hover{transform:translateY(-2px);background:#1d1a17}
+.vl-teaser:active{transform:scale(.985)}
+.vl-teaser svg{margin-left:auto;flex:0 0 auto;transition:transform .3s var(--ease)}
+.vl-teaser:hover svg{transform:translateX(3px)}
+.vl-teaser-t{display:flex;flex-direction:column;gap:1px;min-width:0}
+.vl-teaser-t b{font-size:15px;font-weight:500}
+.vl-teaser-t span{font-size:13px;color:rgba(255,255,255,.65)}
+.vl-stack{display:flex;flex:0 0 auto}
+.vl-stack>span{width:36px;height:36px;border-radius:9999px;overflow:hidden;background:var(--warm);box-shadow:0 0 0 2px var(--ink);transition:transform .3s var(--ease)}
+.vl-stack>span+span{margin-left:-10px}
+.vl-stack img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;transform:scale(1.7);transform-origin:50% 38%;filter:var(--grade);display:block}
+.vl-teaser:hover .vl-stack>span:nth-child(2){transform:translateX(2px)}
+.vl-teaser:hover .vl-stack>span:nth-child(3){transform:translateX(4px)}
+.vl-teaser:hover .vl-stack>span:nth-child(4){transform:translateX(6px)}
+.vl-teaser:hover .vl-stack>span:nth-child(5){transform:translateX(8px)}
+.vl-fab{position:fixed;z-index:60;right:clamp(16px,3vw,32px);bottom:max(20px,env(safe-area-inset-bottom));display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 20px 0 8px;border:0;border-radius:9999px;background:var(--ink);color:var(--paper) !important;font-size:15px;font-weight:500;box-shadow:0 10px 30px rgba(14,13,11,.28);opacity:0;transform:translateY(16px) scale(.96);pointer-events:none;transition:opacity .35s ease,transform .45s var(--ease)}
+.vl-fab.on{opacity:1;transform:none;pointer-events:auto}
+.vl-fab:hover{transform:translateY(-2px)}
+.vl-fab:active{transform:scale(.96)}
+.vl-fab .vl-stack>span{width:34px;height:34px}
+
 .vl-positions{scroll-margin-top:var(--head)}
 .vl-pos-cards{margin:40px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:28px 14px}
 .vl-pc{display:flex;flex-direction:column;align-items:flex-start;width:100%;padding:0;border:0;background:none;text-align:left}
@@ -432,6 +454,9 @@ html:has(.topbar){scroll-padding-top:80px}
   .vl-pos-next{display:none}
   .vl-ov-pos{height:36px;padding:0 12px;font-size:13px}
   .vl-ov-count{display:none}
+  .vl-teaser{max-width:none}
+  .vl-fab{height:48px;font-size:14px;padding:0 16px 0 7px}
+  .vl-fab .vl-stack>span{width:32px;height:32px}
 }
 @media (prefers-reduced-motion:reduce){.vl-page *,.vl-ov,.vl-pos,.vl-pos-body{transition:none !important;animation:none !important}}
 

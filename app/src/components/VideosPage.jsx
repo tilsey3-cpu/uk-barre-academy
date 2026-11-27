@@ -200,6 +200,7 @@ export default function VideosPage() {
   const [done, setDone] = useState(() => new Set());
   const [active, setActive] = useState(VIDEO_GROUPS[0].id);
   const [pos, setPos] = useState(undefined); // undefined: closed; null: the full set; number: one position
+  const [fab, setFab] = useState(false);
   const posOpener = useRef(null);
   const opener = useRef(null);
   const navRef = useRef(null);
@@ -219,6 +220,11 @@ export default function VideosPage() {
         if (el && el.getBoundingClientRect().top <= line) id = g.id;
       }
       setActive(id);
+      const intro = document.querySelector('.vl-teaser');
+      const posEl = document.getElementById('positions');
+      const past = intro ? intro.getBoundingClientRect().bottom < 0 : true;
+      const atPositions = posEl ? posEl.getBoundingClientRect().top < innerHeight * 0.7 : false;
+      setFab(past && !atPositions);
     };
     const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
     update();
@@ -310,6 +316,18 @@ export default function VideosPage() {
               <li className="vl-pill">{totalMins} minutes</li>
               <li className="vl-pill vl-pill-gold"><span className="vl-chip-dot" aria-hidden="true" />Assessment: Module 5 or 7</li>
             </ul>
+            <a href="#positions" className="vl-teaser">
+              <span className="vl-stack" aria-hidden="true">
+                {POSITIONS.slice(0, 5).map((q) => (
+                  <span key={q.id}><Picture name={positionPhoto(q)} alt="" sizes="48px" /></span>
+                ))}
+              </span>
+              <span className="vl-teaser-t">
+                <b>Dancer positions</b>
+                <span>{POSITIONS.length} positions to refer back to</span>
+              </span>
+              <Arrow />
+            </a>
           </div>
         </section>
 
@@ -398,6 +416,14 @@ export default function VideosPage() {
         </div>
       </footer>
 
+      <button type="button" className={`vl-fab${fab && !clip && pos === undefined ? ' on' : ''}`} onClick={(e) => { posOpener.current = e.currentTarget; setPos(null); }} aria-label="Open dancer positions" tabIndex={fab ? 0 : -1}>
+        <span className="vl-stack" aria-hidden="true">
+          {POSITIONS.slice(0, 3).map((q) => (
+            <span key={q.id}><Picture name={positionPhoto(q)} alt="" sizes="40px" /></span>
+          ))}
+        </span>
+        <span>Positions</span>
+      </button>
       {clip && <Player clip={clip} done={done} onToggle={toggle} onPick={setClip} onClose={close} onEnded={ended} onPositions={() => setPos(null)} />}
       {pos !== undefined && <Positions start={pos} onClose={() => { setPos(undefined); if (!clip) posOpener.current?.focus({ preventScroll: true }); }} />}
     </div>
