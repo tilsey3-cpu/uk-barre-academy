@@ -92,6 +92,146 @@
       1333
     ]
   },
+  "barre-position-arabesque-maggie-paterson": {
+    "width": 1600,
+    "height": 2133,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "barre-position-demi-plie-maggie-paterson": {
+    "width": 1600,
+    "height": 2133,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "barre-position-fifth-position-maggie-paterson": {
+    "width": 1600,
+    "height": 2133,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "barre-position-first-position-maggie-paterson": {
+    "width": 1600,
+    "height": 2133,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "barre-position-fondu-maggie-paterson": {
+    "width": 1600,
+    "height": 2133,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "barre-position-fourth-position-maggie-paterson": {
+    "width": 1600,
+    "height": 2133,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "barre-position-grand-battement-maggie-paterson": {
+    "width": 1600,
+    "height": 2133,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "barre-position-grand-plie-maggie-paterson": {
+    "width": 1600,
+    "height": 2133,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "barre-position-high-curtsy-maggie-paterson": {
+    "width": 1600,
+    "height": 2133,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "barre-position-low-curtsy-maggie-paterson": {
+    "width": 1600,
+    "height": 2133,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "barre-position-releve-maggie-paterson": {
+    "width": 1600,
+    "height": 2133,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "barre-position-retire-passe-maggie-paterson": {
+    "width": 1600,
+    "height": 2133,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "barre-position-second-position-maggie-paterson": {
+    "width": 1600,
+    "height": 2133,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "barre-position-third-position-maggie-paterson": {
+    "width": 1600,
+    "height": 2133,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
   "maggie-paterson-barre-teacher-port-de-bras": {
     "width": 2200,
     "height": 1467,

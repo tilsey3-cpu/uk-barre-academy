@@ -2,6 +2,8 @@ import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from 'rea
 import { asset } from '../asset.js';
 import { EMAIL, ROUTES } from '../site.js';
 import { ALL_CLIPS, VIDEO_GROUPS, clipMinutes, thumbSrc, videoSrc } from '../videos.js';
+import { POSITIONS, positionPhoto } from '../positions.js';
+import Picture from './Picture.jsx';
 
 // The UBA practice library. A sticky header (progress, Continue) and a pill menu to every section; the
 // three full sessions as feature cards; then the class sessions and Maggie's 8 modules as rows.
@@ -65,7 +67,73 @@ function Thumb({ c, done, onOpen, label }) {
   );
 }
 
-function Player({ clip, done, onToggle, onPick, onClose, onEnded }) {
+// Dancer positions viewer: one position large with its description, or (from the player) the full set.
+function Positions({ start, onClose }) {
+  const [i, setI] = useState(start);
+  const closeRef = useRef(null);
+  const p = i === null ? null : POSITIONS[i];
+  useEffect(() => {
+    closeRef.current?.focus({ preventScroll: true });
+    const html = document.documentElement;
+    const before = html.style.overflow;
+    html.style.overflow = 'hidden';
+    return () => { html.style.overflow = before; };
+  }, []);
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'Escape') { e.stopPropagation(); i !== null && start === null ? setI(null) : onClose(); }
+      if (i === null) return;
+      if (e.key === 'ArrowRight') setI((n) => Math.min(n + 1, POSITIONS.length - 1));
+      if (e.key === 'ArrowLeft') setI((n) => Math.max(n - 1, 0));
+    };
+    addEventListener('keydown', onKey, true);
+    return () => removeEventListener('keydown', onKey, true);
+  }, [i, start, onClose]);
+
+  return (
+    <div className="vl-pos" role="dialog" aria-modal="true" aria-label={p ? p.title : 'Dancer positions'}>
+      <div className="vl-pos-top">
+        {p && start === null ? (
+          <button type="button" className="vl-pos-back" onClick={() => setI(null)}><Arrow left /><span>All positions</span></button>
+        ) : <p className="vl-pos-h">Dancer positions</p>}
+        <button ref={closeRef} type="button" className="vl-icon" onClick={onClose} aria-label="Close positions">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+      </div>
+      {p ? (
+        <div className="vl-pos-body" key={p.id}>
+          <div className="vl-pos-img">
+            <Picture name={positionPhoto(p)} alt={`Maggie Paterson in ${p.title}`} sizes="(max-width: 760px) 100vw, 46vw" priority />
+          </div>
+          <div className="vl-pos-text">
+            <span className="vl-pill vl-pill-dark">{i + 1} of {POSITIONS.length}</span>
+            <h2>{p.title}</h2>
+            <p className="vl-pos-sub">{p.sub}</p>
+            <p>{p.text}</p>
+            <div className="vl-pos-nav">
+              <button type="button" className="vl-icon" onClick={() => setI(i - 1)} disabled={i === 0} aria-label="Previous position"><Arrow left /></button>
+              <button type="button" className="vl-icon" onClick={() => setI(i + 1)} disabled={i === POSITIONS.length - 1} aria-label="Next position"><Arrow /></button>
+              {POSITIONS[i + 1] && <span className="vl-pos-next">Next · {POSITIONS[i + 1].title}</span>}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <ul className="vl-pos-grid">
+          {POSITIONS.map((q, n) => (
+            <li key={q.id}>
+              <button type="button" onClick={() => setI(n)}>
+                <span className="vl-pos-ph"><Picture name={positionPhoto(q)} alt="" sizes="(max-width: 760px) 45vw, 180px" /></span>
+                <span className="vl-pos-t">{q.title}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+function Player({ clip, done, onToggle, onPick, onClose, onEnded, onPositions }) {
   const g = clip.group;
   const idx = ALL_CLIPS.indexOf(clip);
   const prev = ALL_CLIPS[idx - 1];
@@ -83,6 +151,7 @@ function Player({ clip, done, onToggle, onPick, onClose, onEnded }) {
 
   useEffect(() => {
     const onKey = (e) => {
+      if (document.querySelector('.vl-pos')) return;
       if (e.key === 'Escape') onClose();
       if (e.target.tagName === 'VIDEO') return;
       if (e.key === 'ArrowRight' && next) onPick(next);
@@ -98,6 +167,7 @@ function Player({ clip, done, onToggle, onPick, onClose, onEnded }) {
         <span className="vl-pill vl-pill-dark">{g.nav}</span>
         <p className="vl-ov-where">{g.name}</p>
         <span className="vl-ov-count">{idx + 1} / {ALL_CLIPS.length}</span>
+        <button type="button" className="vl-ov-pos" onClick={() => { document.querySelector('.vl-ov video')?.pause(); onPositions(); }}>Positions</button>
         <button ref={closeRef} type="button" className="vl-icon" onClick={onClose} aria-label="Close video">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
         </button>
@@ -129,6 +199,8 @@ export default function VideosPage() {
   const [clip, setClip] = useState(null);
   const [done, setDone] = useState(() => new Set());
   const [active, setActive] = useState(VIDEO_GROUPS[0].id);
+  const [pos, setPos] = useState(undefined); // undefined: closed; null: the full set; number: one position
+  const posOpener = useRef(null);
   const opener = useRef(null);
   const navRef = useRef(null);
 
@@ -142,7 +214,7 @@ export default function VideosPage() {
       raf = 0;
       const line = (parseFloat(getComputedStyle(document.querySelector('.vl-page')).getPropertyValue('--head')) || 120) + 48;
       let id = VIDEO_GROUPS[0].id;
-      for (const g of VIDEO_GROUPS) {
+      for (const g of [...VIDEO_GROUPS, { id: 'positions' }]) {
         const el = document.getElementById(g.id);
         if (el && el.getBoundingClientRect().top <= line) id = g.id;
       }
@@ -223,6 +295,7 @@ export default function VideosPage() {
                 </a>
               );
             })}
+            <a data-id="positions" href="#positions" className={`vl-chip gap${active === 'positions' ? ' on' : ''}`} aria-current={active === 'positions' ? 'true' : undefined}>Positions</a>
           </div>
         </nav>
       </header>
@@ -297,6 +370,24 @@ export default function VideosPage() {
           );
         })}
 
+        <section id="positions" className="vl-positions" aria-labelledby="positions-h">
+          <div className="vl-part">
+            <h2 id="positions-h">Dancer positions</h2>
+            <p>Maggie in each of the positions used in the videos. Choose one to see it larger, with a short description of the shape.</p>
+          </div>
+          <ul className="vl-pos-cards">
+            {POSITIONS.map((p, n) => (
+              <li key={p.id}>
+                <button type="button" className="vl-pc" onClick={(e) => { posOpener.current = e.currentTarget; setPos(n); }}>
+                  <span className="vl-pc-img"><Picture name={positionPhoto(p)} alt={`Maggie Paterson in ${p.title}`} sizes="(max-width: 760px) 44vw, (max-width: 1080px) 22vw, 160px" /></span>
+                  <span className="vl-pc-t">{p.title}</span>
+                  <span className="vl-pc-s">{p.sub}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+
         <p className="vl-help">Ticks are saved on this device. Trouble playing a video? Email <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
       </main>
 
@@ -307,7 +398,8 @@ export default function VideosPage() {
         </div>
       </footer>
 
-      {clip && <Player clip={clip} done={done} onToggle={toggle} onPick={setClip} onClose={close} onEnded={ended} />}
+      {clip && <Player clip={clip} done={done} onToggle={toggle} onPick={setClip} onClose={close} onEnded={ended} onPositions={() => setPos(null)} />}
+      {pos !== undefined && <Positions start={pos} onClose={() => { setPos(undefined); if (!clip) posOpener.current?.focus({ preventScroll: true }); }} />}
     </div>
   );
 }
